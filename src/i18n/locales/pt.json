@@ -1,0 +1,400 @@
+{
+    "account_modal": {
+        "title": "Adicionar conta",
+        "login": "Iniciar sessão numa conta existente",
+        "signup": "Criar nova conta"
+    },
+    "character": {
+        "capricorn": "Capricórnio",
+        "good_at_chat": "Sou bom a conversar",
+        "social": "Sociável",
+        "sport": "Desportivo",
+        "description": "Mesmo que passes apenas uma noite com ela, continuará uma frase na tua mente pela manhã. A cada sorriso, ela revela um pouco mais. É como se te conhecesse há anos.",
+        "send_message": "Enviar mensagem",
+        "go_to_profile": "Ver perfil"
+    },
+    "gift_modal": {
+        "confirm": "Quer enviar este presente a {{name}}?",
+        "someone": "a alguém",
+        "cancel": "Cancelar",
+        "send": "Enviar",
+        "toast": "🎁 Presente enviado!"
+    },
+    "locked": {
+        "successTitle": "Sucesso",
+        "successMessage": "O conteúdo foi desbloqueado com sucesso.",
+        "insufficientTitle": "Moedas insuficientes",
+        "insufficientMessage": "Não tens moedas suficientes para desbloquear este conteúdo.",
+        "buyCoins": "Comprar moedas",
+        "cancel": "Cancelar",
+        "pay": "Pagar",
+        "description": "Ficaste sem moedas. Precisarás de comprar mais.",
+        "coinTitle": "Moeda"
+    },
+    "sidebar": {
+        "profile": "Perfil",
+        "premium": "Premium",
+        "settings": "Definições",
+        "logout": "Terminar sessão"
+    },
+    "about": {
+        "title": "Sobre a aplicação",
+        "description": "A Curvia AI oferece uma nova experiência social com perfis realistas e interativos de inteligência artificial. Ligações emocionais através de diálogos personalizados, temas e envio de presentes.",
+        "developer": "Desenvolvedor",
+        "contact": "Contacto"
+    },
+    "birthday": {
+        "title": "Qual é a tua\ndata de nascimento?",
+        "placeholder": "DD/MM/AAAA",
+        "underage_title": "Restrição de idade",
+        "underage_message": "Deves ter pelo menos 18 anos para usar esta aplicação."
+    },
+    "character_type": {
+        "title": "Que tipo de\npersonagem te atrai?",
+        "options": {
+            "girl_next_door": "Rapaz/rapariga do lado",
+            "beauty_queen": "Rainha da beleza",
+            "anime_girl": "Personagem de anime",
+            "virgin": "Pura",
+            "shy_girl": "Tímida",
+            "red_asian": "Asiática ruiva"
+        },
+        "sections": {
+            "girls": "Personagens femininas",
+            "anime": "Personagens de anime",
+            "boys": "Personagens masculinos"
+        }
+    },
+    "chat": {
+        "input_placeholder": "Escreve uma mensagem...",
+        "subscription_title": "Vantagens da subscrição",
+        "subscription_description": "Esta imagem/vídeo está disponível apenas para ti por seres subscritor.",
+        "ok": "OK"
+    },
+    "chatlist": {
+        "title": "Conversas",
+        "search_placeholder": "Pesquisar..."
+    },
+    "coin_purchase": {
+        "title": "Pacotes de Moedas",
+        "alert_title": "Comprar {{amount}} moedas",
+        "alert_description": "Queres comprar este pacote?",
+        "confirm_button": "Comprar",
+        "success_title": "Compra concluída",
+        "success_message": "{{amount}} moedas foram compradas com sucesso.",
+        "popular": "Popular"
+    },
+    "common": {
+        "cancel": "Cancelar",
+        "next": "Seguinte"
+    },
+    "gender": {
+        "title": "Qual é o teu género?",
+        "male": "Masculino",
+        "female": "Feminino",
+        "no_answer": "Prefiro não dizer"
+    },
+    "home": {
+        "categories": {
+            "girls": "Raparigas",
+            "anime": "Anime",
+            "boys": "Rapazes"
+        },
+        "sections": {
+            "featured": "Destaques",
+            "forYou": "Para ti",
+            "popular": "Populares"
+        }
+    },
+    "imageDetail": {
+        "close": "Fechar",
+        "delete": "Eliminar",
+        "errorTitle": "Erro",
+        "errorMessage": "Ocorreu um erro ao eliminar a imagem."
+    },
+    "incomingCall": {
+        "ringing": "A chamar...",
+        "ended": "Chamada terminada"
+    },
+    "interests": {
+        "title": "Quais são os teus interesses?",
+        "subtitle": "Seleciona pelo menos três",
+        "cta": "Criar Conta",
+        "options": [
+            "Aventura",
+            "Anime",
+            "Fantasia",
+            "História",
+            "Mistério",
+            "Paranormal",
+            "Religião",
+            "Romance",
+            "Ficção Científica",
+            "Amizade",
+            "Comédia",
+            "Astrologia"
+        ]
+    },
+    "languages": {
+        "title": "Em que línguas vais\ncomunicar?",
+        "options": [
+            "Inglês",
+            "Turco",
+            "Alemão",
+            "Russo",
+            "Espanhol",
+            "Árabe",
+            "Persa",
+            "Hindi",
+            "Francês"
+        ]
+    },
+    "language": {
+        "ar": "Árabe",
+        "de": "Alemão",
+        "el": "Grego",
+        "en": "Inglês",
+        "es": "Espanhol",
+        "fa": "Persa",
+        "fr": "Francês",
+        "hi": "Hindi",
+        "id": "Indonésio",
+        "it": "Italiano",
+        "ja": "Japonês",
+        "ko": "Coreano",
+        "ptBR": "Português (Brasil)",
+        "pt": "Português",
+        "ru": "Russo",
+        "tr": "Turco",
+        "uk": "Ucraniano",
+        "ur": "Urdu",
+        "zh": "Chinês"
+    },
+    "register": {
+        "name_title": "Como devemos\nchamar-te?",
+        "name_placeholder": "Introduz o teu nome"
+    },
+    "notifications": {
+        "title": "Notificações",
+        "empty": "Ainda não tens notificações.",
+        "new_message_title": "Nova mensagem!",
+        "new_message_body": "A Jessika enviou-te uma mensagem.",
+        "gift_received_title": "Recebeste um presente 🎁",
+        "gift_received_body": "A Luna aceitou a flor que enviaste.",
+        "new_match_title": "Nova correspondência!",
+        "new_match_body": "A Elara gostou do teu perfil.",
+        "time_2min": "Há 2 minutos",
+        "time_10min": "Há 10 minutos",
+        "time_1h": "Há 1 hora"
+    },
+    "notificationSettings": {
+        "title": "Definições de Notificações",
+        "message": "Notificações de mensagens novas",
+        "likes": "Notificações de gostos e presentes",
+        "events": "Notificações de eventos e campanhas",
+        "nightSilent": "Modo silencioso à noite (23:00–08:00)",
+        "importantOnly": "Apenas notificações importantes"
+    },
+    "partnerAgeRange": {
+        "title": "Qual a faixa etária\npreferida para o teu parceiro?",
+        "options": [
+            "18 - 24",
+            "25 - 34",
+            "35 - 44",
+            "45 - 54",
+            "55 - 64"
+        ]
+    },
+    "personalityTraits": {
+        "title": "Quais são as tuas\ncaracterísticas?",
+        "options": [
+            "Emocional",
+            "Sensual",
+            "Racional",
+            "Tímido"
+        ]
+    },
+    "privacy": {
+        "title": "Dados e Privacidade",
+        "intro": "Na Curvia AI, valorizamos a tua privacidade. Só recolhemos os dados estritamente necessários para melhorar a experiência do utilizador.",
+        "collectedTitle": "Dados Recolhidos",
+        "collected": "• Endereço de e-mail e informações de perfil\n• Preferências e histórico de interações do utilizador\n• Tipo de dispositivo e estatísticas de uso da aplicação",
+        "usageTitle": "Utilização dos Dados",
+        "usage": "• Oferecer conteúdos e sugestões personalizadas\n• Analisar o desempenho da aplicação\n• Gerir presentes, mensagens e subscrições",
+        "sharingTitle": "Partilha de Dados",
+        "sharing": "Os teus dados pessoais nunca serão vendidos a terceiros. Só serão partilhados com autoridades legais em caso de obrigação legal.",
+        "rightsTitle": "Os teus Direitos",
+        "rights": "• Podes solicitar a visualização ou eliminação dos teus dados.\n• Contacta-nos em support@curvia.ai"
+    },
+    "profileAiDetail": {
+        "sendGift": "Enviar Presente",
+        "message": "Mensagem",
+        "public": "Público",
+        "subscriberOnly": "Exclusivo para Subscritores",
+        "description": "Luna é uma estranha misteriosa que se perde nas noites de Istambul. Segredos nas suas madeixas douradas, um passado familiar no seu olhar. Uma noite basta; ainda pensarás nela ao amanhecer."
+    },
+    "profileDetail": {
+        "menu": "Menu",
+        "addPhoto": "Adicionar Foto",
+        "selectOption": "Escolhe uma opção",
+        "chooseFromGallery": "Escolher da Galeria",
+        "takePhoto": "Tirar Foto",
+        "cancel": "Cancelar",
+        "permissionRequired": "Permissão Necessária",
+        "permissionMessage": "Permissão para a câmara e galeria não concedida.",
+        "notifications": "Notificações",
+        "editProfile": "Editar Perfil",
+        "coin": "🪙 {{count}}",
+        "defaultBio": "sou engenheiro de software e fã de anime.\nposso falar sobre tudo o que envolve anime.",
+        "myPhotos": "As Minhas Fotos"
+    },
+    "profileEdit": {
+        "title": "Editar Perfil",
+        "photo": "Foto",
+        "name": "Nome",
+        "birthDate": "Data de Nascimento",
+        "bio": "Biografia",
+        "bioPlaceholder": "A tua biografia",
+        "changePreference": "Alterar Preferência de Relacionamento",
+        "save": "Guardar",
+        "permissionAlert": "É necessário acesso à galeria"
+    },
+    "profilePhoto": {
+        "title": "Carrega a tua\nfoto de perfil",
+        "permissionTitle": "Permissão Necessária",
+        "permissionMessage": "Esta funcionalidade requer permissão da câmara.",
+        "selectTitle": "Selecionar Foto",
+        "selectMessage": "Escolhe uma opção",
+        "camera": "Tirar com Câmara",
+        "gallery": "Escolher da Galeria",
+        "cancel": "Cancelar",
+        "done": "Concluído"
+    },
+    "profileReady": {
+        "title": "O teu perfil está pronto!",
+        "subtitle": "Correspondências e conversas personalizadas esperam por ti",
+        "start": "✨ Começar a Explorar",
+        "review": "Revê os teus dados"
+    },
+    "relationshipPreference": {
+        "title": "Quais são as tuas\npreferências de relação?",
+        "options": {
+            "situational": "relação situacional",
+            "casual": "só diversão",
+            "dominant": "dominador - submisso",
+            "roleplay": "representação de papéis",
+            "flirt": "flirt"
+        }
+    },
+    "report": {
+        "header": "Reportar um Problema",
+        "label": "Descreve brevemente o problema:",
+        "placeholder": "Exemplo: As notificações não estão a funcionar...",
+        "button": "Enviar",
+        "warningTitle": "Aviso",
+        "warningMessage": "Por favor, escreve uma descrição.",
+        "successTitle": "Obrigado",
+        "successMessage": "O teu problema foi enviado com sucesso."
+    },
+    "search": {
+        "header": "Procurar Personagem",
+        "placeholder": "Escreve um nome..."
+    },
+    "selectRecipient": {
+        "title": "A quem queres enviar?"
+    },
+    "settings": {
+        "title": "Definições",
+        "accountSettings": "Definições da Conta",
+        "dataPrivacy": "Dados e Privacidade",
+        "appSettings": "Definições da Aplicação",
+        "notifications": "Notificações",
+        "appearance": "Aparência",
+        "language": "Idioma",
+        "support": "Suporte",
+        "supportItem": "Suporte",
+        "reportIssue": "Reportar Problema",
+        "aboutApp": "Sobre a Aplicação",
+        "language_title": "Escolha de Idioma"
+    },
+    "signIn": {
+        "email": "Email",
+        "password": "Palavra-passe",
+        "signInButton": "Iniciar Sessão",
+        "or": "ou iniciar sessão com",
+        "noAccount": "Ainda não tens conta?",
+        "signUp": "Registar",
+        "invalidTitle": "Falha no login",
+        "invalidMessage": "Email ou palavra-passe incorretos."
+    },
+    "signUp": {
+        "email": "Email",
+        "password": "Palavra-passe",
+        "confirmPassword": "Confirmar Palavra-passe",
+        "passwordMismatch": "As palavras-passe não coincidem",
+        "ageConfirm": "Confirmo que tenho 18 anos ou mais",
+        "ageWarning": "Tens de ter pelo menos 18 anos para criar uma conta",
+        "next": "Seguinte"
+    },
+    "gift": {
+        "title": "Presentes",
+        "successMessage": "🎁 Presente enviado com sucesso!",
+        "chocolate": "Chocolate",
+        "crystal": "Cristal",
+        "diamond": "Diamante",
+        "dress": "Vestido",
+        "redDress": "Vestido Vermelho",
+        "blueDress": "Vestido Azul",
+        "blackDress": "Vestido Preto",
+        "jewel": "Jóia",
+        "ring": "Anel",
+        "womensClothing": "Roupa Feminina"
+    },
+    "subscription": {
+        "title": "Subscreve",
+        "plan": {
+            "basic": "Básico",
+            "standard": "Padrão",
+            "premium": "Premium",
+            "premiumPlus": "Premium+"
+        },
+        "details": "Ver detalhes do pacote",
+        "per_month": "por mês",
+        "buy_with_google": "Comprar com Google Pay"
+    },
+    "feature": {
+        "msg": "Mensagens",
+        "1photo": "1 foto por semana",
+        "1voice": "1 mensagem de voz",
+        "1call": "1 minuto de chamada de voz",
+        "bonus": "(5x mais + 20 moedas para novos membros)",
+        "50photo": "50 fotos por mês",
+        "100voice": "100 mensagens de voz",
+        "1hourcall": "1 hora de chamada de voz",
+        "10video": "10 mensagens de vídeo",
+        "50coin": "50 moedas",
+        "150photo": "150 fotos por mês",
+        "300voice": "300 mensagens de voz",
+        "3hourcall": "3 horas de chamada de voz",
+        "30video": "30 mensagens de vídeo",
+        "100coin": "100 moedas",
+        "500photo": "500 fotos por mês",
+        "500voice": "500 mensagens de voz",
+        "10hourcall": "10 horas de chamada de voz",
+        "100video": "100 mensagens de vídeo",
+        "150coin": "150 moedas"
+    },
+    "support": {
+        "title": "Suporte",
+        "email": "Suporte por email",
+        "faq": "Perguntas Frequentes",
+        "responseInfo": "A nossa equipa de suporte irá responder no prazo de 24 horas."
+    },
+    "theme": {
+        "title": "Escolha de Tema",
+        "dark": "Tema Escuro",
+        "light": "Tema Claro",
+        "sunset": "Pôr do Sol",
+        "forest": "Verde Floresta"
+    }
+}

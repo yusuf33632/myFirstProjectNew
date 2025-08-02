@@ -1,0 +1,400 @@
+{
+  "account_modal": {
+    "title": "Ajouter un compte",
+    "login": "Se connecter à un compte existant",
+    "signup": "Créer un nouveau compte"
+  },
+  "character": {
+    "capricorn": "Capricorne",
+    "good_at_chat": "Bon en discussion",
+    "social": "Sociable",
+    "sport": "Sportif",
+    "description": "Même une seule nuit passée avec elle laisse une phrase qui te trotte encore dans la tête au matin. Chaque sourire en dévoile un peu plus. On dirait qu'elle te connaît depuis toujours.",
+    "send_message": "Envoyer message",
+    "go_to_profile": "Voir le profil"
+  },
+  "gift_modal": {
+    "confirm": "Veux-tu envoyer ce cadeau à {{name}} ?",
+    "someone": "à quelqu'un",
+    "cancel": "Annuler",
+    "send": "Envoyer",
+    "toast": "🎁 Cadeau envoyé !"
+  },
+  "locked": {
+    "successTitle": "Succès",
+    "successMessage": "Contenu débloqué avec succès.",
+    "insufficientTitle": "Coins insuffisants",
+    "insufficientMessage": "Tu n'as pas assez de coins pour débloquer ce contenu.",
+    "buyCoins": "Acheter des coins",
+    "cancel": "Annuler",
+    "pay": "Payer",
+    "description": "Tu as épuisé tes coins. Tu dois en acheter.",
+    "coinTitle": "Coin"
+  },
+  "sidebar": {
+    "profile": "Profil",
+    "premium": "Premium",
+    "settings": "Paramètres",
+    "logout": "Se déconnecter"
+  },
+  "about": {
+    "title": "À propos",
+    "description": "Curvia AI offre une nouvelle expérience sociale avec des profils IA réalistes et interactifs. Dialogues personnalisés, thèmes et envoi de cadeaux favorisent la connexion émotionnelle.",
+    "developer": "Développeur",
+    "contact": "Contact"
+  },
+  "birthday": {
+    "title": "Quelle est\nta date de naissance ?",
+    "placeholder": "JJ/MM/AAAA",
+    "underage_title": "Restriction d'âge",
+    "underage_message": "Vous devez avoir au moins 18 ans pour utiliser cette application."
+  },
+  "character_type": {
+    "title": "Quel\ntype de personnage t'intéresse ?",
+    "options": {
+      "girl_next_door": "La fille d’à côté",
+      "beauty_queen": "Reine de beauté",
+      "anime_girl": "Fille d'anime",
+      "virgin": "Vierge",
+      "shy_girl": "Fille timide",
+      "red_asian": "Asiatique rousse"
+    },
+    "sections": {
+      "girls": "Personnages féminins",
+      "anime": "Personnages d’anime",
+      "boys": "Personnages masculins"
+    }
+  },
+  "chat": {
+    "input_placeholder": "Écrire un message…",
+    "subscription_title": "Avantage abonnement",
+    "subscription_description": "Cette image/vidéo t’est montrée exclusivement grâce à ton abonnement.",
+    "ok": "OK"
+  },
+  "chatlist": {
+    "title": "Discussions",
+    "search_placeholder": "Recherche..."
+  },
+  "coin_purchase": {
+    "title": "Packs de coins",
+    "alert_title": "Acheter {{amount}} coins",
+    "alert_description": "Voulez-vous acheter ce pack?",
+    "confirm_button": "Acheter",
+    "success_title": "Achat réussi",
+    "success_message": "{{amount}} coins achetés avec succès.",
+    "popular": "Populaire"
+  },
+  "common": {
+    "cancel": "Annuler",
+    "next": "Suivant"
+  },
+  "gender": {
+    "title": "Quel est ton genre ?",
+    "male": "Homme",
+    "female": "Femme",
+    "no_answer": "Je préfère ne pas dire"
+  },
+  "home": {
+    "categories": {
+      "girls": "Filles",
+      "anime": "Anime",
+      "boys": "Garçons"
+    },
+    "sections": {
+      "featured": "À la une",
+      "forYou": "Pour toi",
+      "popular": "Personnages populaires"
+    }
+  },
+  "imageDetail": {
+    "close": "Fermer",
+    "delete": "Supprimer",
+    "errorTitle": "Erreur",
+    "errorMessage": "Une erreur est survenue lors de la suppression de l'image."
+  },
+  "incomingCall": {
+    "ringing": "Appel en cours…",
+    "ended": "Appel terminé"
+  },
+  "interests": {
+    "title": "Quels sont tes centres d’intérêt ?",
+    "subtitle": "Choisis au moins trois",
+    "cta": "Créer un compte",
+    "options": [
+      "Aventure",
+      "Anime",
+      "Fantaisie",
+      "Histoire",
+      "Mystère",
+      "Paranormal",
+      "Religion",
+      "Romantisme",
+      "Science-fiction",
+      "Amitié",
+      "Humour",
+      "Astrologie"
+    ]
+  },
+  "languages": {
+    "title": "Dans quelles langues\nveux-tu discuter ?",
+    "options": [
+      "Anglais",
+      "Turc",
+      "Allemand",
+      "Russe",
+      "Espagnol",
+      "Arabe",
+      "Persan",
+      "Hindi",
+      "Français"
+    ]
+  },
+  "language": {
+    "ar": "Arabe",
+    "de": "Allemand",
+    "el": "Grec",
+    "en": "Anglais",
+    "es": "Espagnol",
+    "fa": "Persan",
+    "fr": "Français",
+    "hi": "Hindi",
+    "id": "Indonésien",
+    "it": "Italien",
+    "ja": "Japonais",
+    "ko": "Coréen",
+    "ptBR": "Portugais (Brésil)",
+    "pt": "Portugais",
+    "ru": "Russe",
+    "tr": "Turc",
+    "uk": "Ukrainien",
+    "ur": "Ourdou",
+    "zh": "Chinois"
+  },
+  "register": {
+    "name_title": "Comment\nt'appelle-t-on ?",
+    "name_placeholder": "Entrez votre nom"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "empty": "Tu n’as aucune notification.",
+    "new_message_title": "Nouveau message !",
+    "new_message_body": "Jessika t’a envoyé un message.",
+    "gift_received_title": "Cadeau reçu 🎁",
+    "gift_received_body": "Luna a accepté ta fleur.",
+    "new_match_title": "Nouveau match !",
+    "new_match_body": "Elara a aimé ton profil.",
+    "time_2min": "il y a 2 min",
+    "time_10min": "il y a 10 min",
+    "time_1h": "il y a 1 h"
+  },
+  "notificationSettings": {
+    "title": "Paramètres de notification",
+    "message": "Notification de nouveau message",
+    "likes": "Notifications de likes et cadeaux",
+    "events": "Notifications d'événements et promos",
+    "nightSilent": "Mode nuit (23h–08h)",
+    "importantOnly": "Notifications importantes uniquement"
+  },
+  "partnerAgeRange": {
+    "title": "Quelle tranche\nd’âge pour ton partenaire ?",
+    "options": [
+      "18 – 24",
+      "25 – 34",
+      "35 – 44",
+      "45 – 54",
+      "55 – 64"
+    ]
+  },
+  "personalityTraits": {
+    "title": "Quelles qualités\nte décrivent ?",
+    "options": [
+      "Émotionnel",
+      "Coquin",
+      "Logique",
+      "Timide"
+    ]
+  },
+  "privacy": {
+    "title": "Données & confidentialité",
+    "intro": "Chez Curvia AI, nous respectons ta vie privée. Nous collectons uniquement les données nécessaires pour améliorer ton expérience.",
+    "collectedTitle": "Données collectées",
+    "collected": "• Adresse e‑mail et infos de profil\n• Préférences utilisateur et historique\n• Type d’appareil et statistiques d’utilisation",
+    "usageTitle": "Utilisation des données",
+    "usage": "• Proposer un contenu personnalisé\n• Analyser les performances de l’app\n• Gérer les messages, cadeaux et abonnements",
+    "sharingTitle": "Partage des données",
+    "sharing": "Tes données personnelles ne sont jamais vendues. Partage uniquement aux autorités si requis par la loi.",
+    "rightsTitle": "Tes droits",
+    "rights": "• Tu peux demander accès ou suppression de tes données.\n• Contacte-nous à support@curvia.ai"
+  },
+  "profileAiDetail": {
+    "sendGift": "Envoyer un cadeau",
+    "message": "Message",
+    "public": "Public",
+    "subscriberOnly": "Abonnés seulement",
+    "description": "Luna est une étrangère mystérieuse qui disparaît dans les nuits stambouliotes. Des secrets se cachent dans ses boucles blondes, son regard porte un passé familier."
+  },
+  "profileDetail": {
+    "menu": "Menu",
+    "addPhoto": "Ajouter photo",
+    "selectOption": "Choisis une option",
+    "chooseFromGallery": "Choisir depuis la galerie",
+    "takePhoto": "Prendre une photo",
+    "cancel": "Annuler",
+    "permissionRequired": "Permission requise",
+    "permissionMessage": "Accès caméra et galerie refusé.",
+    "notifications": "Notifications",
+    "editProfile": "Modifier le profil",
+    "coin": "🪙 {{count}}",
+    "defaultBio": "Je suis ingénieur logiciel, fan d’anime.\nJe peux parler de tout concernant les anime.",
+    "myPhotos": "Mes photos"
+  },
+  "profileEdit": {
+    "title": "Modifier le profil",
+    "photo": "Photo",
+    "name": "Nom",
+    "birthDate": "Date de naissance",
+    "bio": "Biographie",
+    "bioPlaceholder": "Ta biographie",
+    "changePreference": "Modifier la préférence relationnelle",
+    "save": "Enregistrer",
+    "permissionAlert": "Accès galerie requis"
+  },
+  "profilePhoto": {
+    "title": "Upload\nton profil photo",
+    "permissionTitle": "Permission requise",
+    "permissionMessage": "Cette fonctionnalité nécessite l'accès à la caméra.",
+    "selectTitle": "Sélectionner photo",
+    "selectMessage": "Choisis une option",
+    "camera": "Prendre avec la caméra",
+    "gallery": "Choisir depuis la galerie",
+    "cancel": "Annuler",
+    "done": "Terminé"
+  },
+  "profileReady": {
+    "title": "Ton profil est prêt !",
+    "subtitle": "Des matchs et chats personnalisés t'attendent",
+    "start": "✨ Commencer à explorer",
+    "review": "Vérifier les infos"
+  },
+  "relationshipPreference": {
+    "title": "Quel type\nde relation ?",
+    "options": {
+      "situational": "Relation circonstancielle",
+      "casual": "Juste pour le fun",
+      "dominant": "Dominant – soumis",
+      "roleplay": "Jeux de rôle",
+      "flirt": "Flirt"
+    }
+  },
+  "report": {
+    "header": "Signaler un problème",
+    "label": "Explique brièvement le problème :",
+    "placeholder": "Ex : notifications ne fonctionnent pas...",
+    "button": "Envoyer",
+    "warningTitle": "Attention",
+    "warningMessage": "Veuillez saisir une description.",
+    "successTitle": "Merci",
+    "successMessage": "Ton signalement a été envoyé avec succès."
+  },
+  "search": {
+    "header": "Rechercher un personnage",
+    "placeholder": "Entrez un nom..."
+  },
+  "selectRecipient": {
+    "title": "À qui veux-tu l'envoyer ?"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "accountSettings": "Paramètres du compte",
+    "dataPrivacy": "Données & confidentialité",
+    "appSettings": "Paramètres de l’app",
+    "notifications": "Notifications",
+    "appearance": "Apparence",
+    "language": "Langue",
+    "support": "Support",
+    "supportItem": "Support",
+    "reportIssue": "Signaler un problème",
+    "aboutApp": "À propos de l’app",
+    "language_title": "Choix de la langue"
+  },
+  "signIn": {
+    "email": "E‑mail",
+    "password": "Mot de passe",
+    "signInButton": "Se connecter",
+    "or": "ou se connecter avec",
+    "noAccount": "Pas de compte ?",
+    "signUp": "Inscription",
+    "invalidTitle": "Échec de la connexion",
+    "invalidMessage": "Adresse e-mail ou mot de passe incorrect."
+  },
+  "signUp": {
+    "email": "E‑mail",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "passwordMismatch": "Les mots de passe ne correspondent pas",
+    "ageConfirm": "Je confirme avoir 18 ans ou plus",
+    "ageWarning": "Vous devez avoir au moins 18 ans pour créer un compte",
+    "next": "Suivant"
+  },
+  "gift": {
+    "title": "Cadeaux",
+    "successMessage": "🎁 Cadeau envoyé avec succès !",
+    "chocolate": "Chocolat",
+    "crystal": "Cristal",
+    "diamond": "Diamant",
+    "dress": "Robe",
+    "redDress": "Robe rouge",
+    "blueDress": "Robe bleue",
+    "blackDress": "Robe noire",
+    "jewel": "Bijou",
+    "ring": "Bague",
+    "womensClothing": "Vêtements femme"
+  },
+  "subscription": {
+    "title": "S’abonner",
+    "plan": {
+      "basic": "Basique",
+      "standard": "Standard",
+      "premium": "Premium",
+      "premiumPlus": "Premium+"
+    },
+    "details": "Voir les détails du plan",
+    "per_month": "par mois",
+    "buy_with_google": "Acheter avec Google Pay"
+  },
+  "feature": {
+    "msg": "Messages",
+    "1photo": "1 photo / semaine",
+    "1voice": "1 message vocal",
+    "1call": "1 min d'appel",
+    "bonus": "(5× coins à l'inscription +20 coins)",
+    "50photo": "50 photos / mois",
+    "100voice": "100 messages vocaux",
+    "1hourcall": "1 h d'appel",
+    "10video": "10 vidéos",
+    "50coin": "50 coins",
+    "150photo": "150 photos / mois",
+    "300voice": "300 messages vocaux",
+    "3hourcall": "3 h d'appel",
+    "30video": "30 vidéos",
+    "100coin": "100 coins",
+    "500photo": "500 photos / mois",
+    "500voice": "500 messages vocaux",
+    "10hourcall": "10 h d'appel",
+    "100video": "100 vidéos",
+    "150coin": "150 coins"
+  },
+  "support": {
+    "title": "Support",
+    "email": "Support via e‑mail",
+    "faq": "Foire aux questions",
+    "responseInfo": "Notre équipe de support vous répondra sous 24 h."
+  },
+  "theme": {
+    "title": "Choix du thème",
+    "dark": "Thème sombre",
+    "light": "Thème clair",
+    "sunset": "Coucher de soleil",
+    "forest": "Vert forêt"
+  }
+}

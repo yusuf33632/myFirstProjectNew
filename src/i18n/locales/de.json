@@ -1,0 +1,400 @@
+{
+  "account_modal": {
+    "title": "Konto hinzufügen",
+    "login": "Mit vorhandenem Konto anmelden",
+    "signup": "Neues Konto erstellen"
+  },
+  "character": {
+    "capricorn": "Steinbock",
+    "good_at_chat": "Gute Unterhaltungen",
+    "social": "Gesellig",
+    "sport": "Sportlich",
+    "description": "Selbst nach nur einer Nacht wird ein Satz in deinem Kopf weiterleben, lange nachdem ihr euch getrennt habt. In jedem Lächeln steckt ein Teil von ihr. Als ob sie dich schon ewig kennt.",
+    "send_message": "Nachricht senden",
+    "go_to_profile": "Profil anzeigen"
+  },
+  "gift_modal": {
+    "confirm": "Möchtest du dieses Geschenk an {{name}} senden?",
+    "someone": "an jemanden",
+    "cancel": "Abbrechen",
+    "send": "Senden",
+    "toast": "🎁 Geschenk gesendet!"
+  },
+  "locked": {
+    "successTitle": "Erfolg",
+    "successMessage": "Inhalt erfolgreich freigeschaltet.",
+    "insufficientTitle": "Nicht genügend Coins",
+    "insufficientMessage": "Du hast nicht genug Coins, um diesen Inhalt freizuschalten.",
+    "buyCoins": "Coins kaufen",
+    "cancel": "Abbrechen",
+    "pay": "Bezahlen",
+    "description": "Deine Coins sind aufgebraucht. Bitte kaufe neue.",
+    "coinTitle": "Coin"
+  },
+  "sidebar": {
+    "profile": "Profil",
+    "premium": "Premium",
+    "settings": "Einstellungen",
+    "logout": "Abmelden"
+  },
+  "about": {
+    "title": "Über die App",
+    "description": "Curvia AI bietet mit realistischen und interaktiven KI-Profilen ein neues soziales Erlebnis. Mit personalisierten Dialogen, Theme-Optionen und Geschenkfunktionen entsteht emotionale Nähe.",
+    "developer": "Entwickler",
+    "contact": "Kontakt"
+  },
+  "birthday": {
+    "title": "Dein\nGeburtsdatum?",
+    "placeholder": "TT/MM/JJJJ",
+    "underage_title": "Mindestalter",
+    "underage_message": "Du musst mindestens 18 Jahre alt sein, um diese App zu verwenden."
+  },
+  "character_type": {
+    "title": "Welcher\nCharaktertyp interessiert dich?",
+    "options": {
+      "girl_next_door": "Das Mädchen von nebenan",
+      "beauty_queen": "Schönheitskönigin",
+      "anime_girl": "Anime‑Mädchen",
+      "virgin": "Jungfrau",
+      "shy_girl": "Schüchternes Mädchen",
+      "red_asian": "Rothaarige Asiatin"
+    },
+    "sections": {
+      "girls": "Mädchencharaktere",
+      "anime": "Anime-Charaktere",
+      "boys": "Jungencharaktere"
+    }
+  },
+  "chat": {
+    "input_placeholder": "Nachricht schreiben...",
+    "subscription_title": "Abonnement‑Vorteil",
+    "subscription_description": "Dieses Bild/Video wird dir dank deines Abos exklusiv angezeigt.",
+    "ok": "OK"
+  },
+  "chatlist": {
+    "title": "Chats",
+    "search_placeholder": "Suchen..."
+  },
+  "coin_purchase": {
+    "title": "Coin‑Pakete",
+    "alert_title": "{{amount}} Coins kaufen",
+    "alert_description": "Möchtest du dieses Paket kaufen?",
+    "confirm_button": "Kaufen",
+    "success_title": "Erfolgreich erworben",
+    "success_message": "{{amount}} Coins wurden erfolgreich gekauft.",
+    "popular": "Beliebt"
+  },
+  "common": {
+    "cancel": "Abbrechen",
+    "next": "Weiter"
+  },
+  "gender": {
+    "title": "Dein Geschlecht?",
+    "male": "Männlich",
+    "female": "Weiblich",
+    "no_answer": "Keine Angabe"
+  },
+  "home": {
+    "categories": {
+      "girls": "Mädchen",
+      "anime": "Anime",
+      "boys": "Jungen"
+    },
+    "sections": {
+      "featured": "Empfohlene",
+      "forYou": "Für dich",
+      "popular": "Beliebte Charaktere"
+    }
+  },
+  "imageDetail": {
+    "close": "Schließen",
+    "delete": "Löschen",
+    "errorTitle": "Fehler",
+    "errorMessage": "Fehler beim Löschen des Bildes."
+  },
+  "incomingCall": {
+    "ringing": "Klingelt...",
+    "ended": "Anruf beendet"
+  },
+  "interests": {
+    "title": "Wofür interessierst du dich?",
+    "subtitle": "Wähle mindestens drei",
+    "cta": "Konto erstellen",
+    "options": [
+      "Abenteuer",
+      "Anime",
+      "Fantasy",
+      "Geschichte",
+      "Mystery",
+      "Paranormal",
+      "Religion",
+      "Romantik",
+      "Science-Fiction",
+      "Freundschaft",
+      "Humor",
+      "Astrologie"
+    ]
+  },
+  "languages": {
+    "title": "In welchen Sprachen\nmöchtest du sprechen?",
+    "options": [
+      "Englisch",
+      "Türkisch",
+      "Deutsch",
+      "Russisch",
+      "Spanisch",
+      "Arabisch",
+      "Farsi",
+      "Hindi",
+      "Französisch"
+    ]
+  },
+  "language": {
+    "ar": "Arabisch",
+    "de": "Deutsch",
+    "el": "Griechisch",
+    "en": "Englisch",
+    "es": "Spanisch",
+    "fa": "Persisch",
+    "fr": "Französisch",
+    "hi": "Hindi",
+    "id": "Indonesisch",
+    "it": "Italienisch",
+    "ja": "Japanisch",
+    "ko": "Koreanisch",
+    "ptBR": "Portugiesisch (Brasilien)",
+    "pt": "Portugiesisch",
+    "ru": "Russisch",
+    "tr": "Türkisch",
+    "uk": "Ukrainisch",
+    "ur": "Urdu",
+    "zh": "Chinesisch"
+  },
+  "register": {
+    "name_title": "Wie sollen wir\ndeinen Namen nennen?",
+    "name_placeholder": "Name eingeben"
+  },
+  "notifications": {
+    "title": "Benachrichtigungen",
+    "empty": "Du hast noch keine Benachrichtigungen.",
+    "new_message_title": "Neue Nachricht!",
+    "new_message_body": "Jessika hat dir eine Nachricht geschickt.",
+    "gift_received_title": "Geschenk erhalten 🎁",
+    "gift_received_body": "Luna hat deine Blume angenommen.",
+    "new_match_title": "Neues Match!",
+    "new_match_body": "Elara hat dein Profil gemocht.",
+    "time_2min": "vor 2 Min.",
+    "time_10min": "vor 10 Min.",
+    "time_1h": "vor 1 Std."
+  },
+  "notificationSettings": {
+    "title": "Benachrichtigungseinstellungen",
+    "message": "Neue Nachrichten",
+    "likes": "Likes & Geschenke",
+    "events": "Events & Aktionen",
+    "nightSilent": "Nachtmodus (23:00–08:00)",
+    "importantOnly": "Nur wichtige Benachrichtigungen"
+  },
+  "partnerAgeRange": {
+    "title": "Altersspanne\ndeines Partners?",
+    "options": [
+      "18 – 24",
+      "25 – 34",
+      "35 – 44",
+      "45 – 54",
+      "55 – 64"
+    ]
+  },
+  "personalityTraits": {
+    "title": "Was beschreibt dich\nam besten?",
+    "options": [
+      "Emotional",
+      "Geil",
+      "Logisch denkend",
+      "Schüchtern"
+    ]
+  },
+  "privacy": {
+    "title": "Daten & Datenschutz",
+    "intro": "Curvia AI schützt deine Privatsphäre. Wir verarbeiten nur notwendige Daten, um deine Nutzererfahrung zu optimieren.",
+    "collectedTitle": "Erfasste Daten",
+    "collected": "• E‑Mail-Adresse und Profilinfos\n• Nutzervorlieben & Interaktionen\n• Geräte‑ und Nutzungsstatistiken",
+    "usageTitle": "Datenverwendung",
+    "usage": "• Personalisierte Inhalte & Empfehlungen\n• Analyse der App‑Performance\n• Funktionen wie Geschenke, Chat und Abos",
+    "sharingTitle": "Weitergabe",
+    "sharing": "Deine personenbezogenen Daten werden nie verkauft. Nur gesetzlich verpflichtet an Behörden weitergegeben.",
+    "rightsTitle": "Deine Rechte",
+    "rights": "• Du kannst Auskunft oder Löschung deiner Daten verlangen.\n• Kontaktiere uns unter support@curvia.ai"
+  },
+  "profileAiDetail": {
+    "sendGift": "Geschenk senden",
+    "message": "Nachricht",
+    "public": "Öffentlich",
+    "subscriberOnly": "Nur Abonnenten",
+    "description": "Luna ist eine mysteriöse Fremde, die in den Nächten von Istanbul verschwindet. In ihren blonden Locken verbergen sich Geheimnisse, ihr Blick trägt eine vertraute Vergangenheit."
+  },
+  "profileDetail": {
+    "menu": "Menü",
+    "addPhoto": "Foto hinzufügen",
+    "selectOption": "Wähle eine Option",
+    "chooseFromGallery": "Aus Galerie wählen",
+    "takePhoto": "Foto aufnehmen",
+    "cancel": "Abbrechen",
+    "permissionRequired": "Erlaubnis erforderlich",
+    "permissionMessage": "Kamera‑ und Galerie‑Zugriff verweigert.",
+    "notifications": "Benachrichtigungen",
+    "editProfile": "Profil bearbeiten",
+    "coin": "🪙 {{count}}",
+    "defaultBio": "Ich bin Softwareingenieur, Anime‑Fan.\nÜber Anime kann ich stundenlang reden.",
+    "myPhotos": "Meine Fotos"
+  },
+  "profileEdit": {
+    "title": "Profil bearbeiten",
+    "photo": "Foto",
+    "name": "Name",
+    "birthDate": "Geburtsdatum",
+    "bio": "Biografie",
+    "bioPlaceholder": "Deine Biografie",
+    "changePreference": "Beziehung ändern",
+    "save": "Speichern",
+    "permissionAlert": "Galerie‑Zugriff erforderlich"
+  },
+  "profilePhoto": {
+    "title": "Profilfoto\nhochladen",
+    "permissionTitle": "Erlaubnis erforderlich",
+    "permissionMessage": "Diese Funktion benötigt Kamerazugriff.",
+    "selectTitle": "Foto auswählen",
+    "selectMessage": "Bitte wähle eine Option",
+    "camera": "Mit Kamera aufnehmen",
+    "gallery": "Aus Galerie wählen",
+    "cancel": "Abbrechen",
+    "done": "Fertig"
+  },
+  "profileReady": {
+    "title": "Dein Profil ist fertig!",
+    "subtitle": "Exklusive Matches und Chats warten bereits auf dich",
+    "start": "✨ Entdecke jetzt",
+    "review": "Daten prüfen"
+  },
+  "relationshipPreference": {
+    "title": "Welche Beziehung\nmöchtest du?",
+    "options": {
+      "situational": "Situationsbezogen",
+      "casual": "Nur Spaß",
+      "dominant": "Dominant – devot",
+      "roleplay": "Rollenspiel",
+      "flirt": "Flirten"
+    }
+  },
+  "report": {
+    "header": "Problem melden",
+    "label": "Beschreibe das Problem kurz:",
+    "placeholder": "Z. B.: Benachrichtigungen funktionieren nicht...",
+    "button": "Senden",
+    "warningTitle": "Achtung",
+    "warningMessage": "Bitte gib eine Beschreibung ein.",
+    "successTitle": "Danke",
+    "successMessage": "Dein Anliegen wurde erfolgreich gesendet."
+  },
+  "search": {
+    "header": "Charakter suchen",
+    "placeholder": "Name eingeben..."
+  },
+  "selectRecipient": {
+    "title": "Wem möchtest du es schicken?"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "accountSettings": "Kontoeinstellungen",
+    "dataPrivacy": "Daten & Datenschutz",
+    "appSettings": "App‑Einstellungen",
+    "notifications": "Benachrichtigungen",
+    "appearance": "Aussehen",
+    "language": "Sprache",
+    "support": "Support",
+    "supportItem": "Support",
+    "reportIssue": "Problem melden",
+    "aboutApp": "Über die App",
+    "language_title": "Sprache wählen"
+  },
+  "signIn": {
+    "email": "E-Mail",
+    "password": "Passwort",
+    "signInButton": "Einloggen",
+    "or": "oder Anmelden mit",
+    "noAccount": "Noch keinen Account?",
+    "signUp": "Registrieren",
+    "invalidTitle": "Anmeldung fehlgeschlagen",
+    "invalidMessage": "E-Mail oder Passwort ist falsch."
+  },
+  "signUp": {
+    "email": "E-Mail",
+    "password": "Passwort",
+    "confirmPassword": "Passwort bestätigen",
+    "passwordMismatch": "Passwörter stimmen nicht überein",
+    "ageConfirm": "Ich bestätige, dass ich 18 Jahre oder älter bin",
+    "ageWarning": "Du musst mindestens 18 Jahre alt sein, um einen Account zu erstellen",
+    "next": "Weiter"
+  },
+  "gift": {
+    "title": "Geschenke",
+    "successMessage": "🎁 Geschenk erfolgreich gesendet!",
+    "chocolate": "Schokolade",
+    "crystal": "Kristall",
+    "diamond": "Diamant",
+    "dress": "Kleid",
+    "redDress": "Rotes Kleid",
+    "blueDress": "Blaues Kleid",
+    "blackDress": "Schwarzes Kleid",
+    "jewel": "Schmuckstück",
+    "ring": "Ring",
+    "womensClothing": "Damenkleidung"
+  },
+  "subscription": {
+    "title": "Abonnieren",
+    "plan": {
+      "basic": "Basis",
+      "standard": "Standard",
+      "premium": "Premium",
+      "premiumPlus": "Premium+"
+    },
+    "details": "Paketdetails anzeigen",
+    "per_month": "pro Monat",
+    "buy_with_google": "Mit Google Pay kaufen"
+  },
+  "feature": {
+    "msg": "Nachrichten",
+    "1photo": "1 Foto/Woche",
+    "1voice": "1 Sprachnachricht",
+    "1call": "1 Minute Anruf",
+    "bonus": "(5‑fach bei Neuanmeldung + 20 Coins)",
+    "50photo": "50 Fotos/Monat",
+    "100voice": "100 Sprachnachrichten",
+    "1hourcall": "1 Stunde Anruf",
+    "10video": "10 Video‑Nachrichten",
+    "50coin": "50 Coins",
+    "150photo": "150 Fotos/Monat",
+    "300voice": "300 Sprachnachrichten",
+    "3hourcall": "3 Stunden Anruf",
+    "30video": "30 Video‑Nachrichten",
+    "100coin": "100 Coins",
+    "500photo": "500 Fotos/Monat",
+    "500voice": "500 Sprachnachrichten",
+    "10hourcall": "10 Stunden Anruf",
+    "100video": "100 Video‑Nachrichten",
+    "150coin": "150 Coins"
+  },
+  "support": {
+    "title": "Support",
+    "email": "Support per E-Mail",
+    "faq": "Häufig gestellte Fragen",
+    "responseInfo": "Unser Supportteam antwortet innerhalb von 24 Stunden."
+  },
+  "theme": {
+    "title": "Thema auswählen",
+    "dark": "Dunkles Thema",
+    "light": "Helles Thema",
+    "sunset": "Sonnenuntergang",
+    "forest": "Waldgrün"
+  }
+}

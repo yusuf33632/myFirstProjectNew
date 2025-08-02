@@ -1,0 +1,400 @@
+{
+    "account_modal": {
+        "title": "アカウントを追加",
+        "login": "既存のアカウントにログイン",
+        "signup": "新しいアカウントを作成"
+    },
+    "character": {
+        "capricorn": "やぎ座",
+        "good_at_chat": "チャットが得意",
+        "social": "社交的",
+        "sport": "スポーツ",
+        "description": "たった一晩一緒に過ごしても、翌朝にはまだ彼女の言葉が頭に残っている。笑顔の中に少しずつ本心を見せてくる。まるで長年知っているかのように感じる。",
+        "send_message": "メッセージを送る",
+        "go_to_profile": "プロフィールを見る"
+    },
+    "gift_modal": {
+        "confirm": "{{name}} にこのギフトを送りますか？",
+        "someone": "誰か",
+        "cancel": "キャンセル",
+        "send": "送信",
+        "toast": "🎁 ギフトが送信されました！"
+    },
+    "locked": {
+        "successTitle": "成功",
+        "successMessage": "コンテンツが正常に開きました。",
+        "insufficientTitle": "コイン不足",
+        "insufficientMessage": "このコンテンツを開くにはコインが足りません。",
+        "buyCoins": "コインを購入",
+        "cancel": "キャンセル",
+        "pay": "支払う",
+        "description": "コインの残高がありません。コインを購入してください。",
+        "coinTitle": "コイン"
+    },
+    "sidebar": {
+        "profile": "プロフィール",
+        "premium": "プレミアム",
+        "settings": "設定",
+        "logout": "ログアウト"
+    },
+    "about": {
+        "title": "アプリについて",
+        "description": "Curvia AIは、リアルでインタラクティブなAIプロフィールを通じて新しいソーシャル体験を提供します。ユーザー専用の会話、テーマ選択、ギフト送信などの機能で感情的なつながりを築くことができます。",
+        "developer": "開発者",
+        "contact": "お問い合わせ"
+    },
+    "birthday": {
+        "title": "誕生日はいつですか？",
+        "placeholder": "DD/MM/YYYY",
+        "underage_title": "年齢制限",
+        "underage_message": "このアプリを利用するには18歳以上である必要があります。"
+    },
+    "character_type": {
+        "title": "どんなタイプのキャラクターが好き？",
+        "options": {
+            "girl_next_door": "隣の女の子",
+            "beauty_queen": "美人コンテストの女王",
+            "anime_girl": "アニメガール",
+            "virgin": "純粋な子",
+            "shy_girl": "恥ずかしがり屋",
+            "red_asian": "赤髪のアジア人"
+        },
+        "sections": {
+            "girls": "女性キャラクター",
+            "anime": "アニメキャラクター",
+            "boys": "男性キャラクター"
+        }
+    },
+    "chat": {
+        "input_placeholder": "メッセージを入力...",
+        "subscription_title": "サブスク特典",
+        "subscription_description": "この画像/動画はあなたのサブスクリプションによって表示されています。",
+        "ok": "OK"
+    },
+    "chatlist": {
+        "title": "チャット",
+        "search_placeholder": "検索..."
+    },
+    "coin_purchase": {
+        "title": "コインパッケージ",
+        "alert_title": "{{amount}} コインを購入",
+        "alert_description": "このパッケージを購入しますか？",
+        "confirm_button": "購入",
+        "success_title": "購入完了",
+        "success_message": "{{amount}} コインを正常に購入しました。",
+        "popular": "人気"
+    },
+    "common": {
+        "cancel": "キャンセル",
+        "next": "次へ"
+    },
+    "gender": {
+        "title": "性別は？",
+        "male": "男性",
+        "female": "女性",
+        "no_answer": "答えたくない"
+    },
+    "home": {
+        "categories": {
+            "girls": "女の子",
+            "anime": "アニメ",
+            "boys": "男の子"
+        },
+        "sections": {
+            "featured": "注目",
+            "forYou": "あなたにおすすめ",
+            "popular": "人気のキャラクター"
+        }
+    },
+    "imageDetail": {
+        "close": "閉じる",
+        "delete": "削除",
+        "errorTitle": "エラー",
+        "errorMessage": "画像の削除中にエラーが発生しました。"
+    },
+    "incomingCall": {
+        "ringing": "呼び出し中...",
+        "ended": "通話が終了しました"
+    },
+    "interests": {
+        "title": "興味のある分野は？",
+        "subtitle": "最低3つ選択してください",
+        "cta": "アカウントを作成",
+        "options": [
+            "冒険",
+            "アニメ",
+            "ファンタジー",
+            "歴史",
+            "ミステリー",
+            "パラノーマル",
+            "宗教",
+            "ロマンス",
+            "SF",
+            "友情",
+            "ユーモア",
+            "占星術"
+        ]
+    },
+    "languages": {
+        "title": "どの言語で会話しますか？",
+        "options": [
+            "英語",
+            "トルコ語",
+            "ドイツ語",
+            "ロシア語",
+            "スペイン語",
+            "アラビア語",
+            "ペルシャ語",
+            "ヒンディー語",
+            "フランス語"
+        ]
+    },
+    "language": {
+        "ar": "アラビア語",
+        "de": "ドイツ語",
+        "el": "ギリシャ語",
+        "en": "英語",
+        "es": "スペイン語",
+        "fa": "ペルシャ語",
+        "fr": "フランス語",
+        "hi": "ヒンディー語",
+        "id": "インドネシア語",
+        "it": "イタリア語",
+        "ja": "日本語",
+        "ko": "韓国語",
+        "ptBR": "ポルトガル語 (ブラジル)",
+        "pt": "ポルトガル語",
+        "ru": "ロシア語",
+        "tr": "トルコ語",
+        "uk": "ウクライナ語",
+        "ur": "ウルドゥー語",
+        "zh": "中国語"
+    },
+    "register": {
+        "name_title": "あなたを何と呼べばいいですか？",
+        "name_placeholder": "名前を入力してください"
+    },
+    "notifications": {
+        "title": "通知",
+        "empty": "まだ通知はありません。",
+        "new_message_title": "新しいメッセージ！",
+        "new_message_body": "ジェシカからメッセージが届きました。",
+        "gift_received_title": "ギフトが届きました 🎁",
+        "gift_received_body": "ルナがあなたの花を受け取りました。",
+        "new_match_title": "新しいマッチ！",
+        "new_match_body": "エラーラがあなたのプロフィールを気に入りました。",
+        "time_2min": "2分前",
+        "time_10min": "10分前",
+        "time_1h": "1時間前"
+    },
+    "notificationSettings": {
+        "title": "通知設定",
+        "message": "新着メッセージ通知",
+        "likes": "いいねとギフト通知",
+        "events": "イベントとキャンペーン通知",
+        "nightSilent": "夜間サイレントモード（23:00～08:00）",
+        "importantOnly": "重要な通知のみ"
+    },
+    "partnerAgeRange": {
+        "title": "希望する相手の年齢層は？",
+        "options": [
+            "18～24歳",
+            "25～34歳",
+            "35～44歳",
+            "45～54歳",
+            "55～64歳"
+        ]
+    },
+    "personalityTraits": {
+        "title": "あなたの性格は？",
+        "options": [
+            "感情的",
+            "情熱的",
+            "論理的",
+            "恥ずかしがり屋"
+        ]
+    },
+    "privacy": {
+        "title": "データとプライバシー",
+        "intro": "Curvia AIでは、あなたのプライバシーを大切にしています。アプリ内で必要なデータのみを収集・使用します。",
+        "collectedTitle": "収集するデータ",
+        "collected": "• メールアドレスとプロフィール情報\n• ユーザーの好みとやりとり履歴\n• デバイス情報と使用統計",
+        "usageTitle": "データの利用目的",
+        "usage": "• パーソナライズされたコンテンツの提供\n• アプリのパフォーマンス分析\n• ギフト、メッセージ、サブスクリプションの管理",
+        "sharingTitle": "データの共有",
+        "sharing": "個人情報を第三者に販売することはありません。法的義務がある場合のみ、関係機関に提供されます。",
+        "rightsTitle": "あなたの権利",
+        "rights": "• データの確認や削除をリクエストできます。\n• support@curvia.ai までご連絡ください。"
+    },
+    "profileAiDetail": {
+        "sendGift": "ギフトを送る",
+        "message": "メッセージ",
+        "public": "公開",
+        "subscriberOnly": "サブスク限定",
+        "description": "ルナはイスタンブールの夜に現れる神秘的な女性。金色のカールに秘められた秘密、目に映る懐かしさ。一晩で十分。翌朝も彼女が頭から離れない。"
+    },
+    "profileDetail": {
+        "menu": "メニュー",
+        "addPhoto": "写真を追加",
+        "selectOption": "オプションを選択",
+        "chooseFromGallery": "ギャラリーから選ぶ",
+        "takePhoto": "写真を撮る",
+        "cancel": "キャンセル",
+        "permissionRequired": "許可が必要です",
+        "permissionMessage": "カメラやギャラリーへのアクセスが許可されていません。",
+        "notifications": "通知",
+        "editProfile": "プロフィール編集",
+        "coin": "🪙 {{count}}",
+        "defaultBio": "ソフトウェアエンジニアでアニメ好き。\nアニメに関してなんでも話せます。",
+        "myPhotos": "私の写真"
+    },
+    "profileEdit": {
+        "title": "プロフィールを編集",
+        "photo": "写真",
+        "name": "名前",
+        "birthDate": "生年月日",
+        "bio": "自己紹介",
+        "bioPlaceholder": "自己紹介を入力",
+        "changePreference": "関係の好みを変更",
+        "save": "保存",
+        "permissionAlert": "ギャラリーへのアクセス許可が必要です"
+    },
+    "profilePhoto": {
+        "title": "プロフィール写真を入力",
+        "permissionTitle": "許可が必要",
+        "permissionMessage": "この機能にはカメラの許可が必要です。",
+        "selectTitle": "写真を選択",
+        "selectMessage": "オプションを選択してください",
+        "camera": "カメラで撮影",
+        "gallery": "ギャラリーから選択",
+        "cancel": "キャンセル",
+        "done": "完了"
+    },
+    "profileReady": {
+        "title": "プロフィールの準備ができました！",
+        "subtitle": "あなた専用のマッチとチャットが待っています",
+        "start": "✨ 探索を始める",
+        "review": "情報を確認する"
+    },
+    "relationshipPreference": {
+        "title": "どんな関係を求めていますか？",
+        "options": {
+            "situational": "状況に応じた関係",
+            "casual": "気軽な関係",
+            "dominant": "支配／服従",
+            "roleplay": "ロールプレイ",
+            "flirt": "フリート"
+        }
+    },
+    "report": {
+        "header": "問題を報告",
+        "label": "発生している問題を簡単に説明してください：",
+        "placeholder": "例：通知が機能しません…",
+        "button": "送信",
+        "warningTitle": "警告",
+        "warningMessage": "説明を入力してください。",
+        "successTitle": "ありがとうございます",
+        "successMessage": "問題が正常に送信されました。"
+    },
+    "search": {
+        "header": "キャラクターを検索",
+        "placeholder": "名前を入力..."
+    },
+    "selectRecipient": {
+        "title": "誰に送りたいですか？"
+    },
+    "settings": {
+        "title": "設定",
+        "accountSettings": "アカウント設定",
+        "dataPrivacy": "データとプライバシー",
+        "appSettings": "アプリ設定",
+        "notifications": "通知",
+        "appearance": "外観",
+        "language": "言語",
+        "support": "サポート",
+        "supportItem": "サポート",
+        "reportIssue": "問題を報告",
+        "aboutApp": "アプリについて",
+        "language_title": "言語選択"
+    },
+    "signIn": {
+        "email": "メールアドレス",
+        "password": "パスワード",
+        "signInButton": "ログイン",
+        "or": "またはログイン",
+        "noAccount": "アカウントをお持ちでないですか？",
+        "signUp": "登録する",
+        "invalidTitle": "ログイン失敗",
+        "invalidMessage": "メールアドレスまたはパスワードが間違っています。"
+    },
+    "signUp": {
+        "email": "メールアドレス",
+        "password": "パスワード",
+        "confirmPassword": "パスワードを確認",
+        "passwordMismatch": "パスワードが一致しません",
+        "ageConfirm": "18歳以上であることを確認します",
+        "ageWarning": "アカウントを作成するには18歳以上である必要があります",
+        "next": "次へ"
+    },
+    "gift": {
+        "title": "ギフト",
+        "successMessage": "🎁 ギフトが正常に送信されました！",
+        "chocolate": "チョコレート",
+        "crystal": "クリスタル",
+        "diamond": "ダイヤモンド",
+        "dress": "ドレス",
+        "redDress": "赤いドレス",
+        "blueDress": "青いドレス",
+        "blackDress": "黒いドレス",
+        "jewel": "ジュエリー",
+        "ring": "指輪",
+        "womensClothing": "女性用衣類"
+    },
+    "subscription": {
+        "title": "サブスクリプション",
+        "plan": {
+            "basic": "ベーシック",
+            "standard": "スタンダード",
+            "premium": "プレミアム",
+            "premiumPlus": "プレミアム＋"
+        },
+        "details": "プランの詳細を見る",
+        "per_month": "月額",
+        "buy_with_google": "Google Payで購入"
+    },
+    "feature": {
+        "msg": "メッセージ機能",
+        "1photo": "週に1枚の写真",
+        "1voice": "1つの音声メッセージ",
+        "1call": "1分間の音声通話",
+        "bonus": "(新規加入で5倍＋20コイン)",
+        "50photo": "月に50枚の写真",
+        "100voice": "100個の音声メッセージ",
+        "1hourcall": "1時間の音声通話",
+        "10video": "10個のビデオメッセージ",
+        "50coin": "50コイン",
+        "150photo": "月に150枚の写真",
+        "300voice": "300個の音声メッセージ",
+        "3hourcall": "3時間の音声通話",
+        "30video": "30個のビデオメッセージ",
+        "100coin": "100コイン",
+        "500photo": "月に500枚の写真",
+        "500voice": "500個の音声メッセージ",
+        "10hourcall": "10時間の音声通話",
+        "100video": "100個のビデオメッセージ",
+        "150coin": "150コイン"
+    },
+    "support": {
+        "title": "サポート",
+        "email": "メールサポート",
+        "faq": "よくある質問",
+        "responseInfo": "サポートチームが24時間以内に対応いたします。"
+    },
+    "theme": {
+        "title": "テーマ選択",
+        "dark": "ダークテーマ",
+        "light": "ライトテーマ",
+        "sunset": "サンセット",
+        "forest": "フォレストグリーン"
+    }
+}

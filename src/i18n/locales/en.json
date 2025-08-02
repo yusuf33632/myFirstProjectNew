@@ -1,0 +1,400 @@
+{
+    "account_modal": {
+        "title": "Add Account",
+        "login": "Log in to existing account",
+        "signup": "Create a new account"
+    },
+    "character": {
+        "capricorn": "Capricorn",
+        "good_at_chat": "Good at Chatting",
+        "social": "Social",
+        "sport": "Sport",
+        "description": "Even a single night with her will leave you thinking about something she said. Every smile reveals a little more. As if she has known you for years.",
+        "send_message": "Send Message",
+        "go_to_profile": "Go to Profile"
+    },
+    "gift_modal": {
+        "confirm": "Do you want to send this gift to {{name}}?",
+        "someone": "someone",
+        "cancel": "Cancel",
+        "send": "Send",
+        "toast": "🎁 Gift sent!"
+    },
+    "locked": {
+        "successTitle": "Success",
+        "successMessage": "Content unlocked successfully.",
+        "insufficientTitle": "Insufficient Coins",
+        "insufficientMessage": "You don't have enough coins to unlock this content.",
+        "buyCoins": "Buy Coins",
+        "cancel": "Cancel",
+        "pay": "Pay",
+        "description": "You have run out of coins. You need to purchase more.",
+        "coinTitle": "Coin"
+    },
+    "sidebar": {
+        "profile": "Profile",
+        "premium": "Premium",
+        "settings": "Settings",
+        "logout": "Log Out"
+    },
+    "about": {
+        "title": "About the App",
+        "description": "Curvia AI offers a new social experience with realistic and interactive AI profiles. It enables emotional bonding through personalized dialogues, theme options, and gift-sending features.",
+        "developer": "Developer",
+        "contact": "Contact"
+    },
+    "birthday": {
+        "title": "What is your\nbirth date?",
+        "placeholder": "DD/MM/YYYY",
+        "underage_title": "Age Restriction",
+        "underage_message": "You must be at least 18 years old to use this app."
+    },
+    "character_type": {
+        "title": "What type of character are you interested in?",
+        "options": {
+            "girl_next_door": "Girl Next Door",
+            "beauty_queen": "Beauty Queen",
+            "anime_girl": "Anime Girl",
+            "virgin": "Virgin",
+            "shy_girl": "Shy Girl",
+            "red_asian": "Red Asian"
+        },
+        "sections": {
+            "girls": "Girl Characters",
+            "anime": "Anime Characters",
+            "boys": "Boy Characters"
+        }
+    },
+    "chat": {
+        "input_placeholder": "Write a message...",
+        "subscription_title": "Subscription Benefit",
+        "subscription_description": "This image/video is shown exclusively thanks to your subscription.",
+        "ok": "OK"
+    },
+    "chatlist": {
+        "title": "Chats",
+        "search_placeholder": "Search..."
+    },
+    "coin_purchase": {
+        "title": "Coin Packages",
+        "alert_title": "Buy {{amount}} Coins",
+        "alert_description": "Do you want to buy this package?",
+        "confirm_button": "Buy",
+        "success_title": "Purchase Successful",
+        "success_message": "{{amount}} coins have been successfully purchased.",
+        "popular": "Popular"
+    },
+    "common": {
+        "cancel": "Cancel",
+        "next": "Next"
+    },
+    "gender": {
+        "title": "What is your gender?",
+        "male": "Male",
+        "female": "Female",
+        "no_answer": "Prefer not to say"
+    },
+    "home": {
+        "categories": {
+            "girls": "Girls",
+            "anime": "Anime",
+            "boys": "Boys"
+        },
+        "sections": {
+            "featured": "Featured",
+            "forYou": "For You",
+            "popular": "Popular Characters"
+        }
+    },
+    "imageDetail": {
+        "close": "Close",
+        "delete": "Delete",
+        "errorTitle": "Error",
+        "errorMessage": "An error occurred while deleting the image."
+    },
+    "incomingCall": {
+        "ringing": "Calling...",
+        "ended": "Call ended"
+    },
+    "interests": {
+        "title": "What are your interests?",
+        "subtitle": "Select at least three",
+        "cta": "Create Account",
+        "options": [
+            "Adventure",
+            "Anime",
+            "Fantasy",
+            "History",
+            "Mystery",
+            "Paranormal",
+            "Religion",
+            "Romance",
+            "Sci-Fi",
+            "Friendship",
+            "Humor",
+            "Astrology"
+        ]
+    },
+    "languages": {
+        "title": "Which languages will you speak?",
+        "options": [
+            "English",
+            "Turkish",
+            "German",
+            "Russian",
+            "Spanish",
+            "Arabic",
+            "Persian",
+            "Hindi",
+            "French"
+        ]
+    },
+    "language": {
+        "ar": "Arabic",
+        "de": "German",
+        "el": "Greek",
+        "en": "English",
+        "es": "Spanish",
+        "fa": "Persian",
+        "fr": "French",
+        "hi": "Hindi",
+        "id": "Indonesian",
+        "it": "Italian",
+        "ja": "Japanese",
+        "ko": "Korean",
+        "ptBR": "Portuguese (Brazil)",
+        "pt": "Portuguese",
+        "ru": "Russian",
+        "tr": "Turkish",
+        "uk": "Ukrainian",
+        "ur": "Urdu",
+        "zh": "Chinese"
+    },
+    "register": {
+        "name_title": "How should we\ncall you?",
+        "name_placeholder": "Enter your name"
+    },
+    "notifications": {
+        "title": "Notifications",
+        "empty": "You have no notifications yet.",
+        "new_message_title": "New Message!",
+        "new_message_body": "Jessika sent you a message.",
+        "gift_received_title": "Gift Received 🎁",
+        "gift_received_body": "Luna accepted the flower you sent.",
+        "new_match_title": "New Match!",
+        "new_match_body": "Elara liked your profile.",
+        "time_2min": "2 min ago",
+        "time_10min": "10 min ago",
+        "time_1h": "1 hour ago"
+    },
+    "notificationSettings": {
+        "title": "Notification Settings",
+        "message": "New Message Notifications",
+        "likes": "Likes & Gifts Notifications",
+        "events": "Event & Campaign Notifications",
+        "nightSilent": "Night Silent Mode (11 PM–8 AM)",
+        "importantOnly": "Only Important Notifications"
+    },
+    "partnerAgeRange": {
+        "title": "What age range should your partner be?",
+        "options": [
+            "18 - 24",
+            "25 - 34",
+            "35 - 44",
+            "45 - 54",
+            "55 - 64"
+        ]
+    },
+    "personalityTraits": {
+        "title": "What are your personality traits?",
+        "options": [
+            "Emotional",
+            "Horny",
+            "Logical thinker",
+            "Shy"
+        ]
+    },
+    "privacy": {
+        "title": "Data & Privacy",
+        "intro": "At Curvia AI, we value your privacy. We only process data necessary to improve your user experience.",
+        "collectedTitle": "Collected Data",
+        "collected": "• Email address and profile information\n• User preferences and interaction history\n• Device type and app usage statistics",
+        "usageTitle": "Data Usage",
+        "usage": "• Providing personalized content and suggestions\n• Analyzing app performance\n• Supporting gift, messaging, and subscription operations",
+        "sharingTitle": "Data Sharing",
+        "sharing": "Your personal data is never sold to third parties. It may only be shared with authorities under legal obligations.",
+        "rightsTitle": "Your Rights",
+        "rights": "• You may request to view or delete your data.\n• Contact us at support@curvia.ai"
+    },
+    "profileAiDetail": {
+        "sendGift": "Send Gift",
+        "message": "Message",
+        "public": "Public",
+        "subscriberOnly": "Subscribers Only",
+        "description": "Luna is a mysterious stranger lost in the nights of Istanbul. Secrets in her golden curls, a familiar past in her gaze. One night is enough; she’ll still be on your mind by morning."
+    },
+    "profileDetail": {
+        "menu": "Menu",
+        "addPhoto": "Add Photo",
+        "selectOption": "Select an option",
+        "chooseFromGallery": "Choose from Gallery",
+        "takePhoto": "Take a Photo",
+        "cancel": "Cancel",
+        "permissionRequired": "Permission Required",
+        "permissionMessage": "Camera and gallery permission not granted.",
+        "notifications": "Notifications",
+        "editProfile": "Edit Profile",
+        "coin": "🪙 {{count}}",
+        "defaultBio": "I'm a software engineer and anime lover.\nI can talk about anything related to anime.",
+        "myPhotos": "My Photos"
+    },
+    "profileEdit": {
+        "title": "Edit Profile",
+        "photo": "Photo",
+        "name": "Name",
+        "birthDate": "Birth Date",
+        "bio": "Biography",
+        "bioPlaceholder": "Your biography",
+        "changePreference": "Change relationship preference",
+        "save": "Save",
+        "permissionAlert": "Gallery access permission required"
+    },
+    "profilePhoto": {
+        "title": "Upload your\nprofile photo",
+        "permissionTitle": "Permission Required",
+        "permissionMessage": "Camera permission is required for this feature.",
+        "selectTitle": "Select Photo",
+        "selectMessage": "Choose an option",
+        "camera": "Take from Camera",
+        "gallery": "Select from Gallery",
+        "cancel": "Cancel",
+        "done": "Done"
+    },
+    "profileReady": {
+        "title": "Your profile is ready!",
+        "subtitle": "Now your personalized matches and chats await you",
+        "start": "✨ Start exploring",
+        "review": "Review your information"
+    },
+    "relationshipPreference": {
+        "title": "What is your\nrelationship preference?",
+        "options": {
+            "situational": "situational relationship",
+            "casual": "just for fun",
+            "dominant": "dominant - submissive",
+            "roleplay": "roleplay",
+            "flirt": "flirt"
+        }
+    },
+    "report": {
+        "header": "Report Issue",
+        "label": "Briefly describe the issue you encountered:",
+        "placeholder": "For example: Notifications are not working...",
+        "button": "Submit",
+        "warningTitle": "Warning",
+        "warningMessage": "Please enter a description.",
+        "successTitle": "Thank you",
+        "successMessage": "Your issue has been successfully submitted."
+    },
+    "search": {
+        "header": "Search Character",
+        "placeholder": "Type a name..."
+    },
+    "selectRecipient": {
+        "title": "Who do you want to send it to?"
+    },
+    "settings": {
+        "title": "Settings",
+        "accountSettings": "Account Settings",
+        "dataPrivacy": "Data & Privacy",
+        "appSettings": "App Settings",
+        "notifications": "Notifications",
+        "appearance": "Appearance",
+        "language": "Language",
+        "support": "Support",
+        "supportItem": "Support",
+        "reportIssue": "Report Issue",
+        "aboutApp": "About App",
+        "language_title": "Language Selection"
+    },
+    "signIn": {
+        "email": "Email",
+        "password": "Password",
+        "signInButton": "Sign in",
+        "or": "or sign in with",
+        "noAccount": "Don't have an account yet?",
+        "signUp": "Sign up",
+        "invalidTitle": "Sign in Failed",
+        "invalidMessage": "Email or password is incorrect."
+    },
+    "signUp": {
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "passwordMismatch": "Passwords do not match",
+        "ageConfirm": "I confirm that I am 18 years of age or older",
+        "ageWarning": "You must be at least 18 years old to create an account",
+        "next": "Next"
+    },
+    "gift": {
+        "title": "Gifts",
+        "successMessage": "🎁 Gift sent successfully!",
+        "chocolate": "Chocolate",
+        "crystal": "Crystal",
+        "diamond": "Diamond",
+        "dress": "Dress",
+        "redDress": "Red Dress",
+        "blueDress": "Blue Dress",
+        "blackDress": "Black Dress",
+        "jewel": "Jewel",
+        "ring": "Ring",
+        "womensClothing": "Women's Clothing"
+    },
+    "subscription": {
+        "title": "Subscribe",
+        "plan": {
+            "basic": "Basic",
+            "standard": "Standard",
+            "premium": "Premium",
+            "premiumPlus": "Premium+"
+        },
+        "details": "View plan details",
+        "per_month": "per month",
+        "buy_with_google": "Buy with Google Pay"
+    },
+    "feature": {
+        "msg": "Messaging",
+        "1photo": "1 photo per week",
+        "1voice": "1 voice message",
+        "1call": "1 minute voice call",
+        "bonus": "(5x + 20 coins for new members)",
+        "50photo": "50 photos per month",
+        "100voice": "100 voice messages",
+        "1hourcall": "1 hour voice call",
+        "10video": "10 video messages",
+        "50coin": "50 coins",
+        "150photo": "150 photos per month",
+        "300voice": "300 voice messages",
+        "3hourcall": "3 hours voice call",
+        "30video": "30 video messages",
+        "100coin": "100 coins",
+        "500photo": "500 photos per month",
+        "500voice": "500 voice messages",
+        "10hourcall": "10 hours voice call",
+        "100video": "100 video messages",
+        "150coin": "150 coins"
+    },
+    "support": {
+        "title": "Support",
+        "email": "Support via email",
+        "faq": "Frequently Asked Questions",
+        "responseInfo": "Our support team will get back to you within 24 hours."
+    },
+    "theme": {
+        "title": "Theme Selection",
+        "dark": "Dark Theme",
+        "light": "Light Theme",
+        "sunset": "Sunset",
+        "forest": "Forest Green"
+    }
+}

@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "name": "myFirstProject",
+    "slug": "myFirstProject",
+    "version": "1.0.0",
+    "sdkVersion": "53.0.0",
+    "android": {
+      "permissions": ["CAMERA", "READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"]
+    },
+    "ios": {
+      "infoPlist": {
+        "NSCameraUsageDescription": "Kamerayı kullanarak fotoğraf çekmek istiyoruz.",
+        "NSPhotoLibraryUsageDescription": "Galeriye erişim izni gerekiyor."
+      }
+    }
+  }
+}
+    
