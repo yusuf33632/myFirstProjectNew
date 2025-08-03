@@ -5,66 +5,36 @@ import {
   TouchableOpacity,
   StyleSheet,
   Dimensions,
-  Platform,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../../src/context/ThemeContext';
-import {
-  presentApplePay,
-  presentGooglePay,
-  useConfirmPayment,
-} from '@stripe/stripe-react-native';
 
 const { width } = Dimensions.get('window');
 const scale = width / 375;
 
-export default function SubscriptionDetail({ onCardPayPress }) {
+export default function SubscriptionDetail({ onPay }) {
   const [selectedDuration, setSelectedDuration] = useState(null);
   const { t } = useTranslation();
   const { theme } = useTheme();
-  const { confirmPayment, loading } = useConfirmPayment();
 
   const durations = [
-    { label: '12| Ay', price: '$4.90', note: t('subscription.per_month'), amount: 490 },
-    { label: '3| Ay', price: '$4.90', note: t('subscription.per_month'), amount: 490 },
-    { label: '1| Ay', price: '$4.90', note: t('subscription.per_month'), amount: 490 },
+    { label: '12| Ay', price: '$4.90', note: t('subscription.per_month') },
+    { label: '3| Ay', price: '$6.90', note: t('subscription.per_month') },
+    { label: '1| Ay', price: '$8.90', note: t('subscription.per_month') },
   ];
 
-  const handleApplePay = async () => {
+  const handleProceedToPayment = () => {
     if (selectedDuration === null) return;
-    const item = durations[selectedDuration];
-
-    const { error } = await presentApplePay({
-      cartItems: [{ label: item.label, amount: item.price.replace('$', '') }],
-      country: 'US',
-      currency: 'USD',
-    });
-    if (error) console.warn('Apple Pay Error:', error);
-  };
-
-  const handleGooglePay = async () => {
-    if (selectedDuration === null) return;
-    const item = durations[selectedDuration];
-
-    const { error } = await presentGooglePay({
-      amount: item.amount,
-      currencyCode: 'USD',
-    });
-    if (error) console.warn('Google Pay Error:', error);
-  };
-
-  const handlePayment = () => {
-    if (Platform.OS === 'ios') {
-      handleApplePay();
-    } else {
-      handleGooglePay();
+    const selectedPlan = durations[selectedDuration];
+    if (onPay && typeof onPay === 'function') {
+      onPay(selectedPlan);
     }
   };
 
   return (
     <View style={[styles.detailBox, { backgroundColor: theme.subscriptionDetailBoxBackground }]}>
       <View style={[styles.topLine, { backgroundColor: theme.subscriptionDetailDragBar }]} />
-
+      
       {durations.map((opt, idx) => (
         <TouchableOpacity
           key={idx}
@@ -85,34 +55,19 @@ export default function SubscriptionDetail({ onCardPayPress }) {
             <Text style={[styles.priceText, { color: theme.subscriptionDetailPriceText }]}>
               {opt.price}
             </Text>
-            <Text
-              style={[styles.noteText, { color: theme.subscriptionDetailNoteText, marginLeft: 4 * scale }]}
-            >
+            <Text style={[styles.noteText, { color: theme.subscriptionDetailNoteText, marginLeft: 4 * scale }]}>
               {'| ' + opt.note}
             </Text>
           </View>
         </TouchableOpacity>
       ))}
 
-      {/* Google/Apple Pay */}
-      <TouchableOpacity
-        style={[styles.buyButtonApp, { backgroundColor: theme.subscriptionDetailBuyButtonBackground }]}
-        onPress={handlePayment}
-      >
-        <Text style={[styles.buyButtonText, { color: theme.subscriptionDetailBuyButtonText }]}>
-          {Platform.OS === 'ios'
-            ? t('subscription.buy_with_apple')
-            : t('subscription.buy_with_google')}
-        </Text>
-      </TouchableOpacity>
-
-      {/* Kredi Kartı ile Öde başka component'e yönlendir */}
       <TouchableOpacity
         style={[styles.buyButton, { backgroundColor: theme.subscriptionDetailBuyButtonBackground }]}
-        onPress={onCardPayPress}
+        onPress={handleProceedToPayment}
       >
         <Text style={[styles.buyButtonText, { color: theme.subscriptionDetailBuyButtonText }]}>
-          {t('subscription.buy_with_card')}
+          {t('subscription.pay')}
         </Text>
       </TouchableOpacity>
     </View>
@@ -157,14 +112,6 @@ const styles = StyleSheet.create({
   },
   noteText: {
     fontSize: 12 * scale,
-    fontWeight: 'normal',
-  },
-  buyButtonApp: {
-    paddingVertical: 12 * scale,
-    borderRadius: 10 * scale,
-    alignItems: 'center',
-    width: '100%',
-    marginTop: 20 * scale,
   },
   buyButton: {
     paddingVertical: 12 * scale,

@@ -24,6 +24,7 @@ import Animated, {
   withRepeat,
   withTiming,
 } from 'react-native-reanimated';
+import { useNavigation } from '@react-navigation/native';
 
 const { width, height } = Dimensions.get('window');
 const scale = width / 375;
@@ -44,11 +45,19 @@ const planIcons = {
   premiumPlus: require('../../assets/subscription/amethyst.png'),
 };
 
-export default function SubscriptionScreen({ navigation }) {
+const planPricing = {
+  basic: { label: '1| Ay', price: '$4.90', note: 'aylık' },
+  standard: { label: '3| Ay', price: '$6.90', note: 'aylık' },
+  premium: { label: '6| Ay', price: '$8.90', note: 'aylık' },
+  premiumPlus: { label: '12| Ay', price: '$10.90', note: 'aylık' },
+};
+
+export default function SubscriptionScreen() {
   const [selectedPlan, setSelectedPlan] = useState('basic');
   const [isDetailVisible, setIsDetailVisible] = useState(false);
   const { t } = useTranslation();
   const { theme } = useTheme();
+  const navigation = useNavigation();
 
   const rotation = useSharedValue(0);
 
@@ -63,6 +72,17 @@ export default function SubscriptionScreen({ navigation }) {
     transform: [{ rotate: `${rotation.value}deg` }],
   }));
 
+  const handleProceedToPayment = (planKey) => {
+    const plan = {
+      type: planKey,
+      ...planPricing[planKey],
+    };
+    setIsDetailVisible(false);
+    setTimeout(() => {
+      navigation.navigate('CardPayment', { plan });
+    }, 100);
+  };
+
   return (
     <View style={[styles.screenContainer, { backgroundColor: theme.subscriptionScreenBackground }]}>
       <ScrollView contentContainerStyle={styles.container}>
@@ -70,9 +90,7 @@ export default function SubscriptionScreen({ navigation }) {
           <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
             <Icon name="arrow-back-outline" size={18 * scale} color={theme.subscriptionBackIcon} />
           </TouchableOpacity>
-          <Text style={[styles.title, { color: theme.subscriptionHeaderText }]}> 
-            {t('subscription.title')}
-          </Text>
+          <Text style={[styles.title, { color: theme.subscriptionHeaderText }]}> {t('subscription.title')} </Text>
         </View>
 
         <View style={styles.tabContainer}>
@@ -111,9 +129,7 @@ export default function SubscriptionScreen({ navigation }) {
                       style={[styles.planIcon, animatedRotationStyle]}
                     />
                   </View>
-                  <Text style={[styles.planTitle, { color: theme.text }]}>
-                    {t(`subscription.plan.${plan}`)}
-                  </Text>
+                  <Text style={[styles.planTitle, { color: theme.text }]}> {t(`subscription.plan.${plan}`)} </Text>
                 </View>
 
                 <View style={styles.featureList}>
@@ -141,8 +157,8 @@ export default function SubscriptionScreen({ navigation }) {
       <Modal visible={isDetailVisible} transparent animationType="fade">
         <Pressable style={styles.overlay} onPress={() => setIsDetailVisible(false)}>
           <BlurView intensity={60} tint="dark" style={styles.blurBackground}>
-            <Pressable style={[styles.card, { backgroundColor: theme.subscriptionModalBackground }]}>
-              <SubscriptionDetail />
+            <Pressable style={[styles.card, { backgroundColor: theme.subscriptionModalBackground }]}> 
+              <SubscriptionDetail onPay={() => handleProceedToPayment(selectedPlan)} />
             </Pressable>
           </BlurView>
         </Pressable>

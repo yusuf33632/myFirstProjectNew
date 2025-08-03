@@ -61,6 +61,9 @@ import NotificationScreen from '../../screens/common/NotificationScreen';
 
 import CharacterDetail from '../../components/character/CharacterDetail';
 
+import AddNewCardScreen from '../../screens/payment/AddNewCardScreen';
+import CardPaymentScreen from '../../screens/payment/CardPaymentScreen';
+
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigator() {
@@ -103,6 +106,8 @@ export default function AppNavigator() {
       <Stack.Screen name="ReportIssue" component={ReportIssueScreen} />
       <Stack.Screen name="AboutApp" component={AboutAppScreen} />
       <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicyScreen} />
+      <Stack.Screen name="CardPayment" component={CardPaymentScreen} />
+      <Stack.Screen name="AddNewCard" component={AddNewCardScreen} />
     </Stack.Navigator>
   );
 }

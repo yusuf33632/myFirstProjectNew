@@ -261,6 +261,65 @@ const themes = {
     subscriptionDetailBuyButtonText: '#ffffff',         // Satın al butonu yazı rengi
 
 
+    cardPaymentBackground: '#1c0f1d', // containerBackground
+    cardPaymentModalBoxBackground: '#2a1a2f', // subscriptionModalBackground
+    cardPaymentTextPrimary: '#ffffff', // text
+    cardPaymentTextSecondary: '#aaaaaa', // subtext
+    cardPaymentBorderDefault: '#666666', // borderColor
+    cardPaymentBorderSelected: '#ffc300', // lockedModalCoinColor (altın vurgusu)
+    cardPaymentRadioSelected: '#ffc300', // lockedModalCoinColor
+    cardPaymentRadioBorder: '#cccccc', // chatLastMessage / switchThumbInactive
+    cardPaymentDeleteIcon: '#e11d48', // badge / giftModalDelete
+    cardPaymentAddCardText: '#8a4ca4', // primary (vurgulu mor)
+    cardPaymentAddCardBorder: '#8a4ca4', // primary
+    cardPaymentPrimaryButton: '#b9aeb2', // subscriptionDetailBuyButtonBackground
+    cardPaymentModalOverlay: 'rgba(0,0,0,0.6)', // accountModalOverlay
+
+    addNewCardBackground: '#1c0f1d',                         // cardPaymentBackground
+    addNewCardTitleText: '#ffffff',                         // text
+    addNewCardFrontFace: '#0A1833',                         // (belirgin özel stil, aynı kalabilir)
+    addNewCardBackFace: '#2a1a2f',                          // cardPaymentModalBoxBackground
+    addNewCardInfoLabel: '#cccccc',                         // switchThumbInactive veya chatLastMessage
+    addNewCardInputBackground: '#3a2a3c',                   // inputWrapperBackground
+    addNewCardInputBorder: '#666666',                       // borderColor
+    addNewCardInputText: '#ffffff',                         // text
+    addNewCardLabelText: '#aaaaaa',                         // subtext
+    addNewCardErrorText: '#ff6666',                         // errorText
+    addNewCardErrorBorder: '#ff6666',                       // errorText
+    addNewCardMagneticStripe: '#000000',                    // shadowColorDefault
+    addNewCardCheckboxActive: '#6d28d9',                    // accountModalLoginButton
+    addNewCardButtonBackground: '#6d28d9',                  // accountModalLoginButton
+    addNewCardButtonText: '#ffffff',                        // accountModalLoginText
+    addNewCardCvcBackground: '#3a2a3c',                     // inputWrapperBackground
+
+
+
+    // DARK TEMA İÇİN addNewCard TANIMLARI – GÜNCELLENMİŞ
+
+    addNewCardBackground: '#1c0f1d',                         // ekran arka planı
+    addNewCardFrontBackground: '#334155',                    // kart ön yüzeyi (daha açık ve modern)
+    addNewCardBackBackground: '#475569',                     // kart arka yüzeyi (daha yumuşak koyuluk)
+    addNewCardMagneticStripe: '#1e293b',                     // manyetik şerit (koyu mavi-gri)
+    addNewCardTextPrimary: '#ffffff',                        // kart üzeri ana metinler
+    addNewCardTextSecondary: '#cccccc',                      // kart üzeri label (etiket) yazıları
+    addNewCardInputBackground: '#3a2a3c',                    // input kutusu zemini
+    addNewCardInputText: '#ffffff',                          // input içeriği
+    addNewCardInputLabel: '#aaaaaa',                         // input başlık yazısı
+    addNewCardInputBorderDefault: '#666666',                 // input çerçevesi (normal)
+    addNewCardInputBorderError: '#ff6666',                   // input çerçevesi (hatalı)
+    addNewCardCheckboxSelected: '#6d28d9',                   // checkbox seçili rengi
+    addNewCardCheckboxUnselected: undefined,                 // opsiyonel
+    addNewCardCheckboxLabel: '#ffffff',                      // checkbox metni
+    addNewCardErrorText: '#ff6666',                          // hata yazıları
+    addNewCardTitleText: '#ffffff',                          // başlık metni
+    addNewCardEnrollButtonBackground: '#6d28d9',             // kayıt butonu zemini
+    addNewCardEnrollButtonText: '#ffffff',                   // kayıt butonu metni
+    addNewCardCvcBoxBackground: '#cbd5e1',                   // kart arka yüz CVC kutusu zemini (açık mavi-gri)
+    addNewCardCvcLabelText: '#1e293b',                       // CVC yazısı (kontrastlı koyu renk)
+    addNewCardCardIconColor: '#ffffff',                      // kart iconları (beyaz)
+
+
+
   },
 
 
@@ -436,7 +495,7 @@ const themes = {
     checkIconColor: '#6FE37B',
     planBoxShadow: '#1A1A1A',
     planIconShadow: '#1A1A1A',
-    
+
 
     aboutScreenBackground: '#ffffff',        // Ekran arka planı
     aboutAppNameText: '#0d0d0d',             // Uygulama adı metni
@@ -513,7 +572,7 @@ const themes = {
     giftModalToastBorder: '#bca8d0',                       // Toast kenarlığı (accent)
     giftModalToastText: '#0d0d0d',                         // Toast metni (text)
 
-    // ✅ SUBSCRIPTION DETAIL SCREEN – LIGHT
+    // ✅ SUBSCRIPTION DETAIL  – LIGHT
     subscriptionDetailBoxBackground: '#f7f7f7',         // Alt modal zemin (detailBox) → card ile uyumlu
     subscriptionDetailDragBar: '#cccccc',               // Üst çizgi (topLine) → avatarCircleBorderColor uyumlu
     subscriptionDetailOptionBox: '#e0e0e0',             // Paket kutuları (optionBox) → surfaceSecondary
@@ -521,9 +580,47 @@ const themes = {
     subscriptionDetailLabelText: '#0d0d0d',             // Paket adları (labelText) → text
     subscriptionDetailPriceText: '#0d0d0d',             // Fiyat (priceText) → text
     subscriptionDetailNoteText: '#666666',              // Aylık / açıklama yazısı (noteText) → subtext
-    subscriptionDetailBuyButtonBackground: '#e0e0e0',   // Satın al butonu zemin → surfaceSecondary
+    subscriptionDetailBuyButtonBackground: '#a89ca8',   // Satın al butonu zemin → surfaceSecondary
     subscriptionDetailBuyButtonText: '#0d0d0d',         // Satın al butonu yazı rengi → text
 
+    cardPaymentBackground: '#ffffff',                     // containerBackground
+    cardPaymentModalBoxBackground: '#f5f5f5',              // subscriptionModalBackground
+    cardPaymentTextPrimary: '#0d0d0d',                     // text
+    cardPaymentTextSecondary: '#666666',                   // subtext
+    cardPaymentBorderDefault: '#dcdcdc',                   // borderColor
+    cardPaymentBorderSelected: '#ffc107',                  // lockedModalCoinColor (light karşılığı)
+    cardPaymentRadioSelected: '#ffc107',                   // lockedModalCoinColor
+    cardPaymentRadioBorder: '#cccccc',                     // avatarCircleBorderColor
+    cardPaymentDeleteIcon: '#ff4d4f',                      // errorText
+    cardPaymentAddCardText: '#8a4ca4',                     // primary
+    cardPaymentAddCardBorder: '#8a4ca4',                   // primary
+    cardPaymentPrimaryButton: '#a89ca8',                   // subscriptionDetailButtonBackground (açık ton mor/gri)
+    cardPaymentModalOverlay: 'rgba(0, 0, 0, 0.05)',        // accountModalOverlay
+
+
+    // LIGHT TEMA İÇİN addNewCard TANIMLARI – GÜNCELLENMİŞ
+
+    addNewCardBackground: '#ffffff',                         // ekran arka planı
+    addNewCardFrontBackground: '#e4e4e7',                    // kart ön yüzeyi (açık gri ton)
+    addNewCardBackBackground: '#d4d4d8',                     // kart arka yüzeyi (bir tık koyu gri)
+    addNewCardMagneticStripe: '#999999',                     // manyetik şerit (gri)
+    addNewCardTextPrimary: '#0d0d0d',                        // kart üzeri ana metinler (text)
+    addNewCardTextSecondary: '#666666',                      // kart üzeri label (subtext)
+    addNewCardInputBackground: '#f0f0f0',                    // input kutusu zemini
+    addNewCardInputText: '#0d0d0d',                          // input içeriği
+    addNewCardInputLabel: '#888888',                         // input başlık yazısı
+    addNewCardInputBorderDefault: '#cccccc',                 // input çerçevesi (normal)
+    addNewCardInputBorderError: '#ff4d4f',                   // input çerçevesi (hatalı)
+    addNewCardCheckboxSelected: '#a89ca8',                   // checkbox seçili rengi (primary).
+    addNewCardCheckboxUnselected: '#e0e0e0',                 // checkbox arka planı (surfaceSecondary)
+    addNewCardCheckboxLabel: '#0d0d0d',                      // checkbox metni
+    addNewCardErrorText: '#ff4d4f',                          // hata yazıları
+    addNewCardTitleText: '#0d0d0d',                          // başlık metni
+    addNewCardEnrollButtonBackground: '#a89ca8',             // kayıt butonu zemini (primary).
+    addNewCardEnrollButtonText: '#ffffff',                   // kayıt butonu metni
+    addNewCardCvcBoxBackground: '#f5f5f5',                   // kart arka yüz CVC kutusu zemini (uyumlu gri)
+    addNewCardCvcLabelText: '#0d0d0d',                       // CVC yazısı
+    addNewCardCardIconColor: '#0d0d0d',                      // kart ikonları (siyah)
 
   }
   ,
@@ -788,6 +885,42 @@ const themes = {
     subscriptionDetailNoteText: '#884466',                  // Aylık / açıklama yazısı (sunset.subtext)
     subscriptionDetailBuyButtonBackground: '#FFD6E8',       // Satın al butonu zemin (sunset.surfaceSecondary)
     subscriptionDetailBuyButtonText: '#4B004B',             // Satın al butonu yazı rengi (sunset.text)
+
+    cardPaymentBackground: '#FFF0F6',                    // sunset.containerBackground
+    cardPaymentModalBoxBackground: '#FFE4EC',            // sunset.card
+    cardPaymentTextPrimary: '#4B004B',                   // sunset.text
+    cardPaymentTextSecondary: '#884466',                 // sunset.subtext
+    cardPaymentBorderDefault: '#F4CDE4',                 // sunset.borderColor
+    cardPaymentBorderSelected: '#D65DB1',                // sunset.primary (mor-pembe vurgulu seçim)
+    cardPaymentRadioSelected: '#D65DB1',                 // sunset.primary
+    cardPaymentRadioBorder: '#AA6A90',                   // sunset.chatLastMessage
+    cardPaymentDeleteIcon: '#CC3366',                    // sunset.errorText
+    cardPaymentAddCardText: '#D65DB1',                   // sunset.primary
+    cardPaymentAddCardBorder: '#D65DB1',                 // sunset.primary
+    cardPaymentPrimaryButton: '#FFD6E8',                 // sunset.subscriptionDetailBuyButtonBackground
+    cardPaymentModalOverlay: 'rgba(255,105,180,0.08)',   // sunset.overlay
+
+    addNewCardBackground: '#FFF0F6',                         // ekran arka planı (sunset.containerBackground)
+    addNewCardFrontBackground: '#FFE4EC',                    // kart ön yüzeyi (sunset.surfacePrimary)
+    addNewCardBackBackground: '#FFD6E8',                     // kart arka yüzeyi (sunset.surfaceSecondary)
+    addNewCardMagneticStripe: '#4B004B',                     // manyetik şerit (sunset.text - koyu mor tonu)
+    addNewCardTextPrimary: '#4B004B',                        // kart üzeri ana metinler (sunset.text)
+    addNewCardTextSecondary: '#884466',                      // kart üzeri label (etiket) yazıları (sunset.subtext)
+    addNewCardInputBackground: '#FFE4EC',                    // input kutusu zemini (sunset.inputWrapperBackground)
+    addNewCardInputText: '#4B004B',                          // input içeriği (sunset.input)
+    addNewCardInputLabel: '#A0527B',                         // input başlık yazısı (sunset.inputPlaceholder)
+    addNewCardInputBorderDefault: '#F4CDE4',                 // input çerçevesi (normal) (sunset.borderColor)
+    addNewCardInputBorderError: '#CC3366',                   // input çerçevesi (hatalı) (sunset.errorText)
+    addNewCardCheckboxSelected: '#FFA0D3',                   // checkbox seçili rengi (sunset.signInButtonBackground)
+    addNewCardCheckboxUnselected: '#AA6A90',                 // checkbox pasif (sunset.chatLastMessage)
+    addNewCardCheckboxLabel: '#4B004B',                      // checkbox metni (sunset.text)
+    addNewCardErrorText: '#CC3366',                          // hata yazıları (sunset.errorText)
+    addNewCardTitleText: '#4B004B',                          // başlık metni (sunset.text)
+    addNewCardEnrollButtonBackground: '#FFA0D3',             // kayıt butonu zemini (sunset.signInButtonBackground)
+    addNewCardEnrollButtonText: '#4B004B',                   // kayıt butonu metni (sunset.text)
+    addNewCardCvcBoxBackground: '#FFD6E8',                   // kart arka yüz CVC kutusu zemini (sunset.surfaceSecondary)
+    addNewCardCvcLabelText: '#4B004B',                       // CVC yazısı (sunset.text)
+    addNewCardCardIconColor: '#4B004B',                      // kart ikon rengi (sunset.text)
 
 
   },
@@ -1056,6 +1189,44 @@ const themes = {
     subscriptionDetailNoteText: '#336677',                  // Aylık / açıklama yazısı (forest.subtext)
     subscriptionDetailBuyButtonBackground: '#B3E5F5',       // Satın al butonu zemin (forest.surfaceSecondary)
     subscriptionDetailBuyButtonText: '#003344',             // Satın al butonu yazı rengi (forest.text)
+
+    cardPaymentBackground: '#E6F7FF',                     // containerBackground
+    cardPaymentModalBoxBackground: '#D0F0F8',             // subscriptionModalBackground → surfacePrimary
+    cardPaymentTextPrimary: '#003344',                   // text
+    cardPaymentTextSecondary: '#336677',                 // subtext
+    cardPaymentBorderDefault: '#00A3A3',                 // borderColor
+    cardPaymentBorderSelected: '#f5c542',                // lockedModalCoinColor (altın sarısı sabit)
+    cardPaymentRadioSelected: '#f5c542',                 // lockedModalCoinColor
+    cardPaymentRadioBorder: '#558899',                   // chatLastMessage (soft mavi-gri)
+    cardPaymentDeleteIcon: '#CC3366',                    // badge / giftModalDelete (errorText)
+    cardPaymentAddCardText: '#00A3A3',                   // primary (vurgulu cam göbeği)
+    cardPaymentAddCardBorder: '#00A3A3',                 // primary
+    cardPaymentPrimaryButton: '#B3E5F5',                 // subscriptionDetailBuyButtonBackground (surfaceSecondary)
+    cardPaymentModalOverlay: 'rgba(0,102,102,0.08)',     // accountModalOverlay → forest.overlay
+
+
+    addNewCardBackground: '#E6F7FF',                         // ekran arka planı (containerBackground)
+    addNewCardFrontBackground: '#D0F0F8',                    // kart ön yüzeyi (surfacePrimary)
+    addNewCardBackBackground: '#B3E5F5',                     // kart arka yüzeyi (surfaceSecondary)
+    addNewCardMagneticStripe: '#003344',                    // manyetik şerit (dark cam göbeği, kontrastlı)
+    addNewCardTextPrimary: '#003344',                       // kart üzeri ana metinler (text)
+    addNewCardTextSecondary: '#336677',                     // kart üzeri label yazıları (subtext)
+    addNewCardInputBackground: '#CCF2FF',                   // input kutusu zemini (inputWrapperBackground)
+    addNewCardInputText: '#003344',                         // input içeriği (text)
+    addNewCardInputLabel: '#336677',                        // input başlık yazısı (subtext)
+    addNewCardInputBorderDefault: '#00A3A3',                // input çerçevesi (primary)
+    addNewCardInputBorderError: '#CC3366',                  // input çerçevesi (hatalı)
+    addNewCardCheckboxSelected: '#00A3A3',                  // checkbox seçili (primary)
+    addNewCardCheckboxUnselected: '#669999',                // checkbox pasif (inaktif bar rengi gibi)
+    addNewCardCheckboxLabel: '#003344',                     // checkbox metni (text)
+    addNewCardErrorText: '#CC3366',                         // hata yazıları (errorText)
+    addNewCardTitleText: '#003344',                         // başlık metni (text)
+    addNewCardEnrollButtonBackground: '#00A3A3',            // kayıt butonu zemini (primary)
+    addNewCardEnrollButtonText: '#ffffff',                  // kayıt butonu metni (sabit beyaz)
+    addNewCardCvcBoxBackground: '#B3E5F5',                  // kart arkası CVC kutusu (surfaceSecondary)
+    addNewCardCvcLabelText: '#003344',                      // CVC yazısı (text)
+    addNewCardCardIconColor: '#003344',                     // ikonlar koyu mavi-yeşil (text)
+
 
   }
 
