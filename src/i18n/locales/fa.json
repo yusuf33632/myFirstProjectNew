@@ -354,13 +354,13 @@
         "title": "اشتراک",
         "plan": {
             "basic": "پایه",
-            "standard": "استاندارد",
-            "premium": "پریمیوم",
-            "premiumPlus": "پریمیوم+"
+            "standard": "نقره‌ای",
+            "premium": "طلایی",
+            "premiumPlus": "پلاتینیوم"
         },
         "details": "مشاهده جزئیات بسته",
         "per_month": "ماهیانه",
-        "buy_with_google": "خرید با Google Pay"
+        "pay": "همین حالا خرید کنید"
     },
     "feature": {
         "msg": "پیام‌رسانی",
@@ -396,5 +396,32 @@
         "light": "تم روشن",
         "sunset": "غروب آفتاب",
         "forest": "سبز جنگلی"
+    },
+    "addNewCard": {
+        "title": "افزودن روش پرداخت",
+        "cardHolder": "نام دارنده کارت",
+        "cardHolderPlaceholder": "John Doe",
+        "cardNumber": "شماره کارت",
+        "cardNumberPlaceholder": "4125 2253 5156 5222",
+        "expiry": "ماه / سال",
+        "expiryPlaceholder": "12/25",
+        "cvc": "کد امنیتی (CVC)",
+        "cvcPlaceholder": "123",
+        "saveCard": "ذخیره کارت",
+        "enrollButton": "اکنون ذخیره کن",
+        "cardHolderError": "لطفاً نام و نام خانوادگی را وارد کنید",
+        "cardNumberError": "شماره کارت نامعتبر است",
+        "expiryDateError": "تاریخ انقضا نامعتبر است",
+        "cvcError": "کد امنیتی نامعتبر است"
+    },
+    "cardPayment": {
+        "title": "پرداخت دیجیتال",
+        "selectMethod": "روش پرداخت موردنظر خود را انتخاب کنید",
+        "addNewCard": "+ افزودن کارت جدید",
+        "enrollNow": "اکنون پرداخت کن – {{price}}",
+        "success": "پرداخت با موفقیت انجام شد!",
+        "failure": "پرداخت ناموفق بود. لطفاً دوباره امتحان کنید.",
+        "ok": "باشه",
+        "noSelection": "لطفاً قبل از ادامه، یک روش پرداخت انتخاب کنید"
     }
 }

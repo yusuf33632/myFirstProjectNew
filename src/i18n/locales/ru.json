@@ -353,14 +353,14 @@
   "subscription": {
     "title": "Подписаться",
     "plan": {
-      "basic": "Базовая",
-      "standard": "Стандарт",
-      "premium": "Премиум",
-      "premiumPlus": "Премиум+"
+      "basic": "Базовый",
+      "standard": "Серебряный",
+      "premium": "Золотой",
+      "premiumPlus": "Платиновый"
     },
     "details": "Посмотреть детали",
     "per_month": "в месяц",
-    "buy_with_google": "Купить через Google Pay"
+    "pay": "Купить"
   },
   "feature": {
     "msg": "Сообщения",
@@ -396,5 +396,32 @@
     "light": "Светлая тема",
     "sunset": "Закат",
     "forest": "Лесная"
+  },
+  "addNewCard": {
+    "title": "Добавить способ оплаты",
+    "cardHolder": "Имя владельца карты",
+    "cardHolderPlaceholder": "John Doe",
+    "cardNumber": "Номер карты",
+    "cardNumberPlaceholder": "4125 2253 5156 5222",
+    "expiry": "Месяц / Год",
+    "expiryPlaceholder": "12/25",
+    "cvc": "CVC (код безопасности)",
+    "cvcPlaceholder": "123",
+    "saveCard": "Сохранить карту",
+    "enrollButton": "Сохранить сейчас",
+    "cardHolderError": "Введите имя и фамилию",
+    "cardNumberError": "Недействительный номер карты",
+    "expiryDateError": "Недействительная дата окончания",
+    "cvcError": "Недействительный CVC-код"
+  },
+  "cardPayment": {
+    "title": "Цифровая оплата",
+    "selectMethod": "Выберите способ оплаты, который хотите использовать",
+    "addNewCard": "+ Добавить новую карту",
+    "enrollNow": "Оплатить сейчас – {{price}}",
+    "success": "Оплата прошла успешно!",
+    "failure": "Оплата не удалась. Попробуйте ещё раз.",
+    "ok": "ОК",
+    "noSelection": "Пожалуйста, выберите способ оплаты перед продолжением"
   }
 }

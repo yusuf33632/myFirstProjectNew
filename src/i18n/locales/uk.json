@@ -354,13 +354,13 @@
     "title": "Підписатися",
     "plan": {
       "basic": "Базовий",
-      "standard": "Стандарт",
-      "premium": "Преміум",
-      "premiumPlus": "Преміум+"
+      "standard": "Срібний",
+      "premium": "Золотий",
+      "premiumPlus": "Платиновий"
     },
     "details": "Показати деталі пакету",
     "per_month": "на місяць",
-    "buy_with_google": "Купити через Google Pay"
+    "pay": "Купити"
   },
   "feature": {
     "msg": "Повідомлення",
@@ -396,5 +396,32 @@
     "light": "Світла тема",
     "sunset": "Захід сонця",
     "forest": "Лісовий зелений"
+  },
+  "addNewCard": {
+    "title": "Додати спосіб оплати",
+    "cardHolder": "Ім’я власника картки",
+    "cardHolderPlaceholder": "John Doe",
+    "cardNumber": "Номер картки",
+    "cardNumberPlaceholder": "4125 2253 5156 5222",
+    "expiry": "Місяць / Рік",
+    "expiryPlaceholder": "12/25",
+    "cvc": "Код безпеки (CVC)",
+    "cvcPlaceholder": "123",
+    "saveCard": "Зберегти картку",
+    "enrollButton": "Зберегти зараз",
+    "cardHolderError": "Введіть ім’я та прізвище",
+    "cardNumberError": "Недійсний номер картки",
+    "expiryDateError": "Недійсна дата закінчення",
+    "cvcError": "Недійсний CVC-код"
+  },
+  "cardPayment": {
+    "title": "Цифрова оплата",
+    "selectMethod": "Оберіть спосіб оплати, який бажаєте використати",
+    "addNewCard": "+ Додати нову картку",
+    "enrollNow": "Оплатити зараз – {{price}}",
+    "success": "Оплату успішно здійснено!",
+    "failure": "Помилка оплати. Спробуйте ще раз.",
+    "ok": "Добре",
+    "noSelection": "Будь ласка, виберіть спосіб оплати перед продовженням"
   }
 }

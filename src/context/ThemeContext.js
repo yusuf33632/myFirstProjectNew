@@ -1,11 +1,14 @@
 // ThemeContext.js
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Platform } from 'react-native';
+import * as NavigationBar from 'expo-navigation-bar';
+
 
 const themes = {
   dark: {
     mode: 'dark',
-
+    androidNavBarColor: 'rgba(0,0,0,0.5)',
     // GENEL ARKA PLANLAR
     containerBackground: '#1c0f1d',
     card: '#2b172e',
@@ -307,12 +310,12 @@ const themes = {
     addNewCardInputLabel: '#aaaaaa',                         // input başlık yazısı
     addNewCardInputBorderDefault: '#666666',                 // input çerçevesi (normal)
     addNewCardInputBorderError: '#ff6666',                   // input çerçevesi (hatalı)
-    addNewCardCheckboxSelected: '#6d28d9',                   // checkbox seçili rengi
+    addNewCardCheckboxSelected: '#b9aeb2',                   // checkbox seçili rengi
     addNewCardCheckboxUnselected: undefined,                 // opsiyonel
     addNewCardCheckboxLabel: '#ffffff',                      // checkbox metni
     addNewCardErrorText: '#ff6666',                          // hata yazıları
     addNewCardTitleText: '#ffffff',                          // başlık metni
-    addNewCardEnrollButtonBackground: '#6d28d9',             // kayıt butonu zemini
+    addNewCardEnrollButtonBackground: '#b9aeb2',             // kayıt butonu zemini
     addNewCardEnrollButtonText: '#ffffff',                   // kayıt butonu metni
     addNewCardCvcBoxBackground: '#cbd5e1',                   // kart arka yüz CVC kutusu zemini (açık mavi-gri)
     addNewCardCvcLabelText: '#1e293b',                       // CVC yazısı (kontrastlı koyu renk)
@@ -328,7 +331,7 @@ const themes = {
 
   light: {
     mode: 'light',
-
+    androidNavBarColor: 'rgba(0,0,0,0.5)',
     // GENEL ARKA PLANLAR
     containerBackground: '#ffffff',
     card: '#f7f7f7',
@@ -631,7 +634,7 @@ const themes = {
 
   sunset: {
     mode: 'sunset',
-
+    androidNavBarColor: 'rgba(0,0,0,0.5)',
     // GENEL ARKA PLANLAR
     containerBackground: '#FFF0F6',                 // Genel sayfa arka planı
     card: '#FFE4EC',                                // Kart ve modal zemin
@@ -932,7 +935,7 @@ const themes = {
 
   forest: {
     mode: 'forest',
-
+    androidNavBarColor: 'rgba(0,0,0,0.5)',
     // GENEL ARKA PLANLAR
     containerBackground: '#E6F7FF',                  // Sayfa zemini
     card: '#D0F0F8',                                 // Kartlar

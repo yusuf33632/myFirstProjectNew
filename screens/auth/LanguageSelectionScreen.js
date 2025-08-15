@@ -9,6 +9,8 @@ import {
   ScrollView,
   Keyboard,
   TouchableWithoutFeedback,
+  Platform,
+  StatusBar
 } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
@@ -50,7 +52,15 @@ export default function LanguageSelectionScreen({ navigation }) {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <SafeAreaView style={[styles.container, { backgroundColor: theme.containerBackground }]}>
-        <HeaderWithProgress navigation={navigation} currentStep={6} />
+        {Platform.OS === 'android' ? (
+          <View style={{ marginTop: StatusBar.currentHeight || 0 }}>
+            <HeaderWithProgress navigation={navigation} currentStep={6} />
+          </View>
+        ) : (
+          <HeaderWithProgress navigation={navigation} currentStep={6} />
+        )}
+
+
 
         <ScrollView contentContainerStyle={styles.scrollContent}>
           <PageTitle>{t('languages.title')}</PageTitle>

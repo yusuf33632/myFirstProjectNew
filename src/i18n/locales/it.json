@@ -354,13 +354,13 @@
     "title": "Abbonati",
     "plan": {
       "basic": "Base",
-      "standard": "Standard",
-      "premium": "Premium",
-      "premiumPlus": "Premium+"
+      "standard": "Argento",
+      "premium": "Oro",
+      "premiumPlus": "Platino"
     },
     "details": "Visualizza dettagli",
     "per_month": "al mese",
-    "buy_with_google": "Acquista con Google Pay"
+    "pay": "Acquista ora"
   },
   "feature": {
     "msg": "Messaggistica",
@@ -396,5 +396,32 @@
     "light": "Tema chiaro",
     "sunset": "Tramonto",
     "forest": "Verde foresta"
+  },
+  "addNewCard": {
+    "title": "Aggiungi metodo di pagamento",
+    "cardHolder": "Intestatario della carta",
+    "cardHolderPlaceholder": "John Doe",
+    "cardNumber": "Numero della carta",
+    "cardNumberPlaceholder": "4125 2253 5156 5222",
+    "expiry": "Mese / Anno",
+    "expiryPlaceholder": "12/25",
+    "cvc": "CVC",
+    "cvcPlaceholder": "123",
+    "saveCard": "Salva carta",
+    "enrollButton": "Salva ora",
+    "cardHolderError": "Inserisci nome e cognome",
+    "cardNumberError": "Numero della carta non valido",
+    "expiryDateError": "Data di scadenza non valida",
+    "cvcError": "Codice CVC non valido"
+  },
+  "cardPayment": {
+    "title": "Pagamento digitale",
+    "selectMethod": "Seleziona il metodo di pagamento che vuoi usare",
+    "addNewCard": "+ Aggiungi una nuova carta",
+    "enrollNow": "Paga ora – {{price}}",
+    "success": "Pagamento riuscito!",
+    "failure": "Pagamento non riuscito. Riprova.",
+    "ok": "OK",
+    "noSelection": "Seleziona un metodo di pagamento prima di procedere"
   }
 }

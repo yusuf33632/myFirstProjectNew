@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   Keyboard,
   TouchableWithoutFeedback,
+  Platform,
 } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
@@ -17,6 +18,8 @@ import { useTheme } from '../../src/context/ThemeContext';
 
 const { width } = Dimensions.get('window');
 const scale = width / 375;
+const PADDING_HORIZONTAL = 20 * scale;
+const HEADER_TOP_NUDGE = 8 * scale; // küçük aşağı kaydırma
 
 export default function NameInputScreen({ navigation }) {
   const { t } = useTranslation();
@@ -35,7 +38,15 @@ export default function NameInputScreen({ navigation }) {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <SafeAreaView style={styles.container}>
-        <HeaderWithProgress navigation={navigation} currentStep={9} />
+        {/* Header: yatay padding'i iptal + çok az aşağı kaydır */}
+        <View
+          style={[
+            { marginHorizontal: -PADDING_HORIZONTAL },
+            Platform.OS === 'android' ? { marginTop: HEADER_TOP_NUDGE } : null
+          ]}
+        >
+          <HeaderWithProgress navigation={navigation} currentStep={9} />
+        </View>
         <PageTitle>{t('register.name_title')}</PageTitle>
 
         <View style={styles.inputWrapper}>

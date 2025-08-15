@@ -18,6 +18,7 @@ import GiftModal from '../../components/modals/GiftModal';
 import Toast from 'react-native-root-toast';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../../src/context/ThemeContext';
+import * as NavigationBar from 'expo-navigation-bar';
 
 const { width } = Dimensions.get('window');
 const CARD_SIZE = width / 3.5;
@@ -25,15 +26,15 @@ const scale = width / 375;
 
 const gifts = [
   { id: '1', icon: require('../../assets/gifts/chocolate-bar.png'), price: 500, name: 'gift.chocolate' },
-  { id: '2', icon: require('../../assets/gifts/crystal.png'), price: 500, name: 'gift.crystal' },
-  { id: '3', icon: require('../../assets/gifts/diamond.png'), price: 500, name: 'gift.diamond' },
-  { id: '4', icon: require('../../assets/gifts/dress.png'), price: 500, name: 'gift.dress' },
-  { id: '5', icon: require('../../assets/gifts/dress (1).png'), price: 500, name: 'gift.redDress' },
-  { id: '6', icon: require('../../assets/gifts/dress (2).png'), price: 500, name: 'gift.blueDress' },
-  { id: '7', icon: require('../../assets/gifts/dress (3).png'), price: 500, name: 'gift.blackDress' },
-  { id: '8', icon: require('../../assets/gifts/gem.png'), price: 500, name: 'gift.jewel' },
-  { id: '9', icon: require('../../assets/gifts/wedding-ring.png'), price: 500, name: 'gift.ring' },
-  { id: '10', icon: require('../../assets/gifts/women-cloth.png'), price: 500, name: 'gift.womensClothing' },
+  { id: '2', icon: require('../../assets/gifts/crystal.png'),        price: 500, name: 'gift.crystal' },
+  { id: '3', icon: require('../../assets/gifts/diamond.png'),        price: 500, name: 'gift.diamond' },
+  { id: '4', icon: require('../../assets/gifts/dress.png'),          price: 500, name: 'gift.dress' },
+  { id: '5', icon: require('../../assets/gifts/dress (1).png'),      price: 500, name: 'gift.redDress' },
+  { id: '6', icon: require('../../assets/gifts/dress (2).png'),      price: 500, name: 'gift.blueDress' },
+  { id: '7', icon: require('../../assets/gifts/dress (3).png'),      price: 500, name: 'gift.blackDress' },
+  { id: '8', icon: require('../../assets/gifts/gem.png'),            price: 500, name: 'gift.jewel' },
+  { id: '9', icon: require('../../assets/gifts/wedding-ring.png'),   price: 500, name: 'gift.ring' },
+  { id: '10', icon: require('../../assets/gifts/women-cloth.png'),   price: 500, name: 'gift.womensClothing' },
 ];
 
 export default function SubscriptionGiftScreen() {
@@ -46,21 +47,31 @@ export default function SubscriptionGiftScreen() {
   const [selectedRecipient, setSelectedRecipient] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
 
+  // Android navbar → modal açıkken gizle, kapanınca geri getir
+  const hideNav = () => Platform.OS === 'android' && NavigationBar.setVisibilityAsync('hidden').catch(() => {});
+  const showNav = () => Platform.OS === 'android' && NavigationBar.setVisibilityAsync('visible').catch(() => {});
+
+  const handleOpenModal = () => { setModalVisible(true); hideNav(); };
+  const handleCloseModal = () => {
+    setModalVisible(false);
+    setSelectedGift(null);
+    setSelectedRecipient(null);
+    showNav();
+  };
+
+  useEffect(() => () => { showNav(); }, []);
+
   useEffect(() => {
     const { selectedGift, selectedRecipient, openGiftModal } = route.params || {};
-
     if (selectedRecipient) setSelectedRecipient(selectedRecipient);
     if (selectedGift) setSelectedGift(selectedGift);
-
-    if (selectedGift && selectedRecipient && openGiftModal) {
-      setModalVisible(true);
-    }
+    if (selectedGift && selectedRecipient && openGiftModal) handleOpenModal();
   }, [route.params]);
 
   const handleGiftPress = (gift) => {
     if (selectedRecipient) {
       setSelectedGift(gift);
-      setModalVisible(true);
+      handleOpenModal();
     } else {
       navigation.navigate('SelectRecipient', { gift });
     }
@@ -80,7 +91,15 @@ export default function SubscriptionGiftScreen() {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.subscriptionGiftBackground, paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 }]}>
+    <View
+      style={[
+        styles.container,
+        {
+          backgroundColor: theme.subscriptionGiftBackground,
+          paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+        },
+      ]}
+    >
       <SafeAreaView style={styles.safeArea}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.header}>
@@ -112,26 +131,27 @@ export default function SubscriptionGiftScreen() {
         </ScrollView>
       </SafeAreaView>
 
-      <BottomBar activeTab={route.name} navigation={navigation} />
+      {/* Modal açıkken BottomBar'ı sakla ki altta boşluk yaratmasın */}
+      {!modalVisible && <BottomBar activeTab={route.name} navigation={navigation} />}
 
       <GiftModal
         visible={modalVisible}
-        onClose={() => setModalVisible(false)}
+        onClose={handleCloseModal}
         gift={selectedGift}
         recipient={selectedRecipient}
-        onConfirm={showToast}
+        onConfirm={() => {
+          showToast();
+          handleCloseModal();
+        }}
       />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  safeArea: {
-    flex: 1,
-  },
+  container: { flex: 1 },
+  safeArea: { flex: 1 },
+
   header: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -145,12 +165,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     flex: 1,
   },
-  backButton: {
-    position: 'absolute',
-    left: 16 * scale,
-    padding: 13 * scale,
-    zIndex: 1,
-  },
+  backButton: { position: 'absolute', left: 16 * scale, padding: 13 * scale, zIndex: 1 },
+
   grid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -167,18 +183,7 @@ const styles = StyleSheet.create({
     padding: 10 * scale,
     marginBottom: 16 * scale,
   },
-  giftIcon: {
-    width: CARD_SIZE * 0.5,
-    height: CARD_SIZE * 0.5,
-    marginBottom: 8 * scale,
-  },
-  priceText: {
-    fontWeight: 'bold',
-    fontSize: 14 * scale,
-  },
-  nameText: {
-    fontSize: 12 * scale,
-    textAlign: 'center',
-    marginTop: 4 * scale,
-  },
+  giftIcon: { width: CARD_SIZE * 0.5, height: CARD_SIZE * 0.5, marginBottom: 8 * scale },
+  priceText: { fontWeight: 'bold', fontSize: 14 * scale },
+  nameText: { fontSize: 12 * scale, textAlign: 'center', marginTop: 4 * scale },
 });

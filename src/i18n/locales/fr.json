@@ -354,13 +354,13 @@
     "title": "S’abonner",
     "plan": {
       "basic": "Basique",
-      "standard": "Standard",
-      "premium": "Premium",
-      "premiumPlus": "Premium+"
+      "standard": "Argent",
+      "premium": "Or",
+      "premiumPlus": "Platine"
     },
     "details": "Voir les détails du plan",
     "per_month": "par mois",
-    "buy_with_google": "Acheter avec Google Pay"
+    "pay": "Acheter"
   },
   "feature": {
     "msg": "Messages",
@@ -396,5 +396,32 @@
     "light": "Thème clair",
     "sunset": "Coucher de soleil",
     "forest": "Vert forêt"
+  },
+  "addNewCard": {
+    "title": "Ajouter un mode de paiement",
+    "cardHolder": "Titulaire de la carte",
+    "cardHolderPlaceholder": "John Doe",
+    "cardNumber": "Numéro de carte",
+    "cardNumberPlaceholder": "4125 2253 5156 5222",
+    "expiry": "Mois / Année",
+    "expiryPlaceholder": "12/25",
+    "cvc": "CVC",
+    "cvcPlaceholder": "123",
+    "saveCard": "Enregistrer la carte",
+    "enrollButton": "Enregistrer maintenant",
+    "cardHolderError": "Veuillez entrer le nom complet",
+    "cardNumberError": "Numéro de carte invalide",
+    "expiryDateError": "Date d’expiration invalide",
+    "cvcError": "Code CVC invalide"
+  },
+  "cardPayment": {
+    "title": "Paiement digital",
+    "selectMethod": "Choisis la méthode de paiement que tu veux utiliser",
+    "addNewCard": "+ Ajouter une nouvelle carte",
+    "enrollNow": "Payer maintenant – {{price}}",
+    "success": "Paiement effectué avec succès !",
+    "failure": "Échec du paiement. Veuillez réessayer.",
+    "ok": "OK",
+    "noSelection": "Veuillez sélectionner un mode de paiement avant de continuer"
   }
 }

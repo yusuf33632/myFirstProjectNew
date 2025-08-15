@@ -9,6 +9,8 @@ import {
   Text,
   Keyboard,
   TouchableWithoutFeedback,
+  Platform,
+  StatusBar,
 } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import HeaderWithProgress from '../../components/headers/HeaderWithProgress';
@@ -54,7 +56,10 @@ export default function PersonalityTraitsScreen({ navigation }) {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <SafeAreaView style={[styles.container, { backgroundColor: theme.containerBackground }]}>
-        <HeaderWithProgress navigation={navigation} currentStep={2} />
+        {/* Android’te status bar çakışmasını engelle */}
+        <View style={Platform.OS === 'android' ? { marginTop: StatusBar.currentHeight || 0 } : null}>
+          <HeaderWithProgress navigation={navigation} currentStep={2} />
+        </View>
 
         <ScrollView
           contentContainerStyle={styles.scrollContent}
@@ -73,9 +78,7 @@ export default function PersonalityTraitsScreen({ navigation }) {
                 ]}
                 onPress={() => toggleOption(trait)}
               >
-                <Text style={[styles.optionText, { color: theme.text }]}>
-                  {trait}
-                </Text>
+                <Text style={[styles.optionText, { color: theme.text }]}>{trait}</Text>
               </TouchableOpacity>
             ))}
           </View>

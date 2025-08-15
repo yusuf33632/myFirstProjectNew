@@ -7,6 +7,8 @@ import {
   Image,
   Alert,
   TouchableOpacity,
+  Platform,
+  StatusBar,
 } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import * as ImagePicker from 'expo-image-picker';
@@ -59,12 +61,10 @@ export default function ProfilePhotoScreen({ navigation }) {
         onPress: async () => {
           const hasPermission = await askForPermission();
           if (!hasPermission) return;
-
           const result = await ImagePicker.launchCameraAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
             quality: 0.7,
           });
-
           if (!result.canceled && result.assets?.length > 0) {
             setPhotoUri(result.assets[0].uri);
           }
@@ -77,7 +77,6 @@ export default function ProfilePhotoScreen({ navigation }) {
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
             quality: 0.7,
           });
-
           if (!result.canceled && result.assets?.length > 0) {
             setPhotoUri(result.assets[0].uri);
           }
@@ -89,16 +88,16 @@ export default function ProfilePhotoScreen({ navigation }) {
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: theme.containerBackground }]}>
-      <HeaderWithProgress navigation={navigation} currentStep={1} />
+      {/* Android’te status bar ile çakışmayı önle */}
+      <View style={Platform.OS === 'android' ? { marginTop: StatusBar.currentHeight || 0 } : null}>
+        <HeaderWithProgress navigation={navigation} currentStep={1} />
+      </View>
+
       <PageTitle>{t('profilePhoto.title')}</PageTitle>
 
       <TouchableOpacity style={styles.imageWrapper} onPress={handleSelectPhoto}>
         <Image
-          source={
-            photoUri
-              ? { uri: photoUri }
-              : require('../../assets/createProfile/person.png')
-          }
+          source={photoUri ? { uri: photoUri } : require('../../assets/createProfile/person.png')}
           style={[styles.image, { borderColor: theme.avatarCircleBorderColor }]}
         />
       </TouchableOpacity>

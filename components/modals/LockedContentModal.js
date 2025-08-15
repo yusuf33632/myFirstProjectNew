@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
   View,
   Text,
@@ -8,14 +8,20 @@ import {
   Image,
   Modal,
   Pressable,
-  Alert,
+  Platform,
+  StyleSheet as RNStyleSheet,
+  Animated,
+  ToastAndroid, // ← Android toast
+  Alert,        // ← iOS için bırakıyoruz
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { BlurView } from 'expo-blur';
 import { useTranslation } from 'react-i18next';
-import { useTheme } from '../../src/context/ThemeContext'; // Tema hook
+import { useTheme } from '../../src/context/ThemeContext';
+import * as NavigationBar from 'expo-navigation-bar';
 
 const { width } = Dimensions.get('window');
+const SCREEN_HEIGHT = Dimensions.get('screen').height; // kaydırma mesafesi
 const scale = width / 375;
 
 export default function LockedContentModal({
@@ -27,85 +33,164 @@ export default function LockedContentModal({
 }) {
   const navigation = useNavigation();
   const { t } = useTranslation();
-  const { theme } = useTheme(); // tema erişimi
+  const { theme } = useTheme();
+
+  // ↓ Aşağıdan kaydırma animasyonu (tasarım aynen)
+  const sheetY = useRef(new Animated.Value(SCREEN_HEIGHT)).current;
+
+  useEffect(() => {
+    if (visible) {
+      Animated.timing(sheetY, {
+        toValue: 0,
+        duration: 260,
+        useNativeDriver: true,
+      }).start();
+    } else {
+      Animated.timing(sheetY, {
+        toValue: SCREEN_HEIGHT,
+        duration: 220,
+        useNativeDriver: true,
+      }).start();
+    }
+  }, [visible, sheetY]);
+
+  // Android nav bar: modal açıkken gizle, kapanınca geri getir
+  useEffect(() => {
+    if (Platform.OS !== 'android') return;
+
+    const hideNav = async () => {
+      try {
+        await NavigationBar.setBehaviorAsync('overlay-swipe');
+        await NavigationBar.setBackgroundColorAsync('#000000'); // siyah
+        await NavigationBar.setButtonStyleAsync('light');
+        await NavigationBar.setVisibilityAsync('hidden');
+      } catch {}
+    };
+    const showNav = async () => {
+      try {
+        await NavigationBar.setVisibilityAsync('visible');
+      } catch {}
+    };
+
+    if (visible) hideNav();
+    else showNav();
+
+    return () => showNav();
+  }, [visible]);
+
+  const toast = (msg) => {
+    if (Platform.OS === 'android') {
+      ToastAndroid.show(msg, ToastAndroid.SHORT);
+    } else {
+      Alert.alert('', msg);
+    }
+  };
 
   const handleBuy = () => {
     if (userCoinBalance >= requiredCoin) {
-      Alert.alert(t('locked.successTitle'), t('locked.successMessage'));
-      onBuy();
+      // Başarılı senaryo: Android'de toast, iOS'ta alert (nav bar bozulmaz)
+      toast(t('locked.successMessage'));
+      onBuy && onBuy();
     } else {
-      Alert.alert(
-        t('locked.insufficientTitle'),
-        t('locked.insufficientMessage'),
-        [
-          {
-            text: t('locked.buyCoins'),
-            onPress: () => {
-              onClose();
-              navigation.navigate('CoinPurchase');
+      // Yetersiz bakiye: Android'de toast + yönlendir; iOS'ta alert
+      if (Platform.OS === 'android') {
+        toast(t('locked.insufficientMessage'));
+        onClose && onClose();
+        navigation.navigate('CoinPurchase');
+      } else {
+        Alert.alert(
+          t('locked.insufficientTitle'),
+          t('locked.insufficientMessage'),
+          [
+            {
+              text: t('locked.buyCoins'),
+              onPress: () => {
+                onClose && onClose();
+                navigation.navigate('CoinPurchase');
+              },
             },
-          },
-          { text: t('locked.cancel'), style: 'cancel' },
-        ]
-      );
+            { text: t('locked.cancel'), style: 'cancel' },
+          ]
+        );
+      }
     }
   };
 
   return (
-    <Modal visible={visible} transparent animationType="fade">
+    <Modal
+      visible={visible}
+      transparent
+      animationType={Platform.OS === 'ios' ? 'fade' : 'none'} // kayma animasyonu bizde
+      statusBarTranslucent
+      hardwareAccelerated
+      presentationStyle={Platform.OS === 'android' ? 'overFullScreen' : undefined}
+      onRequestClose={onClose}
+    >
+      {/* Dışa basınca kapansın */}
       <Pressable style={styles.overlay} onPress={onClose}>
         <BlurView intensity={60} tint="dark" style={styles.blurBackground}>
-          <Pressable
+          {/* Kart: iç tıklama dışa yayılmasın + aşağıdan kaydır */}
+          <Animated.View
             style={[
               styles.card,
-              { backgroundColor: theme.infoCardBackground },
+              {
+                backgroundColor: theme.infoCardBackground,
+                transform: [{ translateY: sheetY }],
+              },
             ]}
-            onPress={() => {}}
           >
-            <Image
-              source={require('../../assets/gifts/crystal.png')}
-              style={styles.coinImage}
-              resizeMode="contain"
-            />
-            <Text style={[styles.coinTitle, { color: theme.text }]}>
-              {t('locked.coinTitle')}
-            </Text>
-            <View style={styles.coinRow}>
+            <Pressable onPress={() => {}}>
               <Image
-                source={require('../../assets/gifts/diamond.png')}
-                style={styles.coinIcon}
+                source={require('../../assets/gifts/crystal.png')}
+                style={styles.coinImage}
                 resizeMode="contain"
               />
-              <Text style={[styles.coinAmount, { color: theme.lockedModalCoinColor }]}>
-                {requiredCoin}
+
+              <Text style={[styles.coinTitle, { color: theme.text }]}>
+                {t('locked.coinTitle')}
               </Text>
-            </View>
-            <Text style={[styles.description, { color: theme.text }]}>
-              {t('locked.description')}
-            </Text>
-            <Image
-              source={require('../../assets/users/user1.jpg')}
-              style={styles.avatar}
-            />
-            <View style={styles.buttonRow}>
-              <TouchableOpacity
-                style={[styles.cancelBtn, { backgroundColor: theme.borderColor }]}
-                onPress={onClose}
-              >
-                <Text style={[styles.btnText, { color: theme.text }]}>
-                  {t('locked.cancel')}
+
+              <View style={styles.coinRow}>
+                <Image
+                  source={require('../../assets/gifts/diamond.png')}
+                  style={styles.coinIcon}
+                  resizeMode="contain"
+                />
+                <Text style={[styles.coinAmount, { color: theme.lockedModalCoinColor }]}>
+                  {requiredCoin}
                 </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={[styles.confirmBtn, { backgroundColor: theme.primarySend }]}
-                onPress={handleBuy}
-              >
-                <Text style={[styles.btnText, { color: theme.text }]}>
-                  {t('locked.pay')}
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </Pressable>
+              </View>
+
+              <Text style={[styles.description, { color: theme.text }]}>
+                {t('locked.description')}
+              </Text>
+
+              <Image
+                source={require('../../assets/users/user1.jpg')}
+                style={styles.avatar}
+              />
+
+              <View style={styles.buttonRow}>
+                <TouchableOpacity
+                  style={[styles.cancelBtn, { backgroundColor: theme.borderColor }]}
+                  onPress={onClose}
+                >
+                  <Text style={[styles.btnText, { color: theme.text }]}>
+                    {t('locked.cancel')}
+                  </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  style={[styles.confirmBtn, { backgroundColor: theme.primarySend }]}
+                  onPress={handleBuy}
+                >
+                  <Text style={[styles.btnText, { color: theme.text }]}>
+                    {t('locked.pay')}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </Pressable>
+          </Animated.View>
         </BlurView>
       </Pressable>
     </Modal>
@@ -114,7 +199,7 @@ export default function LockedContentModal({
 
 const styles = StyleSheet.create({
   overlay: {
-    flex: 1,
+    ...RNStyleSheet.absoluteFillObject,   // tam ekran kaplasın (tasarım değişmeden)
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
@@ -136,16 +221,19 @@ const styles = StyleSheet.create({
     width: 100 * scale,
     height: 80 * scale,
     marginBottom: 12 * scale,
+    alignSelf: 'center',
   },
   coinTitle: {
     fontSize: 16 * scale,
     fontWeight: 'bold',
     marginBottom: 6 * scale,
+    textAlign: 'center',
   },
   coinRow: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 12 * scale,
+    alignSelf: 'center',
   },
   coinIcon: {
     width: 20 * scale,
@@ -166,6 +254,7 @@ const styles = StyleSheet.create({
     height: 36 * scale,
     borderRadius: 18 * scale,
     marginBottom: 60 * scale,
+    alignSelf: 'center',
   },
   buttonRow: {
     flexDirection: 'row',

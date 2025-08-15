@@ -17,20 +17,20 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withTiming,
-  FadeInUp,
 } from 'react-native-reanimated';
 import Checkbox from 'expo-checkbox';
 import valid from 'card-validator';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { useTheme } from '../../src/context/ThemeContext';
-import SettingsHeader from '../../components/headers/SettingsHeader'; // yolunu senin yapına göre düzenle
-
+import { useTranslation } from 'react-i18next';
+import SettingsHeader from '../../components/headers/SettingsHeader';
 
 const { width } = Dimensions.get('window');
 const scale = width / 375;
 
 export default function AddNewCardScreen() {
   const { theme } = useTheme();
+  const { t } = useTranslation();
   const navigation = useNavigation();
   const route = useRoute();
   const { plan } = route.params || {};
@@ -74,38 +74,53 @@ export default function AddNewCardScreen() {
   useEffect(() => {
     const result = valid.number(cardNumber);
     setCardType(result.card ? result.card.type : null);
-    setCardNumberError(!result.isPotentiallyValid || !result.isValid ? 'Invalid card number' : '');
+    setCardNumberError(
+      !result.isPotentiallyValid || !result.isValid
+        ? t('addNewCard.cardNumberError')
+        : ''
+    );
   }, [cardNumber]);
 
   useEffect(() => {
     const result = valid.expirationDate(expiryDate);
-    setExpiryDateError(!result.isPotentiallyValid || !result.isValid ? 'Invalid expiry date' : '');
+    setExpiryDateError(
+      !result.isPotentiallyValid || !result.isValid
+        ? t('addNewCard.expiryDateError')
+        : ''
+    );
   }, [expiryDate]);
 
   useEffect(() => {
     const result = valid.cvv(cvc);
-    setCvcError(!result.isPotentiallyValid || !result.isValid ? 'Invalid CVC' : '');
+    setCvcError(
+      !result.isPotentiallyValid || !result.isValid ? t('addNewCard.cvcError') : ''
+    );
   }, [cvc]);
 
   useEffect(() => {
-    const isValid = /^[A-Za-zÇĞİÖŞÜçğıöşü]+(?: [A-Za-zÇĞİÖŞÜçğıöşü]+)+$/.test(cardHolder.trim());
-    setCardHolderError(cardHolder && !isValid ? 'Enter full name (first and last)' : '');
+    const isValid = /^[A-Za-zÇĞİÖŞÜçğıöşü]+(?: [A-Za-zÇĞİÖŞÜçğıöşü]+)+$/.test(
+      cardHolder.trim()
+    );
+    setCardHolderError(
+      cardHolder && !isValid ? t('addNewCard.cardHolderError') : ''
+    );
   }, [cardHolder]);
 
-  const handleCVCFocus = () => rotateY.value = withTiming(180, { duration: 800 });
-  const handleCVCBlur = () => rotateY.value = withTiming(0, { duration: 800 });
+  const handleCVCFocus = () => (rotateY.value = withTiming(180, { duration: 800 }));
+  const handleCVCBlur = () => (rotateY.value = withTiming(0, { duration: 800 }));
 
-  const formatCardNumber = value =>
+  const formatCardNumber = (value) =>
     value.replace(/\D/g, '').replace(/(.{4})/g, '$1 ').trim();
 
-  const handleCardNumberChange = value =>
+  const handleCardNumberChange = (value) =>
     setCardNumber(formatCardNumber(value));
 
-  const handleExpiryChange = text => {
+  const handleExpiryChange = (text) => {
     const cleaned = text.replace(/\D/g, '');
-    const formatted = cleaned.length > 2
-      ? `${cleaned.slice(0, 2)}/${cleaned.slice(2, 4)}`
-      : cleaned;
+    const formatted =
+      cleaned.length > 2
+        ? `${cleaned.slice(0, 2)}/${cleaned.slice(2, 4)}`
+        : cleaned;
     setExpiryDate(formatted);
   };
 
@@ -157,87 +172,121 @@ export default function AddNewCardScreen() {
 
   return (
     <SafeAreaView style={[styles.safe, dynamicStyles.safe]}>
-      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={styles.wrapper}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        style={styles.wrapper}
+      >
         <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
-        <SettingsHeader title="Add Payment Method" />
-
+          <SettingsHeader title={t('addNewCard.title')} />
 
           <View style={styles.cardContainer}>
             <Animated.View style={[styles.cardFace, animatedFrontStyle, dynamicStyles.cardFace]}>
               <BlurView intensity={60} tint="dark" style={StyleSheet.absoluteFill} />
               <View style={styles.cardRow}>
-                <Text style={[styles.cardNumber, dynamicStyles.cardNumber]}>{cardNumber || 'XXXX XXXX XXXX 5222'}</Text>
-                <Image source={getCardIcon(cardType)} style={styles.cardIcon} resizeMode="contain" />
+                <Text style={[styles.cardNumber, dynamicStyles.cardNumber]}>
+                  {cardNumber || 'XXXX XXXX XXXX 5222'}
+                </Text>
+                <Image
+                  source={getCardIcon(cardType)}
+                  style={styles.cardIcon}
+                  resizeMode="contain"
+                />
               </View>
               <View style={styles.cardInfoRow}>
                 <View>
-                  <Text style={[styles.cardInfoLabel, dynamicStyles.cardInfoLabel]}>Cardholder</Text>
-                  <Text style={[styles.cardInfoText, dynamicStyles.cardInfoText]}>{cardHolder || 'John Doe'}</Text>
+                  <Text style={[styles.cardInfoLabel, dynamicStyles.cardInfoLabel]}>
+                    {t('addNewCard.cardHolder')}
+                  </Text>
+                  <Text style={[styles.cardInfoText, dynamicStyles.cardInfoText]}>
+                    {cardHolder || 'John Doe'}
+                  </Text>
                 </View>
                 <View>
-                  <Text style={[styles.cardInfoLabel, dynamicStyles.cardInfoLabel]}>Valid thru</Text>
-                  <Text style={[styles.cardInfoText, dynamicStyles.cardInfoText]}>{expiryDate || '12/2025'}</Text>
+                  <Text style={[styles.cardInfoLabel, dynamicStyles.cardInfoLabel]}>
+                    {t('addNewCard.expiry')}
+                  </Text>
+                  <Text style={[styles.cardInfoText, dynamicStyles.cardInfoText]}>
+                    {expiryDate || '12/25'}
+                  </Text>
                 </View>
               </View>
             </Animated.View>
 
-            <Animated.View style={[styles.cardFace, styles.cardBack, animatedBackStyle, dynamicStyles.cardBack]}>
-              <View style={{ height: 40 * scale, backgroundColor: theme.addNewCardMagneticStripe, marginBottom: 20 * scale }} />
+            <Animated.View
+              style={[styles.cardFace, styles.cardBack, animatedBackStyle, dynamicStyles.cardBack]}
+            >
+              <View
+                style={{
+                  height: 40 * scale,
+                  backgroundColor: theme.addNewCardMagneticStripe,
+                  marginBottom: 20 * scale,
+                }}
+              />
               <View style={{ alignItems: 'flex-end' }}>
-                <Text style={{ color: theme.addNewCardCvcLabelText, fontSize: 12 * scale }}>CVC</Text>
-                <View style={{
-                  backgroundColor: theme.addNewCardCvcBoxBackground,
-                  padding: 6 * scale,
-                  borderRadius: 6 * scale,
-                  marginTop: 4 * scale,
-                  width: 60 * scale,
-                  alignItems: 'center',
-                }}>
+                <Text style={{ color: theme.addNewCardCvcLabelText, fontSize: 12 * scale }}>
+                  {t('addNewCard.cvc')}
+                </Text>
+                <View
+                  style={{
+                    backgroundColor: theme.addNewCardCvcBoxBackground,
+                    padding: 6 * scale,
+                    borderRadius: 6 * scale,
+                    marginTop: 4 * scale,
+                    width: 60 * scale,
+                    alignItems: 'center',
+                  }}
+                >
                   <Text style={{ fontSize: 14 * scale, fontWeight: 'bold' }}>{cvc || '•••'}</Text>
                 </View>
               </View>
             </Animated.View>
           </View>
 
-          {/* Inputs ve Form */}
-          <Text style={[styles.label, dynamicStyles.label]}>Card Holder</Text>
+          {/* Form alanları */}
+          <Text style={[styles.label, dynamicStyles.label]}>{t('addNewCard.cardHolder')}</Text>
           <TextInput
             style={[styles.input, dynamicStyles.input, !!cardHolderError && dynamicStyles.inputError]}
             value={cardHolder}
             onChangeText={setCardHolder}
-            placeholder="John Doe"
+            placeholder={t('addNewCard.cardHolderPlaceholder')}
           />
-          {!!cardHolderError && <Text style={[styles.error, dynamicStyles.error]}>{cardHolderError}</Text>}
+          {!!cardHolderError && (
+            <Text style={[styles.error, dynamicStyles.error]}>{cardHolderError}</Text>
+          )}
 
-          <Text style={[styles.label, dynamicStyles.label]}>Card Number</Text>
+          <Text style={[styles.label, dynamicStyles.label]}>{t('addNewCard.cardNumber')}</Text>
           <TextInput
             style={[styles.input, dynamicStyles.input, !!cardNumberError && dynamicStyles.inputError]}
             value={cardNumber}
             onChangeText={handleCardNumberChange}
-            placeholder="4125 2253 5156 5222"
+            placeholder={t('addNewCard.cardNumberPlaceholder')}
             keyboardType="numeric"
           />
-          {!!cardNumberError && <Text style={[styles.error, dynamicStyles.error]}>{cardNumberError}</Text>}
+          {!!cardNumberError && (
+            <Text style={[styles.error, dynamicStyles.error]}>{cardNumberError}</Text>
+          )}
 
           <View style={styles.row}>
             <View style={{ flex: 1, marginRight: 10 * scale }}>
-              <Text style={[styles.label, dynamicStyles.label]}>MM / YY</Text>
+              <Text style={[styles.label, dynamicStyles.label]}>{t('addNewCard.expiry')}</Text>
               <TextInput
                 style={[styles.input, dynamicStyles.input, !!expiryDateError && dynamicStyles.inputError]}
                 value={expiryDate}
                 onChangeText={handleExpiryChange}
-                placeholder="12/25"
+                placeholder={t('addNewCard.expiryPlaceholder')}
                 keyboardType="numeric"
               />
-              {!!expiryDateError && <Text style={[styles.error, dynamicStyles.error]}>{expiryDateError}</Text>}
+              {!!expiryDateError && (
+                <Text style={[styles.error, dynamicStyles.error]}>{expiryDateError}</Text>
+              )}
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={[styles.label, dynamicStyles.label]}>CVC</Text>
+              <Text style={[styles.label, dynamicStyles.label]}>{t('addNewCard.cvc')}</Text>
               <TextInput
                 style={[styles.input, dynamicStyles.input, !!cvcError && dynamicStyles.inputError]}
                 value={cvc}
                 onChangeText={setCvc}
-                placeholder="123"
+                placeholder={t('addNewCard.cvcPlaceholder')}
                 keyboardType="numeric"
                 onFocus={handleCVCFocus}
                 onBlur={handleCVCBlur}
@@ -246,23 +295,34 @@ export default function AddNewCardScreen() {
             </View>
           </View>
 
-          {/* Checkbox + Buton */}
           <View style={styles.checkboxRow}>
             <Checkbox
               value={saveCard}
               onValueChange={setSaveCard}
-              color={saveCard ? theme.addNewCardCheckboxSelected : theme.addNewCardCheckboxUnselected}
+              color={
+                saveCard
+                  ? theme.addNewCardCheckboxSelected
+                  : theme.addNewCardCheckboxUnselected
+              }
               style={styles.checkbox}
             />
-            <Text style={[styles.checkboxLabel, dynamicStyles.checkboxLabel]}>Save Card</Text>
+            <Text style={[styles.checkboxLabel, dynamicStyles.checkboxLabel]}>
+              {t('addNewCard.saveCard')}
+            </Text>
           </View>
 
           <TouchableOpacity
-            style={[styles.enrollButton, dynamicStyles.enrollButton, !isFormValid && { opacity: 0.5 }]}
+            style={[
+              styles.enrollButton,
+              dynamicStyles.enrollButton,
+              !isFormValid && { opacity: 0.5 },
+            ]}
             onPress={handleSubmit}
             disabled={!isFormValid}
           >
-            <Text style={[styles.enrollButtonText, dynamicStyles.enrollButtonText]}>Enroll Now</Text>
+            <Text style={[styles.enrollButtonText, dynamicStyles.enrollButtonText]}>
+              {t('addNewCard.enrollButton')}
+            </Text>
           </TouchableOpacity>
         </ScrollView>
       </KeyboardAvoidingView>

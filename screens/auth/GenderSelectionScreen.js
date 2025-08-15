@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   TouchableWithoutFeedback,
   Keyboard,
+  Platform
 } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
@@ -18,6 +19,8 @@ import { useTheme } from '../../src/context/ThemeContext';
 
 const { width } = Dimensions.get('window');
 const scale = width / 375;
+const PADDING_HORIZONTAL = 20 * scale;
+const HEADER_TOP_NUDGE = 8 * scale; // küçük aşağı kaydırma
 
 export default function GenderSelectionScreen({ navigation }) {
   const route = useRoute();
@@ -36,16 +39,21 @@ export default function GenderSelectionScreen({ navigation }) {
 
   const [selectedGender, setSelectedGender] = useState(routeGender || null);
 
-  const genders = [
-    t('gender.male'),
-    t('gender.female'),
-    t('gender.no_answer')
-  ];
+  const genders = [t('gender.male'), t('gender.female'), t('gender.no_answer')];
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <SafeAreaView style={[styles.container, { backgroundColor: theme.containerBackground }]}>
-        <HeaderWithProgress navigation={navigation} currentStep={7} />
+        {/* Header: yatay padding'i iptal + çok az aşağı kaydır */}
+        <View
+          style={[
+            { marginHorizontal: -PADDING_HORIZONTAL },
+            Platform.OS === 'android' ? { marginTop: HEADER_TOP_NUDGE } : null
+          ]}
+        >
+          <HeaderWithProgress navigation={navigation} currentStep={7} />
+        </View>
+
         <PageTitle>{t('gender.title')}</PageTitle>
 
         <View style={styles.buttonGroup}>
@@ -86,7 +94,7 @@ export default function GenderSelectionScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 20 * scale,
+    paddingHorizontal: PADDING_HORIZONTAL,
     paddingTop: 30 * scale,
   },
   buttonGroup: {

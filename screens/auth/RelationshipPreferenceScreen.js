@@ -9,6 +9,8 @@ import {
   ScrollView,
   TouchableWithoutFeedback,
   Keyboard,
+  Platform,
+  StatusBar,
 } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
@@ -54,7 +56,11 @@ export default function RelationshipPreferenceScreen({ navigation }) {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <SafeAreaView style={[styles.container, { backgroundColor: theme.containerBackground }]}>
-        <HeaderWithProgress navigation={navigation} currentStep={5} />
+
+        {/* Android'de status bar kadar üst boşluk */}
+        <View style={Platform.OS === 'android' ? { marginTop: StatusBar.currentHeight || 0 } : null}>
+          <HeaderWithProgress navigation={navigation} currentStep={5} />
+        </View>
 
         <ScrollView contentContainerStyle={styles.scrollContent}>
           <PageTitle>{t('relationshipPreference.title')}</PageTitle>
@@ -105,7 +111,7 @@ export default function RelationshipPreferenceScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 10 * scale,
+    paddingTop: 10 * scale, // yatay padding yok; header yatayda zaten doğru hizada
   },
   scrollContent: {
     paddingHorizontal: 20 * scale,

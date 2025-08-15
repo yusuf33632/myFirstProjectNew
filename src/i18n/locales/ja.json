@@ -354,13 +354,13 @@
         "title": "サブスクリプション",
         "plan": {
             "basic": "ベーシック",
-            "standard": "スタンダード",
-            "premium": "プレミアム",
-            "premiumPlus": "プレミアム＋"
+            "standard": "シルバー",
+            "premium": "ゴールド",
+            "premiumPlus": "プラチナ"
         },
         "details": "プランの詳細を見る",
         "per_month": "月額",
-        "buy_with_google": "Google Payで購入"
+        "pay": "今すぐ購入"
     },
     "feature": {
         "msg": "メッセージ機能",
@@ -396,5 +396,32 @@
         "light": "ライトテーマ",
         "sunset": "サンセット",
         "forest": "フォレストグリーン"
+    },
+    "addNewCard": {
+        "title": "お支払い方法を追加",
+        "cardHolder": "カード名義人",
+        "cardHolderPlaceholder": "John Doe",
+        "cardNumber": "カード番号",
+        "cardNumberPlaceholder": "4125 2253 5156 5222",
+        "expiry": "月 / 年",
+        "expiryPlaceholder": "12/25",
+        "cvc": "セキュリティコード (CVC)",
+        "cvcPlaceholder": "123",
+        "saveCard": "カードを保存",
+        "enrollButton": "今すぐ保存",
+        "cardHolderError": "氏名（名と姓）を入力してください",
+        "cardNumberError": "無効なカード番号です",
+        "expiryDateError": "無効な有効期限です",
+        "cvcError": "無効なCVCコードです"
+    },
+    "cardPayment": {
+        "title": "デジタル決済",
+        "selectMethod": "ご希望の支払い方法を選択してください",
+        "addNewCard": "+ 新しいカードを追加",
+        "enrollNow": "今すぐ支払う – {{price}}",
+        "success": "支払いが完了しました！",
+        "failure": "支払いに失敗しました。もう一度お試しください。",
+        "ok": "OK",
+        "noSelection": "続行する前に支払い方法を選択してください"
     }
 }

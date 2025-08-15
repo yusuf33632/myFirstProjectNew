@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, Platform } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import AuthNavigator from './src/navigation/AuthNavigator';
@@ -8,9 +8,12 @@ import { ThemeProvider, useTheme } from './src/context/ThemeContext';
 import { UnreadProvider } from './src/context/UnreadContext';
 import 'react-native-reanimated';
 
-// 🌐 i18n çeviri sistemini başlat
+// 🌐 i18n initialization
 import './src/i18n/i18n';
 import { loadLanguage } from './src/i18n/i18n';
+
+// ✅ SafeAreaProvider eklendi
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 function AppContent() {
   const { theme } = useTheme();
@@ -18,8 +21,13 @@ function AppContent() {
   return (
     <>
       <StatusBar
-        barStyle={['light', 'sunset', 'forest'].includes(theme.mode) ? 'dark-content' : 'light-content'}
-        backgroundColor={theme.containerBackground}
+        translucent={Platform.OS === 'android'} // Android'de tam ekran görünüm için
+        backgroundColor="transparent"           // Tema rengi ile SafeArea'da doldurulur
+        barStyle={
+          ['light', 'sunset', 'forest'].includes(theme.mode)
+            ? 'dark-content'
+            : 'light-content'
+        }
       />
 
       <NavigationContainer>
@@ -39,7 +47,10 @@ export default function App() {
       <RootSiblingParent>
         <ThemeProvider>
           <UnreadProvider>
-            <AppContent />
+            {/* ✅ SafeAreaProvider burada kök seviyede */}
+            <SafeAreaProvider>
+              <AppContent />
+            </SafeAreaProvider>
           </UnreadProvider>
         </ThemeProvider>
       </RootSiblingParent>

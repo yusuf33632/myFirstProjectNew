@@ -353,14 +353,14 @@
   "subscription": {
     "title": "الاشتراك",
     "plan": {
-      "basic": "أساسي",
-      "standard": "قياسي",
-      "premium": "بريميوم",
-      "premiumPlus": "بريميوم+"
+      "basic": "الأساسي",
+      "standard": "فضي",
+      "premium": "ذهبي",
+      "premiumPlus": "بلاتيني"
     },
     "details": "عرض التفاصيل",
     "per_month": "شهرياً",
-    "buy_with_google": "شراء عبر Google Pay"
+    "pay": "اشترِ الآن"
   },
   "feature": {
     "msg": "رسائل",
@@ -396,5 +396,32 @@
     "light": "ثيم فاتح",
     "sunset": "غروب الشمس",
     "forest": "أخضر الغابة"
+  },
+  "addNewCard": {
+    "title": "إضافة طريقة دفع",
+    "cardHolder": "صاحب البطاقة",
+    "cardHolderPlaceholder": "John Doe",
+    "cardNumber": "رقم البطاقة",
+    "cardNumberPlaceholder": "4125 2253 5156 5222",
+    "expiry": "شهر / سنة",
+    "expiryPlaceholder": "12/25",
+    "cvc": "CVC",
+    "cvcPlaceholder": "123",
+    "saveCard": "حفظ البطاقة",
+    "enrollButton": "احفظ الآن",
+    "cardHolderError": "يرجى إدخال الاسم الكامل (الاسم والكنية)",
+    "cardNumberError": "رقم البطاقة غير صالح",
+    "expiryDateError": "تاريخ الانتهاء غير صالح",
+    "cvcError": "رمز CVC غير صالح"
+  },
+  "cardPayment": {
+    "title": "الدفع الرقمي",
+    "selectMethod": "اختر طريقة الدفع التي ترغب باستخدامها",
+    "addNewCard": "+ أضف بطاقة جديدة",
+    "enrollNow": "ادفع الآن – {{price}}",
+    "success": "تم الدفع بنجاح!",
+    "failure": "فشل الدفع. يرجى المحاولة مرة أخرى.",
+    "ok": "حسناً",
+    "noSelection": "الرجاء اختيار طريقة دفع قبل المتابعة"
   }
 }

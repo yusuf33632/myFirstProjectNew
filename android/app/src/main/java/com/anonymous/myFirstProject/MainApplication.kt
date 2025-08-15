@@ -1,4 +1,4 @@
-package com.myfirstproject
+package com.anonymous.myFirstProject
 
 import android.app.Application
 import com.facebook.react.PackageList

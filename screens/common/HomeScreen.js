@@ -14,6 +14,8 @@ import {
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../../src/context/ThemeContext';
+import * as NavigationBar from 'expo-navigation-bar';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import BottomBar from '../../components/navigation/BottomBar';
 import SideBar from '../../components/navigation/SideBar';
@@ -23,6 +25,7 @@ import CharacterDetail from '../../components/character/CharacterDetail';
 import { BlurView } from 'expo-blur';
 
 const { width } = Dimensions.get('window');
+const { height: SCREEN_H, width: SCREEN_W } = Dimensions.get('screen');
 const scale = width / 375;
 
 export default function HomeScreen() {
@@ -30,10 +33,39 @@ export default function HomeScreen() {
   const navigation = useNavigation();
   const { t } = useTranslation();
   const { theme } = useTheme();
+  const insets = useSafeAreaInsets();
 
   const [selectedCategory, setSelectedCategory] = useState('girls');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [selectedCharacter, setSelectedCharacter] = useState(null);
+
+  // Ana ekranın navigasyon çubuğu rengini tema değiştikçe günceller.
+  useEffect(() => {
+    if (Platform.OS === 'android') {
+      const style = theme.mode === 'dark' ? 'light' : 'dark';
+      NavigationBar.setButtonStyleAsync(style).catch(() => {});
+      NavigationBar.setBackgroundColorAsync(theme.containerBackground).catch(() => {});
+    }
+  }, [theme.mode, theme.containerBackground]);
+
+  // Modal açılışını ve navigasyon çubuğunu gizleme işlemini birleştirir.
+  const openCharacterModal = (character) => {
+    setSelectedCharacter(character);
+    if (Platform.OS === 'android') {
+      NavigationBar.setVisibilityAsync('hidden').catch(() => {});
+    }
+  };
+
+  // Modal kapanışını ve navigasyon çubuğunu görünür yapma işlemini birleştirir.
+  const closeCharacterModal = () => {
+    setSelectedCharacter(null);
+    if (Platform.OS === 'android') {
+      NavigationBar.setVisibilityAsync('visible').catch(() => {});
+      const style = theme.mode === 'dark' ? 'light' : 'dark';
+      NavigationBar.setButtonStyleAsync(style).catch(() => {});
+      NavigationBar.setBackgroundColorAsync(theme.containerBackground).catch(() => {});
+    }
+  };
 
   const categories = [
     { key: 'girls', label: t('home.categories.girls') },
@@ -52,32 +84,36 @@ export default function HomeScreen() {
   useEffect(() => {
     const backAction = () => {
       if (selectedCharacter) {
-        setSelectedCharacter(null);
+        closeCharacterModal(); // Geri tuşu ile modal kapanışında da aynı fonksiyonu kullanıyoruz.
+        return true;
+      }
+      if (isSidebarOpen) {
+        setIsSidebarOpen(false);
         return true;
       }
       return false;
     };
     const backHandler = BackHandler.addEventListener('hardwareBackPress', backAction);
     return () => backHandler.remove();
-  }, [selectedCharacter]);
+  }, [selectedCharacter, isSidebarOpen]);
 
   const renderCard = (item, widthFactor = 0.4, heightValue = 200) => (
     <TouchableOpacity
       key={`${item.id}-${widthFactor}`}
       style={{ width: width * widthFactor, position: 'relative' }}
-      onPress={() => setSelectedCharacter(item)}
+      onPress={() => openCharacterModal(item)} // Modal açmak için yeni fonksiyonu çağırıyoruz.
     >
-      <Image source={item.image} style={[styles.cardImageFull, { height: heightValue * scale, borderRadius: theme.cardImageBorderRadius }]} />
+      <Image
+        source={item.image}
+        style={[styles.cardImageFull, { height: heightValue * scale, borderRadius: theme.cardImageBorderRadius }]}
+      />
       <View style={[styles.chatBadge, { backgroundColor: theme.chatBadge }]}>
         <Text style={[styles.chatBadgeText, { color: theme.text }]}>💬 1.9k</Text>
       </View>
       <Text
         style={[
           styles.cardNameOverlay,
-          {
-            backgroundColor: theme.cardNameOverlayBackground,
-            color: theme.cardNameOverlayText,
-          },
+          { backgroundColor: theme.cardNameOverlayBackground, color: theme.cardNameOverlayText },
         ]}
       >
         {item.name}
@@ -143,19 +179,19 @@ export default function HomeScreen() {
             <TouchableOpacity
               key={`${item.id}_popular`}
               style={{ width: (width - 36 * scale) / 2, position: 'relative' }}
-              onPress={() => setSelectedCharacter(item)}
+              onPress={() => openCharacterModal(item)} // Modal açmak için yeni fonksiyonu çağırıyoruz.
             >
-              <Image source={item.image} style={[styles.cardImageFull, { height: 200 * scale, borderRadius: theme.cardImageBorderRadius }]} />
+              <Image
+                source={item.image}
+                style={[styles.cardImageFull, { height: 200 * scale, borderRadius: theme.cardImageBorderRadius }]}
+              />
               <View style={[styles.chatBadge, { backgroundColor: theme.chatBadge }]}>
                 <Text style={[styles.chatBadgeText, { color: theme.text }]}>💬 1.9k</Text>
               </View>
               <Text
                 style={[
                   styles.cardNameOverlay,
-                  {
-                    backgroundColor: theme.cardNameOverlayBackground,
-                    color: theme.cardNameOverlayText,
-                  },
+                  { backgroundColor: theme.cardNameOverlayBackground, color: theme.cardNameOverlayText },
                 ]}
               >
                 {item.name}
@@ -168,35 +204,45 @@ export default function HomeScreen() {
       <BottomBar activeTab={route.name} navigation={navigation} />
 
       {isSidebarOpen && (
-        <SideBar
-          onClose={() => setIsSidebarOpen(false)}
-          navigation={navigation}
-        />
+        <SideBar onClose={() => setIsSidebarOpen(false)} navigation={navigation} />
       )}
 
       <Modal
         isVisible={!!selectedCharacter}
-        onBackdropPress={() => setSelectedCharacter(null)}
+        onBackdropPress={closeCharacterModal} // Modal kapanışında yeni fonksiyonu çağırıyoruz.
         animationIn="fadeIn"
         animationOut="fadeOut"
         style={{ margin: 0 }}
         backdropOpacity={1}
         backdropColor="transparent"
+        coverScreen
+        statusBarTranslucent
+        deviceHeight={SCREEN_H}
+        deviceWidth={SCREEN_W}
         useNativeDriver={false}
         customBackdrop={
           <TouchableOpacity
             activeOpacity={1}
-            onPress={() => setSelectedCharacter(null)}
+            onPress={closeCharacterModal} // Modal kapanışında yeni fonksiyonu çağırıyoruz.
             style={StyleSheet.absoluteFill}
           >
-            <BlurView tint="dark" intensity={70} style={StyleSheet.absoluteFill} />
+            {Platform.OS === 'ios' ? (
+              <BlurView tint="dark" intensity={70} style={StyleSheet.absoluteFill} />
+            ) : (
+              <View
+                style={{
+                  ...StyleSheet.absoluteFillObject,
+                  backgroundColor: 'rgba(0,0,0,0.75)',
+                }}
+              />
+            )}
           </TouchableOpacity>
         }
       >
         {selectedCharacter && (
           <CharacterDetail
             character={selectedCharacter}
-            onClose={() => setSelectedCharacter(null)}
+            onClose={closeCharacterModal} // CharacterDetail'deki kapanış butonu için de aynı fonksiyonu kullanıyoruz.
             navigation={navigation}
           />
         )}

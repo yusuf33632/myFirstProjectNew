@@ -63,7 +63,7 @@
             "girls": "Χαρακτήρες κοριτσιών",
             "anime": "Anime χαρακτήρες",
             "boys": "Χαρακτήρες αγοριών"
-          }
+        }
     },
     "chat": {
         "input_placeholder": "Γράψε ένα μήνυμα...",
@@ -354,13 +354,13 @@
         "title": "Γίνε Συνδρομητής",
         "plan": {
             "basic": "Βασικό",
-            "standard": "Στάνταρ",
-            "premium": "Premium",
-            "premiumPlus": "Premium+"
+            "standard": "Ασημένιο",
+            "premium": "Χρυσό",
+            "premiumPlus": "Πλατινένιο"
         },
         "details": "Δες τις λεπτομέρειες του πακέτου",
         "per_month": "ανά μήνα",
-        "buy_with_google": "Αγόρασε με Google Pay"
+        "pay": "Αγορά"
     },
     "feature": {
         "msg": "Μηνύματα",
@@ -396,5 +396,32 @@
         "light": "Φωτεινό Θέμα",
         "sunset": "Ηλιοβασίλεμα",
         "forest": "Δάσος"
+    },
+    "addNewCard": {
+        "title": "Προσθήκη Τρόπου Πληρωμής",
+        "cardHolder": "Όνομα Κατόχου Κάρτας",
+        "cardHolderPlaceholder": "John Doe",
+        "cardNumber": "Αριθμός Κάρτας",
+        "cardNumberPlaceholder": "4125 2253 5156 5222",
+        "expiry": "Μήνας / Έτος",
+        "expiryPlaceholder": "12/25",
+        "cvc": "CVC",
+        "cvcPlaceholder": "123",
+        "saveCard": "Αποθήκευση Κάρτας",
+        "enrollButton": "Αποθήκευση Τώρα",
+        "cardHolderError": "Εισάγετε πλήρες όνομα (όνομα και επίθετο)",
+        "cardNumberError": "Μη έγκυρος αριθμός κάρτας",
+        "expiryDateError": "Μη έγκυρη ημερομηνία λήξης",
+        "cvcError": "Μη έγκυρος κωδικός CVC"
+    },
+    "cardPayment": {
+        "title": "Ψηφιακή Πληρωμή",
+        "selectMethod": "Επίλεξε την επιθυμητή μέθοδο πληρωμής",
+        "addNewCard": "+ Προσθήκη νέας κάρτας",
+        "enrollNow": "Πλήρωσε τώρα – {{price}}",
+        "success": "Η πληρωμή ολοκληρώθηκε με επιτυχία!",
+        "failure": "Η πληρωμή απέτυχε. Δοκίμασε ξανά.",
+        "ok": "ΟΚ",
+        "noSelection": "Παρακαλώ επιλέξτε έναν τρόπο πληρωμής πριν συνεχίσετε"
     }
 }

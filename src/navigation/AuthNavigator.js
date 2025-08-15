@@ -1,5 +1,6 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useTheme } from '../../src/context/ThemeContext'; // Tema bağlamınızı doğru yoldan import ettiğinizden emin olun
 
 // AUTH
 import SignInScreen from '../../screens/auth/SignInScreen';
@@ -67,8 +68,18 @@ import CardPaymentScreen from '../../screens/payment/CardPaymentScreen';
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigator() {
+  const { theme } = useTheme(); // Tema bağlamınızı kullanarak tema verisine erişin
+
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+        // Sayfa geçişindeki beyaz parlamayı engellemek için arka plan rengini temaya göre ayarlayın
+        cardStyle: {
+          backgroundColor: theme.containerBackground,
+        },
+      }}
+    >
       <Stack.Screen name="SignIn" component={SignInScreen} />
       <Stack.Screen name="SignUp" component={SignUpScreen} />
       <Stack.Screen name="NameInput" component={NameInputScreen} />

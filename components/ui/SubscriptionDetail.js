@@ -13,20 +13,42 @@ const { width } = Dimensions.get('window');
 const scale = width / 375;
 
 export default function SubscriptionDetail({ onPay }) {
-  const [selectedDuration, setSelectedDuration] = useState(null);
+  const [selectedDuration, setSelectedDuration] = useState(null); // 0 | 1 | 2 | null
   const { t } = useTranslation();
   const { theme } = useTheme();
 
+  // months alanı eklendi: 12, 3, 1
   const durations = [
-    { label: '12| Ay', price: '$4.90', note: t('subscription.per_month') },
-    { label: '3| Ay', price: '$6.90', note: t('subscription.per_month') },
-    { label: '1| Ay', price: '$8.90', note: t('subscription.per_month') },
+    {
+      label: '12| Ay',
+      months: 12,
+      price: '$4.90',
+      note: t('subscription.per_month'),
+      code: 'annual',
+    },
+    {
+      label: '3| Ay',
+      months: 3,
+      price: '$6.90',
+      note: t('subscription.per_month'),
+      code: 'quarterly',
+    },
+    {
+      label: '1| Ay',
+      months: 1,
+      price: '$8.90',
+      note: t('subscription.per_month'),
+      code: 'monthly',
+    },
   ];
 
+  const isDisabled = selectedDuration === null;
+
   const handleProceedToPayment = () => {
-    if (selectedDuration === null) return;
+    if (isDisabled) return;
     const selectedPlan = durations[selectedDuration];
-    if (onPay && typeof onPay === 'function') {
+    if (typeof onPay === 'function') {
+      // Checkout için months vb. tüm alanlar gönderiliyor
       onPay(selectedPlan);
     }
   };
@@ -34,37 +56,52 @@ export default function SubscriptionDetail({ onPay }) {
   return (
     <View style={[styles.detailBox, { backgroundColor: theme.subscriptionDetailBoxBackground }]}>
       <View style={[styles.topLine, { backgroundColor: theme.subscriptionDetailDragBar }]} />
-      
-      {durations.map((opt, idx) => (
-        <TouchableOpacity
-          key={idx}
-          style={[
-            styles.optionBox,
-            { backgroundColor: theme.subscriptionDetailOptionBox },
-            selectedDuration === idx && {
-              ...styles.optionBoxActive,
-              borderColor: theme.subscriptionDetailOptionBoxActiveBorder,
-            },
-          ]}
-          onPress={() => setSelectedDuration(idx)}
-        >
-          <Text style={[styles.labelText, { color: theme.subscriptionDetailLabelText }]}>
-            {opt.label}
-          </Text>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Text style={[styles.priceText, { color: theme.subscriptionDetailPriceText }]}>
-              {opt.price}
+
+      {durations.map((opt, idx) => {
+        const active = selectedDuration === idx;
+        return (
+          <TouchableOpacity
+            key={idx}
+            style={[
+              styles.optionBox,
+              { backgroundColor: theme.subscriptionDetailOptionBox },
+              active && {
+                ...styles.optionBoxActive,
+                borderColor: theme.subscriptionDetailOptionBoxActiveBorder,
+              },
+            ]}
+            onPress={() => setSelectedDuration(idx)}
+          >
+            <Text style={[styles.labelText, { color: theme.subscriptionDetailLabelText }]}>
+              {opt.label}
             </Text>
-            <Text style={[styles.noteText, { color: theme.subscriptionDetailNoteText, marginLeft: 4 * scale }]}>
-              {'| ' + opt.note}
-            </Text>
-          </View>
-        </TouchableOpacity>
-      ))}
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text style={[styles.priceText, { color: theme.subscriptionDetailPriceText }]}>
+                {opt.price}
+              </Text>
+              <Text
+                style={[
+                  styles.noteText,
+                  { color: theme.subscriptionDetailNoteText, marginLeft: 4 * scale },
+                ]}
+              >
+                {'| ' + opt.note}
+              </Text>
+            </View>
+          </TouchableOpacity>
+        );
+      })}
 
       <TouchableOpacity
-        style={[styles.buyButton, { backgroundColor: theme.subscriptionDetailBuyButtonBackground }]}
+        disabled={isDisabled}
         onPress={handleProceedToPayment}
+        style={[
+          styles.buyButton,
+          {
+            backgroundColor: theme.subscriptionDetailBuyButtonBackground,
+            opacity: isDisabled ? 0.6 : 1,
+          },
+        ]}
       >
         <Text style={[styles.buyButtonText, { color: theme.subscriptionDetailBuyButtonText }]}>
           {t('subscription.pay')}

@@ -10,6 +10,8 @@ import {
   Image,
   Keyboard,
   TouchableWithoutFeedback,
+  Platform,
+  StatusBar
 } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import HeaderWithProgress from '../../components/headers/HeaderWithProgress';
@@ -44,7 +46,6 @@ export default function CharacterTypeScreen({ navigation }) {
 
   const [selected, setSelected] = useState(routeSelected || []);
 
-  // Scroll efektini uygulamak için
   useEffect(() => {
     let count = 0;
     const interval = setInterval(() => {
@@ -65,7 +66,7 @@ export default function CharacterTypeScreen({ navigation }) {
 
   const sections = [
     {
-      title: t('character_type.sections.girls'), // tr.json: "girls": "Kız Karakterler"
+      title: t('character_type.sections.girls'),
       options: [
         { key: 'girl_next_door', image: require('../../assets/users/user1.jpg') },
         { key: 'beauty_queen', image: require('../../assets/users/user2.jpg') },
@@ -90,7 +91,10 @@ export default function CharacterTypeScreen({ navigation }) {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <SafeAreaView style={[styles.container, { backgroundColor: theme.containerBackground }]}>
-        <HeaderWithProgress navigation={navigation} currentStep={3} />
+        {/* Android'te status bar boşluğu ekle */}
+        <View style={Platform.OS === 'android' ? { marginTop: StatusBar.currentHeight || 0 } : null}>
+          <HeaderWithProgress navigation={navigation} currentStep={3} />
+        </View>
 
         <ScrollView
           ref={scrollRef}
@@ -106,7 +110,7 @@ export default function CharacterTypeScreen({ navigation }) {
               </Text>
 
               <View style={styles.gridWrapper}>
-                {section.options.map((item, index) => (
+                {section.options.map((item) => (
                   <TouchableOpacity
                     key={item.key}
                     style={[

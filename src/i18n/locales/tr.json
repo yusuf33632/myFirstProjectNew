@@ -360,12 +360,8 @@
         },
         "details": "Paket detaylarını gör",
         "per_month": "aylık",
-        "buy_with_google": "Google Pay ile Satın Al",
-        "buy_with_apple": "Apple Pay ile Satın Al",
-        "buy_with_card": "Kredi Kartı ile Satın Al",
-        "enter_card": "Kart Bilgilerini Gir",
-        "pay_now": "Şimdi Öde",
-        "processing": "İşlem yapılıyor..."
+        "pay": "Satın Al"
+        
     },
     "feature": {
         "msg": "Mesajlaşma",
@@ -401,5 +397,33 @@
         "light": "Açık Tema",
         "sunset": "Gün Batımı",
         "forest": "Orman Yeşili"
+    },
+    "addNewCard": {
+        "title": "Ödeme Yöntemi Ekle",
+        "cardHolder": "Kart Sahibi",
+        "cardHolderPlaceholder": "John Doe",
+        "cardNumber": "Kart Numarası",
+        "cardNumberPlaceholder": "4125 2253 5156 5222",
+        "expiry": "Ay / Yıl",
+        "expiryPlaceholder": "12/25",
+        "cvc": "CVC",
+        "cvcPlaceholder": "123",
+        "saveCard": "Kartı kaydet",
+        "enrollButton": "Şimdi Kaydet",
+        "cardHolderError": "Ad ve soyad giriniz",
+        "cardNumberError": "Geçersiz kart numarası",
+        "expiryDateError": "Geçersiz son kullanım tarihi",
+        "cvcError": "Geçersiz CVC"
+    },
+    "cardPayment": {
+        "title": "Dijital Ödeme",
+        "selectMethod": "Kullanmak istediğiniz ödeme yöntemini seçin",
+        "addNewCard": "+ Yeni bir kart ekle",
+        "enrollNow": "Şimdi Öde – {{price}}",
+        "success": "Ödeme başarılı!",
+        "failure": "Ödeme başarısız oldu. Lütfen tekrar deneyin.",
+        "ok": "Tamam",
+        "noSelection": "Lütfen devam etmeden önce bir ödeme yöntemi seçin" 
+
     }
 }

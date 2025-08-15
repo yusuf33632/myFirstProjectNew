@@ -1,4 +1,4 @@
-package com.myfirstproject
+package com.anonymous.myFirstProject
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

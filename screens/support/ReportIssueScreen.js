@@ -81,7 +81,6 @@ export default function ReportIssueScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    paddingHorizontal: 20 * scale,
   },
   content: {
     paddingHorizontal: 20 * scale,

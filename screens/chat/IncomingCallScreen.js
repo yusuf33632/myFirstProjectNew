@@ -8,17 +8,20 @@ import {
   TouchableOpacity,
   StatusBar,
   Platform,
-  SafeAreaView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
+
+// ✅ use the safe-area-context version
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const { width, height } = Dimensions.get('window');
 
 const IncomingCallScreen = () => {
   const navigation = useNavigation();
   const { t } = useTranslation();
+  const insets = useSafeAreaInsets();
 
   const [callStarted, setCallStarted] = useState(false);
   const [callEnded, setCallEnded] = useState(false);
@@ -43,11 +46,9 @@ const IncomingCallScreen = () => {
       const timeout = setTimeout(() => navigation.goBack(), 2000);
       return () => clearTimeout(timeout);
     }
-  }, [callEnded]);
+  }, [callEnded, navigation]);
 
-  const toggleSpeaker = () => {
-    setIsSpeakerOn((prev) => !prev);
-  };
+  const toggleSpeaker = () => setIsSpeakerOn((prev) => !prev);
 
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
@@ -55,56 +56,73 @@ const IncomingCallScreen = () => {
     return `${mins}:${secs}`;
   };
 
+  // Top spacing for labels (safe and consistent across iOS/Android)
+  const SAFE_TOP = Platform.select({
+    ios: insets.top + 12, // use dynamic notch inset
+    android: (StatusBar.currentHeight || 0) + 12,
+  });
+
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <StatusBar hidden />
+    <View style={styles.root}>
+      {/* Full-bleed background under safe areas */}
       <ImageBackground
         source={require('../../assets/users/user1.jpg')}
-        style={styles.background}
+        style={StyleSheet.absoluteFillObject}
         resizeMode="cover"
-      >
-        <Text style={styles.durationText}>
-          {callEnded
-            ? t('incomingCall.ended')
-            : callStarted
-            ? formatTime(duration)
-            : t('incomingCall.ringing')}
-        </Text>
+      />
 
-        {!callEnded && <Text style={styles.nameText}>Jessica</Text>}
+      {/* Foreground content stays within safe area */}
+      <SafeAreaView style={styles.safeContent} edges={['top', 'bottom', 'left', 'right']}>
+        <StatusBar translucent backgroundColor="transparent" barStyle="light-content" hidden />
 
-        {!callEnded && (
-          <View style={styles.buttonsContainer}>
-            <TouchableOpacity style={styles.iconButton} onPress={toggleSpeaker}>
-              <Icon name={isSpeakerOn ? 'volume-2' : 'volume'} size={24} color="#fff" />
-            </TouchableOpacity>
+        <View style={styles.content}>
+          <Text style={[styles.durationText, { top: SAFE_TOP }]}>
+            {callEnded
+              ? t('incomingCall.ended')
+              : callStarted
+              ? formatTime(duration)
+              : t('incomingCall.ringing')}
+          </Text>
 
-            <TouchableOpacity style={styles.endCallButton} onPress={() => setCallEnded(true)}>
-              <Icon name="phone" size={24} color="#fff" />
-            </TouchableOpacity>
-          </View>
-        )}
-      </ImageBackground>
-    </SafeAreaView>
+          {!callEnded && (
+            <Text style={[styles.nameText, { top: SAFE_TOP + 25 }]}>
+              Jessica
+            </Text>
+          )}
+
+          {!callEnded && (
+            <View style={[styles.buttonsContainer, { paddingBottom: Math.max(insets.bottom, 12) }]}>
+              <TouchableOpacity style={styles.iconButton} onPress={toggleSpeaker}>
+                <Icon name={isSpeakerOn ? 'volume-2' : 'volume'} size={24} color="#fff" />
+              </TouchableOpacity>
+
+              <TouchableOpacity style={styles.endCallButton} onPress={() => setCallEnded(true)}>
+                <Icon name="phone" size={24} color="#fff" />
+              </TouchableOpacity>
+            </View>
+          )}
+        </View>
+      </SafeAreaView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  safeArea: {
+  root: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: '#000', // behind the image
   },
-  background: {
+  safeContent: {
     flex: 1,
-    width,
-    height,
+  },
+  content: {
+    flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingBottom: height * 0.08,
+    // bottom padding handled per-device via insets in render
   },
   durationText: {
     position: 'absolute',
-    top: Platform.OS === 'ios' ? 60 : 40,
     color: '#fff',
     fontSize: 14,
     fontWeight: '500',
@@ -113,7 +131,6 @@ const styles = StyleSheet.create({
   },
   nameText: {
     position: 'absolute',
-    top: Platform.OS === 'ios' ? 85 : 65,
     fontSize: 28,
     color: '#fff',
     fontWeight: 'bold',
@@ -124,6 +141,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: width * 0.5,
+    paddingBottom: height * 0.08, // keeps previous spacing feel; plus insets.bottom is added above
   },
   iconButton: {
     width: 60,

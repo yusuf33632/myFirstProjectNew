@@ -354,13 +354,13 @@
         "title": "Subscribe",
         "plan": {
             "basic": "Basic",
-            "standard": "Standard",
-            "premium": "Premium",
-            "premiumPlus": "Premium+"
+            "standard": "Silver",
+            "premium": "Gold",
+            "premiumPlus": "Platinum"
         },
         "details": "View plan details",
         "per_month": "per month",
-        "buy_with_google": "Buy with Google Pay"
+        "pay": "Buy Now"
     },
     "feature": {
         "msg": "Messaging",
@@ -396,5 +396,32 @@
         "light": "Light Theme",
         "sunset": "Sunset",
         "forest": "Forest Green"
+    },
+    "addNewCard": {
+        "title": "Add Payment Method",
+        "cardHolder": "Card Holder",
+        "cardHolderPlaceholder": "John Doe",
+        "cardNumber": "Card Number",
+        "cardNumberPlaceholder": "4125 2253 5156 5222",
+        "expiry": "MM / YY",
+        "expiryPlaceholder": "12/25",
+        "cvc": "CVC",
+        "cvcPlaceholder": "123",
+        "saveCard": "Save Card",
+        "enrollButton": "Enroll Now",
+        "cardHolderError": "Enter full name (first and last)",
+        "cardNumberError": "Invalid card number",
+        "expiryDateError": "Invalid expiry date",
+        "cvcError": "Invalid CVC"
+    },
+    "cardPayment": {
+        "title": "Digital Payment",
+        "selectMethod": "Select the payment method you want to use",
+        "addNewCard": "+ Add a new card",
+        "enrollNow": "Pay Now – {{price}}",
+        "success": "Payment successful!",
+        "failure": "Payment failed. Please try again.",
+        "ok": "OK",
+        "noSelection": "Please select a payment method before proceeding"
     }
 }

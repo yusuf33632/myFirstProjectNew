@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   },
   sidebarFooter: {
     marginTop: 'auto',
-    marginBottom: 10 * scale,
+    marginBottom: Platform.OS === 'android' ? 40 * scale : 10 * scale,
   },
   footerText: {
     fontSize: 15 * scale,

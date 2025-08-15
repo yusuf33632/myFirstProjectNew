@@ -21,6 +21,8 @@ import { useTheme } from '../../src/context/ThemeContext';
 
 const { width } = Dimensions.get('window');
 const scale = width / 375;
+const PADDING_HORIZONTAL = 20 * scale;
+const HEADER_TOP_NUDGE = 8 * scale; // küçük aşağı kaydırma
 
 const getDateFromString = (dateStr) => {
   const [day, month, year] = dateStr.split('/').map(Number);
@@ -68,7 +70,7 @@ export default function BirthdayScreen({ navigation }) {
         Alert.alert(
           t('birthday.underage_title') || 'Yaş sınırı',
           t('birthday.underage_message') ||
-            'Bu uygulamayı kullanmak için en az 18 yaşında olmalısınız.'
+          'Bu uygulamayı kullanmak için en az 18 yaşında olmalısınız.'
         );
         if (Platform.OS === 'android') setShowPicker(false);
         return;
@@ -92,7 +94,15 @@ export default function BirthdayScreen({ navigation }) {
   return (
     <TouchableWithoutFeedback onPress={() => setShowPicker(false)} accessible={false}>
       <SafeAreaView style={[styles.container, { backgroundColor: theme.containerBackground }]}>
-        <HeaderWithProgress navigation={navigation} currentStep={8} />
+        {/* Header: yatay padding'i iptal + çok az aşağı kaydır */}
+        <View
+          style={[
+            { marginHorizontal: -PADDING_HORIZONTAL },
+            Platform.OS === 'android' ? { marginTop: HEADER_TOP_NUDGE } : null
+          ]}
+        >
+          <HeaderWithProgress navigation={navigation} currentStep={8} />
+        </View>
         <PageTitle>{t('birthday.title')}</PageTitle>
 
         <View style={styles.inputWrapper}>

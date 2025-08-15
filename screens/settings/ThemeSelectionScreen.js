@@ -19,33 +19,23 @@ const scale = width / 375;
 
 export default function ThemeSelectionScreen() {
   const navigation = useNavigation();
-  const { setTheme, themeId } = useTheme();
+  const { theme, themeId, setTheme } = useTheme();
   const { t } = useTranslation();
 
-  const [selectedId, setSelectedId] = useState(themeId);
-  const [shouldNavigateBack, setShouldNavigateBack] = useState(false);
+  // Başlangıç: mevcut themeId, yoksa 'dark'
+  const [selectedId, setSelectedId] = useState(typeof themeId === 'string' ? themeId : 'dark');
 
+  // Context değiştiğinde yerel state’i senkronla (UI önizlemeleri için)
+  useEffect(() => {
+    if (typeof themeId === 'string') setSelectedId(themeId);
+  }, [themeId]);
+
+  // Kart önizlemeleri için basit harita (sadece liste kartlarında kullanılıyor)
   const themeMap = {
-    dark: {
-      background: '#1c0f1d',
-      card: '#3a2a3c',
-      text: '#ffffff',
-    },
-    light: {
-      background: '#f4f4f4',
-      card: '#ffffff',
-      text: '#111111',
-    },
-    sunset: {
-      background: '#FFF0F6',
-      card: '#ba6b6c',
-      text: '#fff8f0',
-    },
-    forest: {
-      background: '#E6F7FF',
-      card: '#2e5339',
-      text: '#d8f3dc',
-    },
+    dark:   { background: '#1c0f1d', card: '#3a2a3c', text: '#ffffff' },
+    light:  { background: '#f4f4f4', card: '#f0f0f0', text: '#111111' },
+    sunset: { background: '#FFF0F6', card: '#ba6b6c', text: '#fff8f0' },
+    forest: { background: '#E6F7FF', card: '#2e5339', text: '#d8f3dc' },
   };
 
   const themeOptions = [
@@ -56,25 +46,19 @@ export default function ThemeSelectionScreen() {
   ];
 
   const handleSelect = async (id) => {
-    setSelectedId(id);
-    setShouldNavigateBack(true);
-    await setTheme(id);
+    setSelectedId(id);      // yerel önizleme
+    await setTheme(id);     // global tema güncelle
+    // NOT: Otomatik navigation.goBack() kaldırıldı (kullanıcı manuel geri döner)
   };
 
-  // Tema değiştiğinde geri dön
-  useEffect(() => {
-    if (shouldNavigateBack && themeId === selectedId) {
-      navigation.goBack();
-    }
-  }, [themeId, selectedId, shouldNavigateBack]);
+  // Ekran arka planını gerçek temadan al (Context), yoksa seçili kart önizlemesine düş
+  const screenBg =
+    theme?.containerBackground ??
+    themeMap[selectedId]?.background ??
+    '#1c0f1d';
 
   return (
-    <SafeAreaView
-      style={[
-        styles.safeArea,
-        { backgroundColor: themeMap[selectedId]?.background },
-      ]}
-    >
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: screenBg }]}>
       <View style={styles.themeList}>
         <SettingsHeader title={t('theme.title')} />
         {themeOptions.map((item) => (
@@ -85,13 +69,9 @@ export default function ThemeSelectionScreen() {
               { backgroundColor: themeMap[item.id].card },
             ]}
             onPress={() => handleSelect(item.id)}
+            activeOpacity={0.8}
           >
-            <Text
-              style={[
-                styles.cardText,
-                { color: themeMap[item.id].text },
-              ]}
-            >
+            <Text style={[styles.cardText, { color: themeMap[item.id].text }]}>
               {item.name}
             </Text>
           </TouchableOpacity>

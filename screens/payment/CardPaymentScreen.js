@@ -18,6 +18,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import { useTheme } from '../../src/context/ThemeContext';
 import { BlurView } from 'expo-blur';
 import SettingsHeader from '../../components/headers/SettingsHeader';
+import { useTranslation } from 'react-i18next';
 
 const { width } = Dimensions.get('window');
 const scale = width / 375;
@@ -28,7 +29,7 @@ const initialMethods = [
 ];
 
 export default function CardPaymentScreen() {
-  const [selected, setSelected] = useState('mastercard');
+  const [selected, setSelected] = useState(null);
   const [paymentMethodsState, setPaymentMethodsState] = useState(initialMethods);
   const [isLoading, setIsLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
@@ -38,6 +39,7 @@ export default function CardPaymentScreen() {
   const { theme } = useTheme();
   const route = useRoute();
   const navigation = useNavigation();
+  const { t } = useTranslation();
   const { plan } = route.params || {};
   const displayPrice = plan?.price || '$49';
   const displayLabel = plan?.label || '';
@@ -57,29 +59,38 @@ export default function CardPaymentScreen() {
   );
 
   const handleEnroll = async () => {
+    if (!selected) {
+      setIsSuccess(false);
+      setModalMessage(t('cardPayment.noSelection')); // 🔸 Burada gösterilecek uyarı mesajı
+      setModalVisible(true); // 🔸 Modal'ı açar
+      return; // 🔸 İşlemi durdurur
+    }
+
     try {
       setIsLoading(true);
       await new Promise((res) => setTimeout(res, 2000));
       setIsSuccess(true);
-      setModalMessage('Payment Successful!');
+      setModalMessage(t('cardPayment.success'));
     } catch (error) {
       setIsSuccess(false);
-      setModalMessage('Payment failed. Please try again.');
+      setModalMessage(t('cardPayment.failure'));
     } finally {
       setIsLoading(false);
       setModalVisible(true);
     }
   };
 
+
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={{ flex: 1 }}>
       <View style={[styles.container, { backgroundColor: theme.cardPaymentBackground }]}>
         <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
           <View style={{ marginTop: 30 * scale }}>
-            <SettingsHeader title="Digital Payment" />
+            <SettingsHeader title={t('cardPayment.title')} />
 
-
-            <Text style={[styles.subtitle, { color: theme.cardPaymentTextSecondary }]}>Select the payment method you want to use</Text>
+            <Text style={[styles.subtitle, { color: theme.cardPaymentTextSecondary }]}>
+              {t('cardPayment.selectMethod')}
+            </Text>
 
             {paymentMethodsState.map((method) => (
               <TouchableOpacity
@@ -147,7 +158,7 @@ export default function CardPaymentScreen() {
                   },
                 ]}
               >
-                + Add a new card
+                {t('cardPayment.addNewCard')}
               </Text>
             </TouchableOpacity>
           </View>
@@ -160,7 +171,9 @@ export default function CardPaymentScreen() {
             {isLoading ? (
               <ActivityIndicator color={theme.cardPaymentTextPrimary} size="small" />
             ) : (
-              <Text style={[styles.enrollButtonText, { color: theme.cardPaymentTextPrimary }]}>Enroll Now – {displayPrice}</Text>
+              <Text style={[styles.enrollButtonText, { color: theme.cardPaymentTextPrimary }]}>
+                {t('cardPayment.enrollNow', { price: displayPrice })}
+              </Text>
             )}
           </TouchableOpacity>
         </ScrollView>
@@ -187,7 +200,7 @@ export default function CardPaymentScreen() {
                     if (isSuccess) navigation.navigate('Home');
                   }}
                 >
-                  <Text style={[styles.modalButtonText, { color: theme.cardPaymentTextPrimary }]}>OK</Text>
+                  <Text style={[styles.modalButtonText, { color: theme.cardPaymentTextPrimary }]}>{t('cardPayment.ok')}</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -205,7 +218,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 20 * scale,
   },
-
   subtitle: {
     fontSize: 13 * scale,
     marginBottom: 26 * scale,

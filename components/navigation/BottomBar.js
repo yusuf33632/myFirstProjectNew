@@ -11,15 +11,17 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { useTheme } from '../../src/context/ThemeContext';
 import { useUnread } from '../../src/context/UnreadContext';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const { width } = Dimensions.get('window');
 const scale = width / 375;
 
-export default function BottomBar() {
+export default function BottomBar({ onHeight }) {
   const navigation = useNavigation();
   const route = useRoute();
   const { theme } = useTheme();
   const { unreadCount } = useUnread();
+  const insets = useSafeAreaInsets();
 
   const activeTab = route.name;
 
@@ -34,8 +36,25 @@ export default function BottomBar() {
     { name: 'SubscriptionGift', icon: 'gift-outline' },
   ];
 
+  // iOS: mevcut padding’ini koru
+  // Android: mevcut padding + insets.bottom ekle (gesture/3‑tuş farklarını kapsar)
+  const platformPaddingBottom =
+    Platform.OS === 'ios' ? 30 : 14 + insets.bottom;
+
   return (
-    <View style={[styles.container, { backgroundColor: theme.bottomBarBackground }]}>
+    <View
+      style={[
+        styles.container,
+        {
+          backgroundColor: theme.bottomBarBackground,
+          paddingBottom: platformPaddingBottom,
+        },
+      ]}
+      onLayout={(e) => {
+        // Bar’ın gerçek yüksekliğini parent’a ilet (Android çeşitliliğine uyum)
+        onHeight?.(e.nativeEvent.layout.height);
+      }}
+    >
       {tabs.map((tab) => (
         <TouchableOpacity
           key={tab.name}
@@ -63,7 +82,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     paddingVertical: 10 * scale,
-    paddingBottom: Platform.OS === 'ios' ? 30 : 14,
     borderTopLeftRadius: 16 * scale,
     borderTopRightRadius: 16 * scale,
     elevation: 10,

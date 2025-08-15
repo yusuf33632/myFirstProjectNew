@@ -1,3 +1,4 @@
+// ChatDetailScreen.js
 import React, { useState, useRef, useEffect } from 'react';
 import {
   View,
@@ -10,8 +11,10 @@ import {
   KeyboardAvoidingView,
   Platform,
   Dimensions,
-  SafeAreaView,
   Modal,
+  Keyboard,
+  StyleSheet as RNStyleSheet,
+  Pressable,
 } from 'react-native';
 
 import { Video } from 'expo-av';
@@ -20,14 +23,23 @@ import LockedContentModal from '../../components/modals/LockedContentModal';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../../src/context/ThemeContext';
+import * as NavigationBar from 'expo-navigation-bar';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
-const { width } = Dimensions.get('window');
+// Reanimated for sheet/overlay animation (SubscriptionScreen ile aynı mantık)
+import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
+
+const { width, height } = Dimensions.get('window');
 const scale = width / 375;
 const userImage = require('../../assets/users/user1.jpg');
+
+// Extra lift for Android input bar when keyboard is CLOSED
+const ANDROID_INPUT_LIFT = 12 * scale;
 
 export default function ChatDetailScreen({ navigation }) {
   const { t } = useTranslation();
   const { theme } = useTheme();
+  const insets = useSafeAreaInsets();
 
   const [messages, setMessages] = useState([
     { id: 1, text: 'Merhaba!', sender: 'other', type: 'text' },
@@ -50,8 +62,62 @@ export default function ChatDetailScreen({ navigation }) {
   const [showInfoModal, setShowInfoModal] = useState(false);
   const [showLockedModal, setShowLockedModal] = useState(false);
   const [typing, setTyping] = useState(false);
+
+  // Keyboard state (Android)
+  const [keyboardOpen, setKeyboardOpen] = useState(false);
+  const [keyboardHeight, setKeyboardHeight] = useState(0);
+
   const scrollViewRef = useRef();
   const isSubscribed = false;
+
+  // Track keyboard height/open state for Android precise positioning
+  useEffect(() => {
+    const onShow = (e) => {
+      setKeyboardOpen(true);
+      setKeyboardHeight(e?.endCoordinates?.height ?? 0);
+      requestAnimationFrame(() => scrollViewRef.current?.scrollToEnd({ animated: true }));
+    };
+    const onHide = () => {
+      setKeyboardOpen(false);
+      setKeyboardHeight(0);
+    };
+
+    const showSub = Keyboard.addListener('keyboardDidShow', onShow);
+    const hideSub = Keyboard.addListener('keyboardDidHide', onHide);
+    return () => {
+      showSub.remove();
+      hideSub.remove();
+    };
+  }, []);
+
+  // Modal open/close helpers
+  const handleShowInfoModal = () => {
+    setShowInfoModal(true);
+    if (Platform.OS === 'android') {
+      NavigationBar.setVisibilityAsync('hidden').catch(() => {});
+    }
+  };
+
+  const handleCloseInfoModal = () => {
+    setShowInfoModal(false);
+    if (Platform.OS === 'android') {
+      NavigationBar.setVisibilityAsync('visible').catch(() => {});
+    }
+  };
+
+  const handleShowLockedModal = () => {
+    setShowLockedModal(true);
+    if (Platform.OS === 'android') {
+      NavigationBar.setVisibilityAsync('hidden').catch(() => {});
+    }
+  };
+
+  const handleCloseLockedModal = () => {
+    setShowLockedModal(false);
+    if (Platform.OS === 'android') {
+      NavigationBar.setVisibilityAsync('visible').catch(() => {});
+    }
+  };
 
   const sendMessage = () => {
     if (newMessage.trim() === '') return;
@@ -61,11 +127,9 @@ export default function ChatDetailScreen({ navigation }) {
       sender: 'me',
       type: 'text',
     };
-    setMessages([...messages, newMsg]);
+    setMessages((prev) => [...prev, newMsg]);
     setNewMessage('');
-    setTimeout(() => {
-      scrollViewRef.current?.scrollToEnd({ animated: true });
-    }, 100);
+    setTimeout(() => scrollViewRef.current?.scrollToEnd({ animated: true }), 100);
   };
 
   useEffect(() => {
@@ -79,10 +143,22 @@ export default function ChatDetailScreen({ navigation }) {
 
   const renderMessageContent = (msg) => {
     if (msg.type === 'text') {
-      return <Text style={[styles.messageText, { backgroundColor: theme.surfacePrimary, color: theme.text }]}>{msg.text}</Text>;
-    } else if (msg.type === 'image' || msg.type === 'video') {
       return (
-        <TouchableOpacity onPress={() => isSubscribed ? setShowInfoModal(true) : setShowLockedModal(true)}>
+        <Text style={[styles.messageText, { backgroundColor: theme.surfacePrimary, color: theme.text }]}>
+          {msg.text}
+        </Text>
+      );
+    } else if (msg.type === 'image' || msg.type === 'video') {
+      const onPressHandler = () => {
+        if (isSubscribed) {
+          handleShowInfoModal();
+        } else {
+          handleShowLockedModal();
+        }
+      };
+
+      return (
+        <TouchableOpacity onPress={onPressHandler}>
           {msg.type === 'image' ? (
             <Image source={{ uri: msg.mediaUri }} style={styles.messageImage} />
           ) : (
@@ -104,18 +180,55 @@ export default function ChatDetailScreen({ navigation }) {
     return null;
   };
 
-  const recipient = {
-    id: '1',
-    name: 'Jessica',
-    image: userImage,
-  };
+  const recipient = { id: '1', name: 'Jessica', image: userImage };
+
+  // Android input offset
+  const androidBottomOffset = keyboardOpen
+    ? Math.max(keyboardHeight, 0) + 50
+    : Math.max(insets.bottom, 10) + ANDROID_INPUT_LIFT;
+
+  // ===== Bottom-sheet animasyon (SubscriptionScreen ile aynı) =====
+  const isDetailVisible = showInfoModal || showLockedModal; // tek bayrak
+  const sheetY = useSharedValue(height);      // başta ekranın altında
+  const overlayOpacity = useSharedValue(0);   // karartma görünmez
+
+  useEffect(() => {
+    if (isDetailVisible) {
+      sheetY.value = withTiming(0, { duration: 260 });         // aşağıdan yukarı
+      overlayOpacity.value = withTiming(1, { duration: 200 }); // kararma görünür
+    } else {
+      sheetY.value = withTiming(height, { duration: 220 });     // geri aşağı
+      overlayOpacity.value = withTiming(0, { duration: 180 });  // kararma kaybolur
+    }
+  }, [isDetailVisible, sheetY, overlayOpacity]);
+
+  const overlayStyle = useAnimatedStyle(() => ({ opacity: overlayOpacity.value }));
+  const sheetStyle = useAnimatedStyle(() => ({ transform: [{ translateY: sheetY.value }] }));
+
+  // Safety: restore nav bar on unmount
+  useEffect(() => {
+    return () => {
+      if (Platform.OS === 'android') {
+        NavigationBar.setVisibilityAsync('visible').catch(() => {});
+      }
+    };
+  }, []);
 
   return (
-    <SafeAreaView style={[styles.safeArea, { backgroundColor: theme.containerBackground }]}>
-      <KeyboardAvoidingView style={styles.keyboardView} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+    <SafeAreaView edges={['top', 'left', 'right']} style={[styles.safeArea, { backgroundColor: theme.containerBackground }]}>
+      <KeyboardAvoidingView
+        style={styles.keyboardView}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        keyboardVerticalOffset={Platform.OS === 'ios' ? -insets.bottom + Math.round(4 * scale) : 0}
+      >
         <View style={[styles.container, { backgroundColor: theme.containerBackground }]}>
           {/* Header */}
-          <View style={styles.header}>
+          <View
+            style={[
+              styles.header,
+              { paddingTop: Platform.OS === 'ios' ? 10 * scale : 8 * scale },
+            ]}
+          >
             <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
               <Icon name="arrow-back-outline" size={18 * scale} color={theme.text} />
             </TouchableOpacity>
@@ -130,9 +243,12 @@ export default function ChatDetailScreen({ navigation }) {
           <ScrollView
             ref={scrollViewRef}
             style={styles.messagesContainer}
-            contentContainerStyle={{ paddingBottom: 20 * scale }}
+            contentContainerStyle={{ paddingBottom: 12 * scale }}
             keyboardShouldPersistTaps="handled"
             showsVerticalScrollIndicator={false}
+            onContentSizeChange={() => {
+              scrollViewRef.current?.scrollToEnd({ animated: false });
+            }}
           >
             {messages.map((msg) => (
               <View key={msg.id} style={msg.sender === 'me' ? styles.messageRight : styles.messageLeft}>
@@ -148,50 +264,80 @@ export default function ChatDetailScreen({ navigation }) {
             )}
           </ScrollView>
 
-          {/* Input */}
-          <View style={[styles.messageInputContainer, { backgroundColor: theme.surfacePrimary }]}>
-            <TextInput
-              style={[styles.input, { color: theme.input, placeholderTextColor: theme.inputPlaceholder }]}
-              placeholder={t('chat.input_placeholder')}
-              placeholderTextColor={theme.inputPlaceholder}
-              value={newMessage}
-              onChangeText={setNewMessage}
-              multiline
-            />
-            <View style={styles.buttonsContainer}>
-              <TouchableOpacity onPress={sendMessage} style={styles.sendButton}>
-                <Icon name="send" size={18 * scale} color={theme.text} />
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.giftButton}
-                onPress={() =>
-                  navigation.navigate('SubscriptionGift', { selectedRecipient: recipient })
-                }
-              >
-                <Icon name="gift" size={18 * scale} color={theme.text} />
-              </TouchableOpacity>
-            </View>
-          </View>
-
-          {/* Info Modal */}
-          <Modal visible={showInfoModal} transparent animationType="fade">
-            <BlurView intensity={60} tint="dark" style={styles.modalBackground}>
-              <View style={[styles.infoCard, { backgroundColor: theme.infoCardBackground }]}>
-                <Text style={[styles.infoTitle, { color: theme.text }]}>{t('chat.subscription_title')}</Text>
-                <Text style={[styles.infoText, { color: theme.subtext }]}>{t('chat.subscription_description')}</Text>
-                <TouchableOpacity style={[styles.okButton, { backgroundColor: theme.primarySend }]} onPress={() => setShowInfoModal(false)}>
-                  <Text style={[styles.okButtonText, { color: theme.text }]}>{t('chat.ok')}</Text>
+          {/* Bottom input bar */}
+          <SafeAreaView edges={Platform.OS === 'ios' ? ['bottom'] : []} style={{ backgroundColor: 'transparent' }}>
+            <View
+              style={[
+                styles.messageInputContainer,
+                {
+                  backgroundColor: theme.surfacePrimary,
+                  marginBottom: Platform.OS === 'android' ? androidBottomOffset : 0,
+                },
+              ]}
+            >
+              <TextInput
+                style={[styles.input, { color: theme.input }]}
+                placeholder={t('chat.input_placeholder')}
+                placeholderTextColor={theme.inputPlaceholder}
+                value={newMessage}
+                onChangeText={setNewMessage}
+                multiline
+              />
+              <View style={styles.buttonsContainer}>
+                <TouchableOpacity onPress={sendMessage} style={styles.sendButton}>
+                  <Icon name="send" size={18 * scale} color={theme.text} />
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.giftButton}
+                  onPress={() => navigation.navigate('SubscriptionGift', { selectedRecipient: recipient })}
+                >
+                  <Icon name="gift" size={18 * scale} color={theme.text} />
                 </TouchableOpacity>
               </View>
-            </BlurView>
+            </View>
+          </SafeAreaView>
+
+          {/* Info Modal → bottom-sheet (Subscription ile aynı yerleşim) */}
+          <Modal
+            visible={showInfoModal}
+            transparent
+            animationType={Platform.OS === 'ios' ? 'fade' : 'none'}
+            statusBarTranslucent
+            onRequestClose={handleCloseInfoModal}
+          >
+            {/* Dışa bas → kapat */}
+            <Pressable style={[styles.overlay, overlayStyle]} onPress={handleCloseInfoModal}>
+              {/* Blur dokunuşları üstteki Pressable’a bıraksın */}
+              <BlurView intensity={60} tint="dark" style={styles.blurBackground} pointerEvents="box-none">
+                {/* Kart: sadece kendi iç dokunuşlarını alsın */}
+                <Animated.View
+                  style={[styles.card, sheetStyle, { backgroundColor: theme.infoCardBackground }]}
+                  pointerEvents="auto"
+                >
+                  {/* İçte tıklayınca modal kapanmasın */}
+                  <Pressable onStartShouldSetResponder={() => true}>
+                    <View style={styles.sheetInner}>
+                      <Text style={[styles.infoTitle, { color: theme.text }]}>{t('chat.subscription_title')}</Text>
+                      <Text style={[styles.infoText, { color: theme.subtext }]}>{t('chat.subscription_description')}</Text>
+                      <TouchableOpacity
+                        style={[styles.okButton, { backgroundColor: theme.primarySend }]}
+                        onPress={handleCloseInfoModal}
+                      >
+                        <Text style={[styles.okButtonText, { color: theme.text }]}>{t('chat.ok')}</Text>
+                      </TouchableOpacity>
+                    </View>
+                  </Pressable>
+                </Animated.View>
+              </BlurView>
+            </Pressable>
           </Modal>
 
-          {/* Locked Modal */}
+          {/* Locked Modal (değişmedi) */}
           <LockedContentModal
             visible={showLockedModal}
-            onClose={() => setShowLockedModal(false)}
+            onClose={handleCloseLockedModal}
             onBuy={() => {
-              setShowLockedModal(false);
+              handleCloseLockedModal();
               navigation.navigate('CoinPurchase');
             }}
           />
@@ -205,11 +351,11 @@ const styles = StyleSheet.create({
   safeArea: { flex: 1 },
   keyboardView: { flex: 1 },
   container: { flex: 1 },
+
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 12 * scale,
-    paddingTop: Platform.OS === 'ios' ? 10 * scale : 8 * scale,
     marginBottom: 10 * scale,
   },
   backButton: { padding: 6 * scale, marginRight: 6 * scale },
@@ -221,6 +367,7 @@ const styles = StyleSheet.create({
   },
   username: { fontWeight: 'bold', fontSize: 16 * scale, flex: 1 },
   callIcon: { marginLeft: 8 * scale },
+
   messagesContainer: { paddingHorizontal: 14 * scale, flex: 1 },
   messageLeft: {
     alignSelf: 'flex-start',
@@ -248,11 +395,13 @@ const styles = StyleSheet.create({
     borderRadius: 10 * scale,
     overflow: 'hidden',
   },
+
   messageInputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     borderRadius: 25 * scale,
-    margin: 10 * scale,
+    marginHorizontal: 10 * scale,
+    marginTop: 6 * scale,
     paddingHorizontal: 12 * scale,
     paddingVertical: 8 * scale,
   },
@@ -265,6 +414,7 @@ const styles = StyleSheet.create({
   sendButton: { paddingHorizontal: 8 * scale },
   giftButton: { paddingHorizontal: 5 * scale, marginLeft: 8 * scale },
   buttonsContainer: { flexDirection: 'row', alignItems: 'center', marginLeft: 6 * scale },
+
   typingIndicator: {
     flexDirection: 'row',
     alignSelf: 'flex-start',
@@ -279,6 +429,8 @@ const styles = StyleSheet.create({
     borderRadius: 3 * scale,
     marginHorizontal: 2 * scale,
   },
+
+  // (Önceden var olan merkez modal stilleri dokunulmadı)
   modalBackground: {
     flex: 1,
     justifyContent: 'center',
@@ -294,6 +446,7 @@ const styles = StyleSheet.create({
     fontSize: 18 * scale,
     fontWeight: 'bold',
     marginBottom: 8 * scale,
+    textAlign: 'center',
   },
   infoText: {
     fontSize: 14 * scale,
@@ -309,5 +462,35 @@ const styles = StyleSheet.create({
   okButtonText: {
     fontWeight: 'bold',
     fontSize: 14 * scale,
+  },
+
+  // Bottom-sheet overlay + blur + card (SubscriptionScreen ile aynı)
+  overlay: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.7)',
+  },
+  blurBackground: {
+    flex: 1,
+    width: '100%',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  card: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0, // alt kenara sabitle
+    width: width,
+    borderTopLeftRadius: 24 * scale,
+    borderTopRightRadius: 24 * scale,
+    paddingHorizontal: 20 * scale,
+    paddingTop: 18 * scale,
+    paddingBottom: 20 * scale,
+  },
+  sheetInner: {
+    width: '100%',
+    alignItems: 'center',
   },
 });

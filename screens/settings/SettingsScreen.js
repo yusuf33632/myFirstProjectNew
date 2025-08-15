@@ -65,11 +65,7 @@ export default function SettingsScreen() {
         <Section
           title={t('settings.appSettings')}
           items={[
-            {
-              label: t('settings.notifications'),
-              icon: 'notifications-outline',
-              screen: 'NotificationSettings',
-            },
+            
             {
               label: t('settings.appearance'),
               icon: 'color-palette-outline',

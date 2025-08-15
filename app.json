@@ -3,16 +3,35 @@
     "name": "myFirstProject",
     "slug": "myFirstProject",
     "version": "1.0.0",
+    "scheme": "myfirstproject", 
     "sdkVersion": "53.0.0",
+    "androidStatusBar": {
+      "translucent": false,
+      "backgroundColor": "#000000",
+      "barStyle": "light-content"
+    },
+    "androidNavigationBar": {
+      "backgroundColor": "#000000",
+      "barStyle": "light-content",
+      "visible": "visible"
+    },
     "android": {
-      "permissions": ["CAMERA", "READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"]
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ],
+      "softwareKeyboardLayoutMode": "resize"
     },
     "ios": {
       "infoPlist": {
         "NSCameraUsageDescription": "Kamerayı kullanarak fotoğraf çekmek istiyoruz.",
         "NSPhotoLibraryUsageDescription": "Galeriye erişim izni gerekiyor."
       }
-    }
+    },
+    "plugins": [
+      "expo-video",
+      "expo-audio"
+    ]
   }
 }
-    

@@ -353,14 +353,14 @@
     "subscription": {
         "title": "सदस्यता लें",
         "plan": {
-            "basic": "बेसिक",
-            "standard": "स्टैंडर्ड",
-            "premium": "प्रीमियम",
-            "premiumPlus": "प्रीमियम+"
+            "basic": "मूल",
+            "standard": "सिल्वर",
+            "premium": "गोल्ड",
+            "premiumPlus": "प्लैटिनम"
         },
         "details": "पैकेज विवरण देखें",
         "per_month": "मासिक",
-        "buy_with_google": "Google Pay से खरीदें"
+        "pay": "अभी खरीदें"
     },
     "feature": {
         "msg": "संदेश",
@@ -396,5 +396,32 @@
         "light": "लाइट थीम",
         "sunset": "सूर्यास्त",
         "forest": "वन हरा"
+    },
+    "addNewCard": {
+        "title": "भुगतान विधि जोड़ें",
+        "cardHolder": "कार्डधारक का नाम",
+        "cardHolderPlaceholder": "John Doe",
+        "cardNumber": "कार्ड नंबर",
+        "cardNumberPlaceholder": "4125 2253 5156 5222",
+        "expiry": "महीना / वर्ष",
+        "expiryPlaceholder": "12/25",
+        "cvc": "CVC",
+        "cvcPlaceholder": "123",
+        "saveCard": "कार्ड सहेजें",
+        "enrollButton": "अब सहेजें",
+        "cardHolderError": "कृपया पूरा नाम दर्ज करें (नाम और उपनाम)",
+        "cardNumberError": "अमान्य कार्ड नंबर",
+        "expiryDateError": "अमान्य समाप्ति तिथि",
+        "cvcError": "अमान्य CVC कोड"
+    },
+    "cardPayment": {
+        "title": "डिजिटल भुगतान",
+        "selectMethod": "कृपया वह भुगतान विधि चुनें जिसे आप उपयोग करना चाहते हैं",
+        "addNewCard": "+ नया कार्ड जोड़ें",
+        "enrollNow": "अब भुगतान करें – {{price}}",
+        "success": "भुगतान सफल रहा!",
+        "failure": "भुगतान विफल रहा। कृपया दोबारा प्रयास करें।",
+        "ok": "ठीक है",
+        "noSelection": "कृपया आगे बढ़ने से पहले एक भुगतान विधि चुनें"
     }
 }

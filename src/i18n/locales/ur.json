@@ -354,13 +354,13 @@
         "title": "سبسکرائب کریں",
         "plan": {
             "basic": "بنیادی",
-            "standard": "معیاری",
-            "premium": "پریمیم",
-            "premiumPlus": "پریمیم+"
+            "standard": "سلور",
+            "premium": "گولڈ",
+            "premiumPlus": "پلاٹینم"
         },
         "details": "پیکیج کی تفصیلات دیکھیں",
         "per_month": "ماہانہ",
-        "buy_with_google": "Google Pay سے خریدیں"
+        "pay": "ابھی خریدیں"
     },
     "feature": {
         "msg": "میسجنگ",
@@ -396,5 +396,32 @@
         "light": "لائٹ تھیم",
         "sunset": "سورج غروب تھیم",
         "forest": "جنگلی سبز تھیم"
+    },
+    "addNewCard": {
+        "title": "ادائیگی کا طریقہ شامل کریں",
+        "cardHolder": "کارڈ ہولڈر کا نام",
+        "cardHolderPlaceholder": "John Doe",
+        "cardNumber": "کارڈ نمبر",
+        "cardNumberPlaceholder": "4125 2253 5156 5222",
+        "expiry": "مہینہ / سال",
+        "expiryPlaceholder": "12/25",
+        "cvc": "سیکیورٹی کوڈ (CVC)",
+        "cvcPlaceholder": "123",
+        "saveCard": "کارڈ محفوظ کریں",
+        "enrollButton": "ابھی محفوظ کریں",
+        "cardHolderError": "براہ کرم نام اور کنیت درج کریں",
+        "cardNumberError": "غلط کارڈ نمبر",
+        "expiryDateError": "غلط میعاد ختم ہونے کی تاریخ",
+        "cvcError": "غلط CVC کوڈ"
+    },
+    "cardPayment": {
+        "title": "ڈیجیٹل ادائیگی",
+        "selectMethod": "براہ کرم وہ ادائیگی کا طریقہ منتخب کریں جسے آپ استعمال کرنا چاہتے ہیں",
+        "addNewCard": "+ نیا کارڈ شامل کریں",
+        "enrollNow": "ابھی ادائیگی کریں – {{price}}",
+        "success": "ادائیگی کامیابی سے مکمل ہو گئی!",
+        "failure": "ادائیگی ناکام ہو گئی۔ براہ کرم دوبارہ کوشش کریں۔",
+        "ok": "ٹھیک ہے",
+        "noSelection": "براہ کرم آگے بڑھنے سے پہلے ادائیگی کا طریقہ منتخب کریں"
     }
 }

@@ -354,13 +354,13 @@
         "title": "Berlangganan",
         "plan": {
             "basic": "Dasar",
-            "standard": "Standar",
-            "premium": "Premium",
-            "premiumPlus": "Premium+"
+            "standard": "Perak",
+            "premium": "Emas",
+            "premiumPlus": "Platina"
         },
         "details": "Lihat detail paket",
         "per_month": "per bulan",
-        "buy_with_google": "Beli dengan Google Pay"
+        "pay": "Beli Sekarang"
     },
     "feature": {
         "msg": "Mengobrol",
@@ -396,5 +396,32 @@
         "light": "Tema Terang",
         "sunset": "Senja",
         "forest": "Hijau Hutan"
+    },
+    "addNewCard": {
+        "title": "Tambahkan Metode Pembayaran",
+        "cardHolder": "Nama Pemegang Kartu",
+        "cardHolderPlaceholder": "John Doe",
+        "cardNumber": "Nomor Kartu",
+        "cardNumberPlaceholder": "4125 2253 5156 5222",
+        "expiry": "Bulan / Tahun",
+        "expiryPlaceholder": "12/25",
+        "cvc": "CVC",
+        "cvcPlaceholder": "123",
+        "saveCard": "Simpan Kartu",
+        "enrollButton": "Simpan Sekarang",
+        "cardHolderError": "Harap masukkan nama lengkap (nama dan nama keluarga)",
+        "cardNumberError": "Nomor kartu tidak valid",
+        "expiryDateError": "Tanggal kedaluwarsa tidak valid",
+        "cvcError": "Kode CVC tidak valid"
+    },
+    "cardPayment": {
+        "title": "Pembayaran Digital",
+        "selectMethod": "Pilih metode pembayaran yang ingin kamu gunakan",
+        "addNewCard": "+ Tambahkan kartu baru",
+        "enrollNow": "Bayar Sekarang – {{price}}",
+        "success": "Pembayaran berhasil!",
+        "failure": "Pembayaran gagal. Silakan coba lagi.",
+        "ok": "Oke",
+        "noSelection": "Silakan pilih metode pembayaran sebelum melanjutkan"
     }
 }
